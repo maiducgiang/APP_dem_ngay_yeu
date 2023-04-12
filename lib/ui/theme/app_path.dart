@@ -10,6 +10,8 @@ class AppPath {
   static const String menuIcon = "assets/images/icons/bar.svg";
   static const String searchIcon = "assets/images/icons/search.svg";
   static const String cartIcon = "assets/images/icons/cart.svg";
+  static const String heartIcon =
+      "assets/images/icons/bottomnavigator_heart.svg";
   static const String likeIcon = "assets/images/icons/like.svg";
   static const String notificationIcon =
       "assets/images/icons/notification_icon.svg";

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:mubaha/data/repository/customer/customer_repository.dart';
 import 'package:mubaha/icons/my_flutter_app_icons.dart';
@@ -27,13 +28,16 @@ class _MainScreenState extends State<MainScreen> {
   var tabIndex = 0;
 
   final _screenList = [
-    const HomeScreen(),
-    const CategoryScreen(),
-    CartScreen(
-      isBack: false,
-    ),
-    const FavoriteScreen(),
-    const ProfileScreen()
+    Container(),
+    Container(),
+    Container(),
+    // const HomeScreen(),
+    // const CategoryScreen(),
+    // CartScreen(
+    //   isBack: false,
+    // ),
+    // const FavoriteScreen(),
+    // const ProfileScreen()
   ];
 
   void changeTabIndex(int index) {
@@ -62,56 +66,69 @@ class _MainScreenState extends State<MainScreen> {
         child: BottomNavigationBar(
           selectedFontSize: 12,
           unselectedFontSize: 12,
-          // selectedLabelStyle: TextStyle(fontSize: ),
           onTap: changeTabIndex,
           currentIndex: tabIndex,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: primaryColor,
-          unselectedItemColor: bottomUnselectColor,
+          unselectedItemColor: greyPrymaryColor,
+          selectedLabelStyle: TextStyle(fontSize: 13.sp),
+          unselectedLabelStyle: TextStyle(fontSize: 13.sp),
           elevation: 0,
           items: [
             BottomNavigationBarItem(
                 icon: Padding(
-                    padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
-                    child: const Icon(
-                      Ionicons.home,
-                      size: 20,
-                    )),
-                label: 'Trang chủ'),
-            BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
-                    child: const Icon(
-                      Ionicons.grid_outline,
-                      size: 20,
-                    )),
-                label: 'Thể loại'),
+                  padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_heart.svg",
+                    color: greyPrymaryColor,
+                    width: 24,
+                  ),
+                ),
+                activeIcon: Padding(
+                  padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_heart_selected.svg",
+                    color: primaryColor,
+                    width: 24,
+                  ),
+                ),
+                label: 'Ngày yêu'),
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
-                  child: const Icon(
-                    MyFlutterApp.cart,
-                    size: 20,
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_board.svg",
+                    color: greyPrymaryColor,
+                    width: 24,
                   ),
                 ),
-                label: 'Giỏ hàng'),
-            BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
-                    child: const Icon(
-                      Ionicons.heart_outline,
-                      size: 20,
-                    )),
-                label: 'Yêu thích'),
+                activeIcon: Padding(
+                  padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_board_selected.svg",
+                    color: primaryColor,
+                    width: 24,
+                  ),
+                ),
+                label: 'Kỷ niệm'),
             BottomNavigationBarItem(
                 icon: Padding(
                   padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
-                  child: const Icon(
-                    Ionicons.person_outline,
-                    size: 20,
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_setting.svg",
+                    color: greyPrymaryColor,
+                    width: 24,
                   ),
                 ),
-                label: 'Tài khoản')
+                activeIcon: Padding(
+                  padding: EdgeInsets.only(bottom: 6.h, top: 6.h),
+                  child: SvgPicture.asset(
+                    "assets/images/icons/bottomnavigator_setting_selected.svg",
+                    color: primaryColor,
+                    width: 24,
+                  ),
+                ),
+                label: 'Cài đặt'),
           ],
         ),
       ),

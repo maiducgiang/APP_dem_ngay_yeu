@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.mubaha"
+3    package="com.example.lovecounter"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -32,12 +32,12 @@
 20
 21    <permission
 21-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:22:5-24:47
-22        android:name="com.example.mubaha.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22        android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 22-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:23:9-81
 23        android:protectionLevel="signature" />
 23-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:24:9-44
 24
-25    <uses-permission android:name="com.example.mubaha.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25    <uses-permission android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 25-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:26:5-97
 25-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:26:22-94
 26
@@ -49,7 +49,7 @@
 31        android:icon="@mipmap/ic_launcher"
 32        android:label="mubaha" >
 33        <activity
-34            android:name="com.example.mubaha.MainActivity"
+34            android:name="com.example.lovecounter.MainActivity"
 35            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 36            android:exported="true"
 37            android:hardwareAccelerated="true"
@@ -85,7 +85,7 @@
 66-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
 67            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
 67-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-82
-68            android:authorities="com.example.mubaha.flutter.image_provider"
+68            android:authorities="com.example.lovecounter.flutter.image_provider"
 68-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
 69            android:exported="false"
 69-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37

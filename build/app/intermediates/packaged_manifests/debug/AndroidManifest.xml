@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mubaha"
+    package="com.example.lovecounter"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -19,10 +19,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <permission
-        android:name="com.example.mubaha.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.mubaha.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:name="android.app.Application"
@@ -31,7 +31,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="mubaha" >
         <activity
-            android:name="com.example.mubaha.MainActivity"
+            android:name="com.example.lovecounter.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -65,7 +65,7 @@
 
         <provider
             android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-            android:authorities="com.example.mubaha.flutter.image_provider"
+            android:authorities="com.example.lovecounter.flutter.image_provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data

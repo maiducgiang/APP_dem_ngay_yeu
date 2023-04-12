@@ -1,4 +1,4 @@
-package com.example.mubaha
+package com.example.lovecounter
 
 import io.flutter.embedding.android.FlutterActivity
 
