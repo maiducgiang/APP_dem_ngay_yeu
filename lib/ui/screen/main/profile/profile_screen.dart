@@ -25,6 +25,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondaryColor75,
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -45,211 +46,132 @@ class ProfileScreen extends StatelessWidget {
                 return SafeArea(
                   child: Column(
                     children: [
-                      Header(
-                        title: LocaleKeys.my_profile.tr(),
-                      ),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
+                              Header(
+                                title: "Cài đặt ",
+                              ),
                               Container(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 20.h,
-                                  ),
-                                  color: secondaryColor25,
-                                  child: appState.userSession != null
-                                      ? Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              height: 82.h,
-                                              width: 82.h,
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 16.h),
-                                              child: CircleAvatar(
-                                                backgroundColor: Colors.white,
-                                                child: ClipOval(
-                                                  child: Image.network(
-                                                    user!.profile.avatar,
-                                                    fit: BoxFit.fill,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  user.profile.fullName,
-                                                  style: headingStyle,
-                                                ),
-                                                SizedBox(
-                                                  height: 2.h,
-                                                ),
-                                                Text(
-                                                  user.phone,
-                                                  style: subTitleStyle,
-                                                ),
-                                                SizedBox(
-                                                  height: 9.h,
-                                                ),
-                                                // GestureDetector(
-                                                //     onTap: () => context.router
-                                                //         .push(
-                                                //             FillProfilePage()),
-                                                //     child: Container(
-                                                //       height: 21.h,
-                                                //       width: 52.w,
-                                                //       decoration: BoxDecoration(
-                                                //           color: primaryColor,
-                                                //           borderRadius:
-                                                //               BorderRadius
-                                                //                   .circular(2)),
-                                                //       child: Center(
-                                                //           child: Text(
-                                                //         'Fix',
-                                                //         style: buttonTitleStyle
-                                                //             .copyWith(
-                                                //                 color: Colors
-                                                //                     .white),
-                                                //       )),
-                                                //     )),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      : Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  kDefaultPaddingWidthWidget),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: PrimaryButton.noBorder(
-                                                    onPressed: () {
-                                                      context.router
-                                                          .push(SiginPage());
-                                                    },
-                                                    label: 'Đăng nhập',
-                                                    paddingHeight: 8.h,
-                                                    backgroundColor:
-                                                        primaryColor,
-                                                    style: const TextStyle(
-                                                        color: Colors.white)),
-                                              ),
-                                              SizedBox(
-                                                width:
-                                                    kDefaultPaddingWidthScreen,
-                                              ),
-                                              Expanded(
-                                                child: PrimaryButton.outline(
-                                                    borderColor: primaryColor,
-                                                    onPressed: () {
-                                                      context.router
-                                                          .push(SignupPage());
-                                                    },
-                                                    label: 'Đăng ký',
-                                                    paddingHeight: 8.h,
-                                                    style: const TextStyle(
-                                                        color: primaryColor)),
-                                              ),
-                                            ],
-                                          ),
-                                        )),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                margin: EdgeInsets.symmetric(horizontal: 16.w),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.r)),
                                 child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    ItemProfile(
-                                      onPress: () => context.router
-                                          .push(const StatusOrderPage()),
-                                      title: 'Trạng thái đơn hàng',
-                                      subtitle: 'Những đơn hàng đã đặt',
-                                      icon: MdiIcons.viewList,
+                                    SizedBox(
+                                      height: 18.h,
                                     ),
-                                    const ItemProfile(
-                                      icon: MdiIcons.heart,
-                                      title: 'Yêu thích',
-                                      subtitle: 'Những sản phẩm yêu thích',
+                                    Container(
+                                      //height: 46.h,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "Xin chào!",
+                                        style: subHeadingStyle.copyWith(
+                                            color: const Color(0xff2C3F55)),
+                                      ),
                                     ),
-                                    ItemProfile(
-                                        // onPress: () => context.router
-                                        //     .push(PaymentPage(cartItemIds: [])),
-                                        icon: MdiIcons.wallet,
-                                        title: 'Tài khoản/thẻ ngân hàng',
-                                        subtitle: 'Thẻ, ví đã lưu'),
-                                    ItemProfile(
-                                        // onPress: () =>
-                                        //     context.router.push(AddressPage()),
-                                        icon: Icons.location_on,
-                                        title: 'Địa chỉ',
-                                        subtitle: 'Nhà riêng, công ty...'),
-                                    const ItemProfile(
-                                        icon: MdiIcons.flag,
-                                        title: 'Ngôn ngữ',
-                                        subtitle: 'Chọn ngôn ngữ'),
-                                    ItemProfile(
-                                        onPress: () =>
-                                            context.router.push(NotiPage()),
-                                        icon: Icons.notifications,
-                                        title: 'Thông báo',
-                                        subtitle: 'Thông báo đơn hàng'),
-                                    ItemProfile(
-                                        onPress: () =>
-                                            context.router.push(AboutPage()),
-                                        icon: Icons.settings,
-                                        title: 'Cài đặt',
-                                        subtitle:
-                                            'Cài đặt ứng dụng, giao diện'),
-                                    const ItemProfile(
-                                        icon: MdiIcons.key,
-                                        title: 'Cài đặt thông tin',
-                                        subtitle: 'Họ tên, mật khẩu...'),
+                                    SizedBox(
+                                      height: 8.h,
+                                    ),
+                                    Container(
+                                      //height: 46.h,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "Giang",
+                                        style: subHeadingStyle.copyWith(
+                                            color: const Color(0xff2C3F55),
+                                            fontSize: 17.sp),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 18.h,
+                                    ),
                                   ],
                                 ),
                               ),
                               const DividerWidget(),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                margin: EdgeInsets.symmetric(horizontal: 16.w),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.r)),
                                 child: Column(
                                   children: [
                                     ItemProfile(
-                                      icon: MdiIcons.information,
-                                      title: 'Điều khoản của mUBAHA',
-                                      subtitle: 'Điều kiện sử dụng',
-                                      onPress: () =>
-                                          context.router.push(RulePage()),
+                                      onPress: () {},
+                                      title: 'Mật khẩu ứng dụng',
                                     ),
                                     ItemProfile(
-                                      icon: Icons.phone,
-                                      title: 'Trung tâm hỗ trợ',
-                                      subtitle: 'Hỗ trọ khách hàng',
-                                      isBottomLine: false,
-                                      onPress: () =>
-                                          context.router.push(HelpPage()),
+                                      onPress: () {},
+                                      title: 'Đổi mật khẩu',
                                     ),
-                                    Visibility(
-                                      visible: appState.userSession != null,
-                                      child: Container(
-                                        margin: EdgeInsets.symmetric(
-                                            vertical: 15.h),
-                                        child: PrimaryButton(
-                                          onPressed: () {
-                                            context
-                                                .read<SigninCubit>()
-                                                .logout();
-                                          },
-                                          label: 'Đăng xuất',
-                                        ),
-                                      ),
-                                    )
                                   ],
                                 ),
                               ),
+                              const DividerWidget(),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                margin: EdgeInsets.symmetric(horizontal: 16.w),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.r)),
+                                child: Column(
+                                  children: [
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Màu sắc ứng dụng',
+                                    ),
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Phông chữ',
+                                    ),
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Ngôn ngữ',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const DividerWidget(),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                margin: EdgeInsets.symmetric(horizontal: 16.w),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.r)),
+                                child: Column(
+                                  children: [
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Viết đánh giá',
+                                    ),
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Chia sẻ ứng dụng',
+                                    ),
+                                    ItemProfile(
+                                      onPress: () {},
+                                      title: 'Liên hệ với chúng tôi ',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const DividerWidget(),
+                              Container(
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.symmetric(vertical: 12.h),
+                                child: Text(
+                                  "Phiên bản 1.0",
+                                  style: TextStyle(
+                                      color: greyPrymaryColor, fontSize: 13.sp),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -269,15 +191,15 @@ class ProfileScreen extends StatelessWidget {
 class ItemProfile extends StatelessWidget {
   final bool? isBottomLine;
   final String title;
-  final String subtitle;
-  final IconData icon;
+  final String? subtitle;
+  final IconData? icon;
   final Function()? onPress;
   const ItemProfile(
       {Key? key,
       this.isBottomLine = true,
       required this.title,
-      required this.subtitle,
-      required this.icon,
+      this.subtitle,
+      this.icon,
       this.onPress})
       : super(key: key);
 
@@ -286,7 +208,7 @@ class ItemProfile extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        height: 66.h,
+        height: 52.h,
         decoration: BoxDecoration(
             border: Border(
                 bottom: isBottomLine!
@@ -295,10 +217,6 @@ class ItemProfile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              color: Colors.black54,
-            ),
             Expanded(
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 14.w),
@@ -308,19 +226,19 @@ class ItemProfile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: titleStyle,
+                      style: titleStyle.copyWith(
+                          fontSize: 15.sp, color: titleColor),
                     ),
-                    SizedBox(
-                      height: 2.h,
-                    ),
-                    Text(
-                      subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subTitleStyle,
-                    )
                   ],
                 ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 16.sp,
+                color: greyPrymaryColor,
               ),
             )
           ],

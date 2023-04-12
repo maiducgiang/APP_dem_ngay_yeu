@@ -30,14 +30,14 @@ class _MainScreenState extends State<MainScreen> {
   final _screenList = [
     Container(),
     Container(),
-    Container(),
+    // Container(),
     // const HomeScreen(),
     // const CategoryScreen(),
     // CartScreen(
     //   isBack: false,
     // ),
     // const FavoriteScreen(),
-    // const ProfileScreen()
+    const ProfileScreen()
   ];
 
   void changeTabIndex(int index) {
