@@ -22,8 +22,6 @@ class BoardScreen extends StatefulWidget {
 }
 
 class _BoardScreenState extends State<BoardScreen> {
-  final ImagePicker imagePicker = ImagePicker();
-  File? imageFile;
   List<XFile> imageFileList = [];
   @override
   Widget build(BuildContext context) {
@@ -222,39 +220,6 @@ class _BoardScreenState extends State<BoardScreen> {
     );
   }
 
-  handlePickImage(ImageSource source) async {
-    // isLoadingUpdateImage(true);
-    final permission =
-        source == ImageSource.camera ? Permission.camera : ImageSource.gallery;
-
-    final pickedFile = await imagePicker.pickImage(
-      source: source,
-    );
-    if (pickedFile == null) {
-      return;
-    }
-
-    final fileExtension = p.extension(pickedFile.path).replaceAll('.', '');
-    if (fileExtension != 'png' &&
-        fileExtension != 'jpg' &&
-        fileExtension != 'jpeg') {
-      setState(() {
-        if (pickedFile != null) imageFileList.add(pickedFile);
-      });
-    }
-  }
-
-  _getFromCamera() async {
-    final XFile? pickedFile = await imagePicker.pickImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    setState(() {
-      if (pickedFile != null) imageFileList.add(pickedFile);
-    });
-  }
-
   Widget imageItem() {
     ImagePicker picker = ImagePicker();
     XFile? image;
@@ -266,39 +231,6 @@ class _BoardScreenState extends State<BoardScreen> {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
         child: Container(),
       ),
-    );
-  }
-
-  Future<void> _showPickerModalPopup() {
-    return showBarModalBottomSheet(
-      context: context,
-      expand: true,
-      builder: (BuildContext context1) {
-        return Container(
-          margin: EdgeInsets.symmetric(vertical: 8.h),
-          height: 50.h,
-          color: Colors.white,
-          child: Row(
-            children: [
-              MediaButtonWidget(
-                  icon: Icons.photo,
-                  title: 'Thêm hình ảnh',
-                  onTap: () {
-                    handlePickImage(ImageSource.gallery);
-                  }),
-              SizedBox(
-                width: kDefaultPaddingWidthScreen,
-              ),
-              MediaButtonWidget(
-                  icon: Icons.camera_alt_rounded,
-                  title: 'Chụp ảnh',
-                  onTap: () {
-                    _getFromCamera();
-                  }),
-            ],
-          ),
-        );
-      },
     );
   }
 }

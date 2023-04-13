@@ -62,9 +62,9 @@ extension FormatDayShip on DateTime {
   String format() {
     return (FormatDayOfWeek(this).format() == 'Chủ nhật' ? '' : 'Thứ ') +
         FormatDayOfWeek(this).format() +
-        ', ' +
+        ', Ngày ' +
         DateFormat('dd').format(this) +
-        ' Th' +
+        ' Thg ' +
         DateFormat('MM').format(this) +
         ' ' +
         DateFormat('yyyy').format(this);
