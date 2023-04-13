@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/translations/codegen_loader.g.dart';
 import 'package:mubaha/ui/services/ThemePreferences.dart';
 import 'package:mubaha/ui/services/account_services.dart';
@@ -12,6 +13,7 @@ void main() async {
   await ThemePreferences.init();
   await EasyLocalization.ensureInitialized();
   final langugage = await AccountServices().getAccountLanguage();
+  CacheManager.instance.init();
   runApp(EasyLocalization(
       path: "assets/translations",
       supportedLocales: const [Locale("en"), Locale("vi")],

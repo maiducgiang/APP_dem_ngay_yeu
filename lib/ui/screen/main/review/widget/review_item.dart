@@ -163,7 +163,7 @@ class _ReviewItemState extends State<ReviewItem> {
                         width: 60.h,
                         child: Image.file(
                           File(imageFileList![index].path),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       );
                     }),

@@ -23,7 +23,8 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: kDefaultPaddingScreen.w),
-      margin: const EdgeInsets.only(bottom: kDefaultPaddingScreen, top: kDefaultPaddingScreen),
+      margin: const EdgeInsets.only(
+          bottom: kDefaultPaddingScreen, top: kDefaultPaddingScreen),
       //margin: const EdgeInsets.only(bottom: kDefaultPaddingScreen, top: kDefaultPaddingScreen),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,13 +54,17 @@ class Header extends StatelessWidget {
                         margin: EdgeInsets.only(right: kDefaultPaddingWidget.w),
                         child: leading ?? Container())),
                 Expanded(
-                  child: Visibility(
-                      visible: title != null,
-                      child: Text(
-                        title ?? "",
-                        style: headerTitleStyle,
-                        overflow: TextOverflow.ellipsis,
-                      )),
+                  child: Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.symmetric(vertical: 12.h),
+                    child: Visibility(
+                        visible: title != null,
+                        child: Text(
+                          title ?? "",
+                          style: headerTitleStyle,
+                          overflow: TextOverflow.ellipsis,
+                        )),
+                  ),
                 ),
                 Visibility(
                     visible: leftWidget != null,

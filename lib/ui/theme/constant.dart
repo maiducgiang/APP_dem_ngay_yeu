@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 const primaryColor = Color(0xFFFF8686);
 final primaryColor20 = primaryColor.withOpacity(0.2);
 final primaryColor5 = primaryColor.withOpacity(0.05);
-final backgroundItemColor = Color(0xffEDEFF4);
+const backgroundItemColor = Color(0xffEDEFF4);
+const backgroundColor = Color(0xffF5F5F5);
 const secondaryColor = Color(0xffEDEFF4);
 final secondaryColor75 = secondaryColor.withOpacity(0.75);
 final secondaryColor60 = secondaryColor.withOpacity(0.6);
@@ -20,7 +21,7 @@ const darkGreyColor = Color(0xFF232323);
 const dartTitleColor = Color(0xFFBABABA);
 const dartContentColor = Color(0xFFEFEFEF);
 const greyPrymaryColor = Color(0xff8492A6);
-const titleColor = Color(0xFF222222);
+const titleColor = Color(0xFF1C2433);
 const contentColor = Color(0xFF777777);
 const borderColor = Color(0xFFDDDDDD);
 
