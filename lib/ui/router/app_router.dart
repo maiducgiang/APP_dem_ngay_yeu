@@ -5,9 +5,10 @@ class AppRoutes {
   static const String setup = "/setup";
   static const String favorite = "/favorite";
   static const String categories = "/categories";
-  static const String dealOfTheDay="/deal_of_the_day_detail";
+  static const String dealOfTheDay = "/deal_of_the_day_detail";
   static const String cart = "/cart";
   static const String profile = "/profile";
+  static const String editBoard = "/editBoard";
   static const String welcomeScreen = "/welcom_screen";
   static const String signin = "/signin_screen";
   static const String signup = "/signup_screen";
@@ -15,7 +16,8 @@ class AppRoutes {
   static const String resetPass = "/reset_pass_page";
   static const String otp = "/otp_page";
   static const String card = "/card_page";
-  static const String categoryListProductsScreen = "/category_list_products_screen";
+  static const String categoryListProductsScreen =
+      "/category_list_products_screen";
   static const String fillProfile = "/fill_profile";
   static const String statusOrder = "/status_order";
   static const String orderDetail = "/order_detail";

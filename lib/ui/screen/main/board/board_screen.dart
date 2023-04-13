@@ -1,9 +1,12 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/screen/main/review/widget/media_button_widget.dart';
 import 'package:mubaha/ui/shared/widget/header/header.dart';
 import 'package:mubaha/ui/theme/constant.dart';
@@ -26,6 +29,18 @@ class _BoardScreenState extends State<BoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: secondaryColor75,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.router.push(EditBoardPage());
+          },
+          backgroundColor: primaryColor,
+          elevation: 0,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 26.sp,
+          ),
+        ),
         body: SafeArea(
           child: Column(
             children: [
@@ -33,8 +48,37 @@ class _BoardScreenState extends State<BoardScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const Header(
-                        title: "Kỷ niệm ",
+                      Container(
+                        height: 70.h,
+                        alignment: Alignment.center,
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(left: 16.h),
+                              width: 32.sp,
+                            ),
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.symmetric(vertical: 12.h),
+                                child: Text(
+                                  "Kỷ niệm ",
+                                  style: headerTitleStyle,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(right: 16.h),
+                              alignment: Alignment.center,
+                              child: SvgPicture.asset(
+                                "assets/images/icons/icon_search.svg",
+                                color: greyPrymaryColor,
+                                width: 24.sp,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         alignment: Alignment.center,

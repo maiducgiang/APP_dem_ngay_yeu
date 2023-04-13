@@ -16,7 +16,9 @@ class BoardModelLocalAdapter extends TypeAdapter<BoardModelLocal> {
       fields[0] as String,
       fields[1] as String,
       fields[2] as DateTime,
-      (fields[3] as List?)?.cast<Uint8List>(),
+      (fields[3] as List?)
+          ?.map((dynamic e) => (e as List).cast<Uint8List>())
+          .toList(),
     );
   }
 

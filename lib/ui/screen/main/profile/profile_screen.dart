@@ -97,14 +97,17 @@ class ProfileScreen extends StatelessWidget {
                             ItemProfile(
                               onPress: () {},
                               title: 'Màu sắc ứng dụng',
+                              itemColor: const Color(0xff8686),
                             ),
                             ItemProfile(
                               onPress: () {},
                               title: 'Phông chữ',
+                              subtitle: "Be Viet Nam Pro",
                             ),
                             ItemProfile(
                               onPress: () {},
                               title: 'Ngôn ngữ',
+                              subtitle: "Tiếng Việt",
                             ),
                           ],
                         ),
@@ -159,12 +162,14 @@ class ItemProfile extends StatelessWidget {
   final String? subtitle;
   final IconData? icon;
   final Function()? onPress;
+  final Color? itemColor;
   const ItemProfile(
       {Key? key,
       this.isBottomLine = true,
       required this.title,
       this.subtitle,
       this.icon,
+      this.itemColor,
       this.onPress})
       : super(key: key);
 
@@ -198,6 +203,31 @@ class ItemProfile extends StatelessWidget {
                 ),
               ),
             ),
+            subtitle != null
+                ? Container(
+                    margin: EdgeInsets.symmetric(horizontal: 6.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          subtitle ?? "",
+                          style: titleStyle.copyWith(
+                              fontSize: 15.sp, color: greyPrymaryColor),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(),
+            itemColor != null
+                ? Container(
+                    width: 18.h,
+                    height: 18.h,
+                    margin: EdgeInsets.symmetric(horizontal: 6.w),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.amber),
+                  )
+                : Container(),
             Container(
               alignment: Alignment.center,
               child: Icon(
