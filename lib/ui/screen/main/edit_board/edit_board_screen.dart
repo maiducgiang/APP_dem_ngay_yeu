@@ -29,6 +29,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                   Container(
                     height: 64.h,
                     width: 64.h,
+                    child: Container(),
                   )
               ]),
             )
