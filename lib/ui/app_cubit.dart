@@ -4,6 +4,7 @@ import 'package:mubaha/ui/app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppState.initial());
+
   void updateUserSession(UserSession? userSession) {
     emit(state.copyWith(userSession: userSession));
   }

@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'theme_state.dart';
 
@@ -11,22 +12,7 @@ part of 'theme_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ThemeStateTearOff {
-  const _$ThemeStateTearOff();
-
-  _ThemeState call({String? error, required ThemeData themeData}) {
-    return _ThemeState(
-      error: error,
-      themeData: themeData,
-    );
-  }
-}
-
-/// @nodoc
-const $ThemeState = _$ThemeStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ThemeState {
@@ -42,66 +28,71 @@ mixin _$ThemeState {
 abstract class $ThemeStateCopyWith<$Res> {
   factory $ThemeStateCopyWith(
           ThemeState value, $Res Function(ThemeState) then) =
-      _$ThemeStateCopyWithImpl<$Res>;
+      _$ThemeStateCopyWithImpl<$Res, ThemeState>;
+  @useResult
   $Res call({String? error, ThemeData themeData});
 }
 
 /// @nodoc
-class _$ThemeStateCopyWithImpl<$Res> implements $ThemeStateCopyWith<$Res> {
+class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
+    implements $ThemeStateCopyWith<$Res> {
   _$ThemeStateCopyWithImpl(this._value, this._then);
 
-  final ThemeState _value;
   // ignore: unused_field
-  final $Res Function(ThemeState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? error = freezed,
-    Object? themeData = freezed,
+    Object? themeData = null,
   }) {
     return _then(_value.copyWith(
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      themeData: themeData == freezed
+      themeData: null == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$ThemeStateCopyWith<$Res> implements $ThemeStateCopyWith<$Res> {
-  factory _$ThemeStateCopyWith(
-          _ThemeState value, $Res Function(_ThemeState) then) =
-      __$ThemeStateCopyWithImpl<$Res>;
+abstract class _$$_ThemeStateCopyWith<$Res>
+    implements $ThemeStateCopyWith<$Res> {
+  factory _$$_ThemeStateCopyWith(
+          _$_ThemeState value, $Res Function(_$_ThemeState) then) =
+      __$$_ThemeStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? error, ThemeData themeData});
 }
 
 /// @nodoc
-class __$ThemeStateCopyWithImpl<$Res> extends _$ThemeStateCopyWithImpl<$Res>
-    implements _$ThemeStateCopyWith<$Res> {
-  __$ThemeStateCopyWithImpl(
-      _ThemeState _value, $Res Function(_ThemeState) _then)
-      : super(_value, (v) => _then(v as _ThemeState));
+class __$$_ThemeStateCopyWithImpl<$Res>
+    extends _$ThemeStateCopyWithImpl<$Res, _$_ThemeState>
+    implements _$$_ThemeStateCopyWith<$Res> {
+  __$$_ThemeStateCopyWithImpl(
+      _$_ThemeState _value, $Res Function(_$_ThemeState) _then)
+      : super(_value, _then);
 
-  @override
-  _ThemeState get _value => super._value as _ThemeState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? error = freezed,
-    Object? themeData = freezed,
+    Object? themeData = null,
   }) {
-    return _then(_ThemeState(
-      error: error == freezed
+    return _then(_$_ThemeState(
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      themeData: themeData == freezed
+      themeData: null == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData,
@@ -128,26 +119,26 @@ class _$_ThemeState implements _ThemeState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ThemeState &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality().equals(other.themeData, themeData));
+            other is _$_ThemeState &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.themeData, themeData) ||
+                other.themeData == themeData));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(themeData));
+  int get hashCode => Object.hash(runtimeType, error, themeData);
 
   @JsonKey(ignore: true)
   @override
-  _$ThemeStateCopyWith<_ThemeState> get copyWith =>
-      __$ThemeStateCopyWithImpl<_ThemeState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_ThemeStateCopyWith<_$_ThemeState> get copyWith =>
+      __$$_ThemeStateCopyWithImpl<_$_ThemeState>(this, _$identity);
 }
 
 abstract class _ThemeState implements ThemeState {
-  const factory _ThemeState({String? error, required ThemeData themeData}) =
-      _$_ThemeState;
+  const factory _ThemeState(
+      {final String? error,
+      required final ThemeData themeData}) = _$_ThemeState;
 
   @override
   String? get error;
@@ -155,6 +146,6 @@ abstract class _ThemeState implements ThemeState {
   ThemeData get themeData;
   @override
   @JsonKey(ignore: true)
-  _$ThemeStateCopyWith<_ThemeState> get copyWith =>
+  _$$_ThemeStateCopyWith<_$_ThemeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
