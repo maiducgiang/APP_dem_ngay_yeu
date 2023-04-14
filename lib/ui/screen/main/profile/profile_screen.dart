@@ -25,8 +25,8 @@ class ProfileScreen extends StatelessWidget {
                         title: "Cài đặt ",
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -67,8 +67,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const DividerWidget(),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -114,8 +114,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const DividerWidget(),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -189,7 +189,7 @@ class ItemProfile extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 14.w),
+                //margin: EdgeInsets.symmetric(horizontal: 14.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
