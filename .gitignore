@@ -78,9 +78,10 @@ key.properties
 
 lib/foundatation/google_sheet_keys.dart
 
-build
+/build
 .dart_tool
 .idea
-pubspec.lock
+/pubspec.lock
 .metadata
-analysis_options.yaml
+/analysis_options.yaml
+*.env

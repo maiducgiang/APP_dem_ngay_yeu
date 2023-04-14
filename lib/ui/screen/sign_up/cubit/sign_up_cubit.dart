@@ -1,20 +1,21 @@
 import 'dart:developer';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gsheets/gsheets.dart';
-import 'package:mubaha/foundatation/google_sheet_keys.dart';
 
 part 'sign_up_state.dart';
 part 'sign_up_cubit.freezed.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
+
   Worksheet? _userSheet;
-  static final _gsheets = GSheets(ggSheetKey);
+
+  static final _gsheets = GSheets(dotenv.get('CLOUD_API_KEY'));
 
   Future initGoogleSheet() async {
     try{
-      final spreadsheet = await _gsheets.spreadsheet(sheetID);
+      final spreadsheet = await _gsheets.spreadsheet(dotenv.get('SHEET_ID'));
 
       _userSheet = await _getWorkSheet(spreadsheet, title: 'User');
       final firstRow = SheetsColumn.getColumns();
