@@ -110,22 +110,26 @@ class _BoardScreenState extends State<BoardScreen> {
                                 shrinkWrap: true,
                                 itemCount: state.listBoardLocal.length,
                                 itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      context.router
-                                          .push(DetailBoardPage(
-                                              boardModelLocal:
-                                                  state.listBoardLocal[index]))
-                                          .then((value) {
-                                        context.read<BroadCubit>().init();
-                                      });
-                                    },
+                                  return GestureDetector(
+                                    // onTap: () {
+                                    //   context.router
+                                    //       .push(DetailBoardPage(
+                                    //           boardModelLocal:
+                                    //               state.listBoardLocal[index]))
+                                    //       .then((value) {
+                                    //     context.read<BroadCubit>().init();
+                                    //   });
+                                    // },
                                     child: ItemBoard(
-                                        title:
-                                            state.listBoardLocal[index].title,
-                                        image: state
-                                            .listBoardLocal[index].listImage,
-                                        time: state.listBoardLocal[index].time),
+                                      context: context,
+                                      state: state,
+                                      index: index,
+                                      // title:
+                                      //     state.listBoardLocal[index].title,
+                                      // image: state
+                                      //     .listBoardLocal[index].listImage,
+                                      // time: state.listBoardLocal[index].time
+                                    ),
                                   );
                                 }),
                           ],
@@ -169,58 +173,68 @@ class _BoardScreenState extends State<BoardScreen> {
   }
 
   Widget ItemBoard({
-    required String title,
-    required DateTime time,
-    Function()? onPress,
-    List<Uint8List>? image,
+    required int index,
+    required BroadState state,
+    required BuildContext context,
+    // required String title,
+    // required DateTime time,
+    // Function()? onPress,
+    // List<Uint8List>? image,
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
-      child: GestureDetector(
-        onTap: onPress,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 6.w),
-              width: 72.w,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Text(
-                    FormatDayShip(time).format4(),
-                    textAlign: TextAlign.center,
-                    style: subTitleStyle.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 11.sp,
-                        color: greyPrymaryColor),
-                  ),
-                  SizedBox(
-                    height: 6.h,
-                  ),
-                  countDay(time) != ""
-                      ? Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 7.w,
-                          ),
-                          decoration: BoxDecoration(
-                              color: greyPrymaryColor,
-                              borderRadius: BorderRadius.circular(20.w)),
-                          child: Text(
-                            countDay(time),
-                            textAlign: TextAlign.center,
-                            style: subTitleStyle.copyWith(
-                                fontSize: 11.sp, color: Colors.white),
-                          ),
-                        )
-                      : Container(),
-                ],
-              ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.symmetric(horizontal: 6.w),
+            width: 72.w,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10.h,
+                ),
+                Text(
+                  FormatDayShip(state.listBoardLocal[index].time).format4(),
+                  textAlign: TextAlign.center,
+                  style: subTitleStyle.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11.sp,
+                      color: greyPrymaryColor),
+                ),
+                SizedBox(
+                  height: 6.h,
+                ),
+                countDay(state.listBoardLocal[index].time) != ""
+                    ? Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 7.w,
+                        ),
+                        decoration: BoxDecoration(
+                            color: greyPrymaryColor,
+                            borderRadius: BorderRadius.circular(20.w)),
+                        child: Text(
+                          countDay(state.listBoardLocal[index].time),
+                          textAlign: TextAlign.center,
+                          style: subTitleStyle.copyWith(
+                              fontSize: 11.sp, color: Colors.white),
+                        ),
+                      )
+                    : Container(),
+              ],
             ),
-            Expanded(
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                context.router
+                    .push(DetailBoardPage(
+                        boardModelLocal: state.listBoardLocal[index]))
+                    .then((value) {
+                  context.read<BroadCubit>().init();
+                });
+              },
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -233,7 +247,7 @@ class _BoardScreenState extends State<BoardScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      state.listBoardLocal[index].title,
                       style: titleStyle.copyWith(
                           height: 1.3.h,
                           wordSpacing: 0.5.w,
@@ -241,22 +255,33 @@ class _BoardScreenState extends State<BoardScreen> {
                           fontSize: 15.sp,
                           color: Color(0xff1C2433)),
                     ),
-                    image != null && image.isNotEmpty
+                    state.listBoardLocal[index].listImage != null &&
+                            state.listBoardLocal[index].listImage!.length != 0
                         ? Container(
                             height: 60.h,
                             margin: EdgeInsets.symmetric(vertical: 14.h),
                             child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: image.length,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    width: 60.h,
-                                    margin: EdgeInsets.only(right: 10.w),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: Image.memory(
-                                        image[index],
-                                        fit: BoxFit.cover,
+                                itemCount: state
+                                    .listBoardLocal[index].listImage!.length,
+                                itemBuilder: (context, index2) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      context.router.push(ShowImagePage(
+                                          image: state.listBoardLocal[index]
+                                              .listImage!));
+                                    },
+                                    child: Container(
+                                      width: 60.h,
+                                      margin: EdgeInsets.only(right: 10.w),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        child: Image.memory(
+                                          state.listBoardLocal[index]
+                                              .listImage![index2],
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   );
@@ -270,7 +295,8 @@ class _BoardScreenState extends State<BoardScreen> {
                       child: Row(
                         children: [
                           Text(
-                            FormatTime(time).format(),
+                            FormatTime(state.listBoardLocal[index].time)
+                                .format(),
                             style: subTitleStyle.copyWith(
                                 fontSize: 13.sp, color: greyPrymaryColor),
                           ),
@@ -284,7 +310,8 @@ class _BoardScreenState extends State<BoardScreen> {
                             ),
                           ),
                           Text(
-                            FormatDayShip(time).format3(),
+                            FormatDayShip(state.listBoardLocal[index].time)
+                                .format3(),
                             style: subTitleStyle.copyWith(
                                 fontSize: 13.sp, color: greyPrymaryColor),
                           ),
@@ -295,8 +322,8 @@ class _BoardScreenState extends State<BoardScreen> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

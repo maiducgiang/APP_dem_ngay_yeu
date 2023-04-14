@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\mdg\\APP_dem_ngay_yeu\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
+            "outputFile": "/Users/mabookpro/Documents/code/APP_dem_ngay_yeu/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\2f9250fe16fd137113577b8384df889a\\core-1.9.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/res/values-en-rXC/values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

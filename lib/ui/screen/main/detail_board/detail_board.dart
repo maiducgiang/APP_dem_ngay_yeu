@@ -148,7 +148,7 @@ class _DetailBoardScreenState extends State<DetailBoardScreen> {
             horizontal: 15.w,
           ),
           margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               context.read<DetailBoardCubit>().deleteBoard();
               context.router.pop();
@@ -161,7 +161,7 @@ class _DetailBoardScreenState extends State<DetailBoardScreen> {
           ),
         )
       ],
-      leading: InkWell(
+      leading: GestureDetector(
         onTap: () => Navigator.pop(context),
         child: const Icon(
           Icons.arrow_back_ios_new_rounded,
