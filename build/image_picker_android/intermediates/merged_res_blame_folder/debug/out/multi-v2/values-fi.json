@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml",
+            "outputFile": "C:\\mdg\\APP_dem_ngay_yeu\\build\\image_picker_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fi\\values-fi.xml",
             "map": [
                 {
-                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/res/values-fi/values-fi.xml",
+                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\2f9250fe16fd137113577b8384df889a\\core-1.9.0\\res\\values-fi\\values-fi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/res/merged/debug/values-fi/values-fi.xml",
+            "outputFile": "C:\\mdg\\APP_dem_ngay_yeu\\build\\image_picker_android\\intermediates\\res\\merged\\debug\\values-fi\\values-fi.xml",
             "map": [
                 {
-                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/res/values-fi/values-fi.xml",
+                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\2f9250fe16fd137113577b8384df889a\\core-1.9.0\\res\\values-fi\\values-fi.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

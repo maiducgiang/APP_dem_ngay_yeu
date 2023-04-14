@@ -12,39 +12,39 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/Users/mabookpro/Documents/code/base_project/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/Users/mabookpro/Documents/code/base_project/android/app/src/debug/AndroidManifest.xml:6:22-64
+14-->C:\mdg\APP_dem_ngay_yeu\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\mdg\APP_dem_ngay_yeu\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-15-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
-15-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-78
+15-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+15-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
 16    <uses-permission android:name="android.permission.VIBRATE" />
-16-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-66
-16-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-63
+16-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+16-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
 17    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-17-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-81
-17-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-78
+17-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-81
+17-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-78
 18    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-18-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-79
-18-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-76
+18-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-79
+18-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-76
 19    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-19-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-77
-19-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-74
+19-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-77
+19-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:11:22-74
 20
 21    <permission
-21-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:22:5-24:47
+21-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:22:5-24:47
 22        android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-22-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:23:9-81
+22-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:23:9-81
 23        android:protectionLevel="signature" />
-23-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:24:9-44
+23-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:24:9-44
 24
 25    <uses-permission android:name="com.example.lovecounter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-25-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:26:5-97
-25-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:26:22-94
+25-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:26:22-94
 26
 27    <application
 28        android:name="android.app.Application"
 29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-29-->[androidx.core:core:1.9.0] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/AndroidManifest.xml:28:18-86
+29-->[androidx.core:core:1.9.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\2f9250fe16fd137113577b8384df889a\core-1.9.0\AndroidManifest.xml:28:18-86
 30        android:debuggable="true"
 31        android:icon="@mipmap/ic_launcher"
 32        android:label="mubaha" >
@@ -82,64 +82,111 @@
 64            android:value="2" />
 65
 66        <provider
-66-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
+66-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
 67            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-67-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-82
+67-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
 68            android:authorities="com.example.lovecounter.flutter.image_provider"
-68-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
+68-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
 69            android:exported="false"
-69-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
+69-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
 70            android:grantUriPermissions="true" >
-70-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
+70-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
 71            <meta-data
-71-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:75
+71-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
 72                android:name="android.support.FILE_PROVIDER_PATHS"
-72-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
+72-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
 73                android:resource="@xml/flutter_image_picker_file_paths" />
-73-->[:image_picker_android] /Users/mabookpro/Documents/code/base_project/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
+73-->[:image_picker_android] C:\mdg\APP_dem_ngay_yeu\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
 74        </provider>
 75
 76        <receiver
-76-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-16:40
-77            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
-77-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-97
+76-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-16:40
+77            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
+77-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-91
 78            android:exported="false" />
-78-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-37
+78-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-37
 79        <receiver
-79-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-26:20
-80            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
-80-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-101
-81            android:exported="false" >
-81-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-37
-82            <intent-filter>
-82-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-25:29
-83                <action android:name="android.intent.action.BOOT_COMPLETED" />
-83-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:21:17-79
-83-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:21:25-76
-84                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-84-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:22:17-84
-84-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:22:25-81
-85                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-85-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:23:17-82
-85-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:23:25-79
-86                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-86-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:24:17-82
-86-->[:flutter_local_notifications] /Users/mabookpro/Documents/code/base_project/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:24:25-79
-87            </intent-filter>
-88        </receiver>
-89
-90        <uses-library
-90-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-91            android:name="androidx.window.extensions"
-91-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-92            android:required="false" />
-92-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-93        <uses-library
-93-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-94            android:name="androidx.window.sidecar"
-94-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-95            android:required="false" />
-95-->[androidx.window:window:1.0.0-beta04] /Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-96    </application>
-97
-98</manifest>
+79-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-19:40
+80            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+80-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-97
+81            android:exported="false" />
+81-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-37
+82        <receiver
+82-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-29:20
+83            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+83-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-101
+84            android:exported="false" >
+84-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-37
+85            <intent-filter>
+85-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-28:29
+86                <action android:name="android.intent.action.BOOT_COMPLETED" />
+86-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:24:17-79
+86-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:24:25-76
+87                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+87-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-84
+87-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:25:25-81
+88                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+88-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-82
+88-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:26:25-79
+89                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+89-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:27:17-82
+89-->[:flutter_local_notifications] C:\mdg\APP_dem_ngay_yeu\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:27:25-79
+90            </intent-filter>
+91        </receiver>
+92
+93        <activity
+93-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:23:9-27:75
+94            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+94-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:24:13-93
+95            android:excludeFromRecents="true"
+95-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:25:13-46
+96            android:exported="false"
+96-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:26:13-37
+97            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+97-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:27:13-72
+98        <!--
+99            Service handling Google Sign-In user revocation. For apps that do not integrate with
+100            Google Sign-In, this service will never be started.
+101        -->
+102        <service
+102-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:33:9-37:51
+103            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+103-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:34:13-89
+104            android:exported="true"
+104-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:35:13-36
+105            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+105-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:36:13-107
+106            android:visibleToInstantApps="true" />
+106-->[com.google.android.gms:play-services-auth:20.4.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\961422f5099198c4475030ca10ad4bf3\jetified-play-services-auth-20.4.0\AndroidManifest.xml:37:13-48
+107
+108        <activity
+108-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\642cc9e2632e586d1058ed231591ead4\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+109            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+109-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\642cc9e2632e586d1058ed231591ead4\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+110            android:exported="false"
+110-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\642cc9e2632e586d1058ed231591ead4\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+111            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+111-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\642cc9e2632e586d1058ed231591ead4\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+112
+113        <meta-data
+113-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\0cdd8aceb5059ba1c457f63b9183d1a3\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+114            android:name="com.google.android.gms.version"
+114-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\0cdd8aceb5059ba1c457f63b9183d1a3\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+115            android:value="@integer/google_play_services_version" />
+115-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\0cdd8aceb5059ba1c457f63b9183d1a3\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+116
+117        <uses-library
+117-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+118            android:name="androidx.window.extensions"
+118-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+119            android:required="false" />
+119-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+120        <uses-library
+120-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+121            android:name="androidx.window.sidecar"
+121-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+122            android:required="false" />
+122-->[androidx.window:window:1.0.0-beta04] C:\Users\itsha\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+123    </application>
+124
+125</manifest>

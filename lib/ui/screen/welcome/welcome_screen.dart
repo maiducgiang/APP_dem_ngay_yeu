@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
-import 'package:mubaha/ui/screen/auth/siginin/signin_screen.dart';
 import 'package:mubaha/ui/services/account_services.dart';
 import 'package:mubaha/ui/shared/widget/background/background_login.dart';
 import 'package:mubaha/ui/shared/widget/button/primary_button.dart';
@@ -180,7 +179,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             text: 'Tạo tài khoản mới?',
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                context.router.replace(SignupPage());
+                                //context.router.replace(SignupPage());
                               },
                           ),
                           const TextSpan(text: " "),
@@ -188,7 +187,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             text: 'Đăng nhập',
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                context.router.replace(SiginPage());
+                                //context.router.replace(SiginPage());
                               },
                           ),
                         ]),

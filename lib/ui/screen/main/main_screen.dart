@@ -1,21 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:mubaha/data/repository/customer/customer_repository.dart';
-import 'package:mubaha/icons/my_flutter_app_icons.dart';
-import 'package:mubaha/injection.dart';
-import 'package:mubaha/ui/screen/main/cart/cart_screen.dart';
-import 'package:mubaha/ui/screen/main/cart/cubit/cart_cubit/cart_cubit.dart';
-import 'package:mubaha/ui/screen/main/cart/cubit/select_cart_cubit/select_cart_cubit.dart';
-import 'package:mubaha/ui/screen/main/category/category_screen.dart';
-import 'package:mubaha/ui/screen/main/favorite/favorite_screen.dart';
-import 'package:mubaha/ui/screen/main/home/home_screen.dart';
-import 'package:mubaha/ui/screen/main/payment/cubit/payment_cubit.dart';
+import 'package:mubaha/ui/screen/main/board/board_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
 import 'package:mubaha/ui/theme/constant.dart';
+import 'package:mubaha/ui/theme/theme.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -29,15 +18,15 @@ class _MainScreenState extends State<MainScreen> {
 
   final _screenList = [
     Container(),
-    Container(),
-    Container(),
+    const BoardScreen(),
+    // Container(),
     // const HomeScreen(),
     // const CategoryScreen(),
     // CartScreen(
     //   isBack: false,
     // ),
     // const FavoriteScreen(),
-    // const ProfileScreen()
+    const ProfileScreen()
   ];
 
   void changeTabIndex(int index) {
@@ -71,8 +60,8 @@ class _MainScreenState extends State<MainScreen> {
           type: BottomNavigationBarType.fixed,
           selectedItemColor: primaryColor,
           unselectedItemColor: greyPrymaryColor,
-          selectedLabelStyle: TextStyle(fontSize: 13.sp),
-          unselectedLabelStyle: TextStyle(fontSize: 13.sp),
+          selectedLabelStyle: subTitleStyle.copyWith(fontSize: 13.sp),
+          unselectedLabelStyle: subTitleStyle.copyWith(fontSize: 13.sp),
           elevation: 0,
           items: [
             BottomNavigationBarItem(
