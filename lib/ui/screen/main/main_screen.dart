@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mubaha/ui/screen/home_page/home_page.dart';
 import 'package:mubaha/ui/screen/main/board/board_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
 import 'package:mubaha/ui/theme/constant.dart';
@@ -17,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   var tabIndex = 0;
 
   final _screenList = [
-    Container(),
+    const HomePage(),
     const BoardScreen(),
     // Container(),
     // const HomeScreen(),

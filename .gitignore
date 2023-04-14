@@ -43,3 +43,7 @@ app.*.map.json
 
 # Gradle related
 .gradle/
+
+/build
+.dart_tool
+/pubspec.lock
