@@ -44,7 +44,8 @@ class _BoardScreenState extends State<BoardScreen> {
                   });
                 },
                 backgroundColor: primaryColor,
-                elevation: 0,
+                elevation: 3,
+                highlightElevation: 5,
                 child: Icon(
                   Icons.add,
                   color: Colors.white,
@@ -182,7 +183,7 @@ class _BoardScreenState extends State<BoardScreen> {
           children: [
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 8.w),
+              margin: EdgeInsets.symmetric(horizontal: 6.w),
               width: 72.w,
               child: Column(
                 children: [
@@ -190,7 +191,6 @@ class _BoardScreenState extends State<BoardScreen> {
                     height: 10.h,
                   ),
                   Text(
-                    // "Thg4/Thứ 3 \n 2023",
                     FormatDayShip(time).format4(),
                     textAlign: TextAlign.center,
                     style: subTitleStyle.copyWith(
