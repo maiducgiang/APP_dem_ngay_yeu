@@ -62,11 +62,31 @@ extension FormatDayShip on DateTime {
   String format() {
     return (FormatDayOfWeek(this).format() == 'Chủ nhật' ? '' : 'Thứ ') +
         FormatDayOfWeek(this).format() +
-        ', ' +
+        ', Ngày ' +
         DateFormat('dd').format(this) +
-        ' Th' +
+        ' Thg ' +
         DateFormat('MM').format(this) +
         ' ' +
         DateFormat('yyyy').format(this);
+  }
+
+  String format2() {
+    return (FormatDayOfWeek(this).format() == 'Chủ nhật' ? '' : 'Thứ ') +
+        FormatDayOfWeek(this).format() +
+        ' Ngày ' +
+        DateFormat('dd').format(this) +
+        ' Thg ' +
+        DateFormat('MM').format(this) +
+        ' ' +
+        DateFormat('yyyy').format(this);
+  }
+
+  String format3() {
+    return (FormatDayOfWeek(this).format() == 'Chủ nhật' ? '' : 'Thứ ') +
+        FormatDayOfWeek(this).format();
+  }
+
+  String format4() {
+    return '${DateFormat('dd').format(this)}/Thg ${DateFormat('MM').format(this)}\n${DateFormat('yyyy').format(this)}';
   }
 }

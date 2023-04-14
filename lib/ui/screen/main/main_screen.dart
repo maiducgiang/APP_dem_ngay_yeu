@@ -5,6 +5,7 @@ import 'package:mubaha/ui/screen/home_page/home_page.dart';
 import 'package:mubaha/ui/screen/main/board/board_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
 import 'package:mubaha/ui/theme/constant.dart';
+import 'package:mubaha/ui/theme/theme.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -60,8 +61,8 @@ class _MainScreenState extends State<MainScreen> {
           type: BottomNavigationBarType.fixed,
           selectedItemColor: primaryColor,
           unselectedItemColor: greyPrymaryColor,
-          selectedLabelStyle: TextStyle(fontSize: 13.sp),
-          unselectedLabelStyle: TextStyle(fontSize: 13.sp),
+          selectedLabelStyle: subTitleStyle.copyWith(fontSize: 13.sp),
+          unselectedLabelStyle: subTitleStyle.copyWith(fontSize: 13.sp),
           elevation: 0,
           items: [
             BottomNavigationBarItem(

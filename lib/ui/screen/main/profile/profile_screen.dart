@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:mubaha/ui/screen/main/profile/widget/item_profile.dart';
+import 'package:mubaha/ui/screen/main/profile/widget/pick_color.dart';
+import 'package:mubaha/ui/shared/widget/button/primary_button.dart';
 
 import 'package:mubaha/ui/shared/widget/divider/divider_widget.dart';
 import 'package:mubaha/ui/shared/widget/header/header.dart';
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/theme.dart';
 
-class ProfileScreen extends StatelessWidget {
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +36,8 @@ class ProfileScreen extends StatelessWidget {
                         title: "Cài đặt ",
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -67,8 +78,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const DividerWidget(),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -95,7 +106,11 @@ class ProfileScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             ItemProfile(
-                              onPress: () {},
+                              onPress: () {
+                                showPickerModalPopup(
+                                  context: context,
+                                );
+                              },
                               title: 'Màu sắc ứng dụng',
                               itemColor: const Color(0xff8686),
                             ),
@@ -114,8 +129,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const DividerWidget(),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        margin: EdgeInsets.symmetric(horizontal: 16.w),
+                        padding: EdgeInsets.symmetric(horizontal: 14.w),
+                        margin: EdgeInsets.symmetric(horizontal: 14.w),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.r)),
@@ -142,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                         margin: EdgeInsets.symmetric(vertical: 12.h),
                         child: Text(
                           "Phiên bản 1.0",
-                          style: TextStyle(
+                          style: subTitleStyle.copyWith(
                               color: greyPrymaryColor, fontSize: 13.sp),
                         ),
                       )
@@ -153,92 +168,5 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         ));
-  }
-}
-
-class ItemProfile extends StatelessWidget {
-  final bool? isBottomLine;
-  final String title;
-  final String? subtitle;
-  final IconData? icon;
-  final Function()? onPress;
-  final Color? itemColor;
-  const ItemProfile(
-      {Key? key,
-      this.isBottomLine = true,
-      required this.title,
-      this.subtitle,
-      this.icon,
-      this.itemColor,
-      this.onPress})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPress,
-      child: Container(
-        height: 52.h,
-        decoration: BoxDecoration(
-            border: Border(
-                bottom: isBottomLine!
-                    ? BorderSide(color: secondaryColor60, width: 1)
-                    : const BorderSide(color: Colors.transparent))),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 14.w),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: titleStyle.copyWith(
-                          fontSize: 15.sp, color: titleColor),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            subtitle != null
-                ? Container(
-                    margin: EdgeInsets.symmetric(horizontal: 6.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          subtitle ?? "",
-                          style: titleStyle.copyWith(
-                              fontSize: 15.sp, color: greyPrymaryColor),
-                        ),
-                      ],
-                    ),
-                  )
-                : Container(),
-            itemColor != null
-                ? Container(
-                    width: 18.h,
-                    height: 18.h,
-                    margin: EdgeInsets.symmetric(horizontal: 6.w),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.amber),
-                  )
-                : Container(),
-            Container(
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 16.sp,
-                color: greyPrymaryColor,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
   }
 }
