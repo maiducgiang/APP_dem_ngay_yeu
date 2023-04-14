@@ -8,8 +8,8 @@ class BroadCubit extends Cubit<BroadState> {
   BroadCubit() : super(BroadState.initial());
 
   final _cacheManager = CacheManager.instance;
-  void init() {
-    List<BoardModelLocal> dataLocal = _cacheManager.getAllBoard();
+  void init() async {
+    List<BoardModelLocal> dataLocal = await _cacheManager.getAllBoard();
     emit(state.copyWith(listBoardLocal: dataLocal));
   }
 }
