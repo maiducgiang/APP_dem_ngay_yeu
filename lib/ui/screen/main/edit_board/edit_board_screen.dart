@@ -137,7 +137,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                     ),
                   ),
                 )
-              : InkWell(
+              : GestureDetector(
                   onTap: () {
                     _showPickerModalPopup(context);
                   },
@@ -237,7 +237,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
             horizontal: 15.w,
           ),
           margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
               context
                   .read<EditBoardCubit>()
@@ -250,7 +250,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
           ),
         )
       ],
-      leading: InkWell(
+      leading: GestureDetector(
         onTap: () => Navigator.pop(context),
         child: const Icon(
           Icons.arrow_back_ios_new_rounded,

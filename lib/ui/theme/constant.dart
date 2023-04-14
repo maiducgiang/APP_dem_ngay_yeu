@@ -7,6 +7,7 @@ final primaryColor20 = primaryColor.withOpacity(0.2);
 final primaryColor5 = primaryColor.withOpacity(0.05);
 const backgroundItemColor = Color(0xffEDEFF4);
 const backgroundColor = Color(0xffF5F5F5);
+const backgroundColorSecond = Color(0xff1C2433);
 const secondaryColor = Color(0xffEDEFF4);
 final secondaryColor75 = secondaryColor.withOpacity(0.75);
 final secondaryColor60 = secondaryColor.withOpacity(0.6);

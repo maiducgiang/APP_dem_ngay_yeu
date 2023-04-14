@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\mdg\\APP_dem_ngay_yeu\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "/Users/mabookpro/Documents/code/APP_dem_ngay_yeu/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\03c633e46d75bfb21f082f0417f55161\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,7,8,9,10,11,19,23,34,51",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,234,294,346,391,451,869,1066,1790,2904",
-                        "endLines": "6,7,8,9,10,18,22,33,50,58",
-                        "endColumns": "11,59,51,44,59,24,24,24,24,24",
-                        "endOffsets": "229,289,341,386,446,864,1061,1785,2899,3292"
-                    },
-                    "to": {
-                        "startLines": "3,8,9,10,87,158,166,311,322,339",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "165,344,404,456,5498,11041,11459,16153,16877,17991",
-                        "endLines": "7,8,9,10,87,165,169,321,338,346",
-                        "endColumns": "11,59,51,44,59,24,24,24,24,24",
-                        "endOffsets": "339,399,451,496,5553,11454,11651,16872,17986,18379"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\8a18f96b3802b3c46f94ce181f95f6e3\\lifecycle-viewmodel-2.5.1\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/8a18f96b3802b3c46f94ce181f95f6e3/lifecycle-viewmodel-2.5.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -40,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\0cdd8aceb5059ba1c457f63b9183d1a3\\jetified-play-services-basement-18.1.0\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "4,7",
-                        "startColumns": "0,0",
-                        "startOffsets": "243,406",
-                        "endColumns": "63,166",
-                        "endOffsets": "306,572"
-                    },
-                    "to": {
-                        "startLines": "111,121",
-                        "startColumns": "4,4",
-                        "startOffsets": "6754,7932",
-                        "endColumns": "67,166",
-                        "endOffsets": "6817,8094"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\642cc9e2632e586d1058ed231591ead4\\jetified-play-services-base-18.0.1\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/642cc9e2632e586d1058ed231591ead4/jetified-play-services-base-18.0.1/res/values/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,33,46",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -76,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\fdae5211189a2e7f88bcaf74e1e4ea74\\jetified-savedstate-1.2.0\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/fdae5211189a2e7f88bcaf74e1e4ea74/jetified-savedstate-1.2.0/res/values/values.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -93,60 +57,26 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\6b1e46759313a994dcb76df1a90e19cb\\media-1.1.0\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/03c633e46d75bfb21f082f0417f55161/jetified-window-1.0.0-beta04/res/values/values.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,144,215,288,341,394,447,500,560,626,748,809,875",
-                        "endColumns": "88,70,72,52,52,52,52,59,65,121,60,65,66",
-                        "endOffsets": "139,210,283,336,389,442,495,555,621,743,804,870,937"
+                        "startLines": "2,7,8,9,10,11,19,23,34,51",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,234,294,346,391,451,869,1066,1790,2904",
+                        "endLines": "6,7,8,9,10,18,22,33,50,58",
+                        "endColumns": "11,59,51,44,59,24,24,24,24,24",
+                        "endOffsets": "229,289,341,386,446,864,1061,1785,2899,3292"
                     },
                     "to": {
-                        "startLines": "23,24,25,48,49,50,51,110,145,147,148,153,155",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1464,1553,1624,3163,3216,3269,3322,6694,10080,10256,10378,10640,10835",
-                        "endColumns": "88,70,72,52,52,52,52,59,65,121,60,65,66",
-                        "endOffsets": "1548,1619,1692,3211,3264,3317,3370,6749,10141,10373,10434,10701,10897"
+                        "startLines": "3,8,9,10,87,158,166,311,322,339",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "165,344,404,456,5498,11041,11459,16153,16877,17991",
+                        "endLines": "7,8,9,10,87,165,169,321,338,346",
+                        "endColumns": "11,59,51,44,59,24,24,24,24,24",
+                        "endOffsets": "339,399,451,496,5553,11454,11651,16872,17986,18379"
                     }
                 },
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\e4eaf03bd090d04629c6ce843cc396e0\\jetified-activity-1.6.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "59",
-                        "endOffsets": "110"
-                    },
-                    "to": {
-                        "startLines": "107",
-                        "startColumns": "4",
-                        "startOffsets": "6530",
-                        "endColumns": "59",
-                        "endOffsets": "6585"
-                    }
-                },
-                {
-                    "source": "C:\\mdg\\APP_dem_ngay_yeu\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,821",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "472,987"
-                    },
-                    "to": {
-                        "startLines": "132,137",
-                        "startColumns": "4,4",
-                        "startOffsets": "9296,9593",
-                        "endLines": "136,139",
-                        "endColumns": "12,12",
-                        "endOffsets": "9588,9757"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\2f9250fe16fd137113577b8384df889a\\core-1.9.0\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/2f9250fe16fd137113577b8384df889a/core-1.9.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,89,90,94,95,96,97,103,113,146,167,200",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -165,7 +95,58 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\itsha\\.gradle\\caches\\transforms-2\\files-2.1\\41b22dd8d8dde3e75988a2b2f33a162b\\lifecycle-runtime-2.5.1\\res\\values\\values.xml",
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/0cdd8aceb5059ba1c457f63b9183d1a3/jetified-play-services-basement-18.1.0/res/values/values.xml",
+                    "from": {
+                        "startLines": "4,7",
+                        "startColumns": "0,0",
+                        "startOffsets": "243,406",
+                        "endColumns": "63,166",
+                        "endOffsets": "306,572"
+                    },
+                    "to": {
+                        "startLines": "111,121",
+                        "startColumns": "4,4",
+                        "startOffsets": "6754,7932",
+                        "endColumns": "67,166",
+                        "endOffsets": "6817,8094"
+                    }
+                },
+                {
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/6b1e46759313a994dcb76df1a90e19cb/media-1.1.0/res/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,144,215,288,341,394,447,500,560,626,748,809,875",
+                        "endColumns": "88,70,72,52,52,52,52,59,65,121,60,65,66",
+                        "endOffsets": "139,210,283,336,389,442,495,555,621,743,804,870,937"
+                    },
+                    "to": {
+                        "startLines": "23,24,25,48,49,50,51,110,145,147,148,153,155",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1464,1553,1624,3163,3216,3269,3322,6694,10080,10256,10378,10640,10835",
+                        "endColumns": "88,70,72,52,52,52,52,59,65,121,60,65,66",
+                        "endOffsets": "1548,1619,1692,3211,3264,3317,3370,6749,10141,10373,10434,10701,10897"
+                    }
+                },
+                {
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/e4eaf03bd090d04629c6ce843cc396e0/jetified-activity-1.6.1/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "59",
+                        "endOffsets": "110"
+                    },
+                    "to": {
+                        "startLines": "107",
+                        "startColumns": "4",
+                        "startOffsets": "6530",
+                        "endColumns": "59",
+                        "endOffsets": "6585"
+                    }
+                },
+                {
+                    "source": "/Users/mabookpro/.gradle/caches/transforms-2/files-2.1/41b22dd8d8dde3e75988a2b2f33a162b/lifecycle-runtime-2.5.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -179,6 +160,25 @@
                         "startOffsets": "6487",
                         "endColumns": "42",
                         "endOffsets": "6525"
+                    }
+                },
+                {
+                    "source": "/Users/mabookpro/Documents/code/APP_dem_ngay_yeu/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,807",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "465,971"
+                    },
+                    "to": {
+                        "startLines": "132,137",
+                        "startColumns": "4,4",
+                        "startOffsets": "9296,9593",
+                        "endLines": "136,139",
+                        "endColumns": "12,12",
+                        "endOffsets": "9588,9757"
                     }
                 }
             ]

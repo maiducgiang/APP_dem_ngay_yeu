@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mubaha/ui/router/app_router.dart';
 import 'package:mubaha/ui/screen/main/detail_board/detail_board.dart';
 import 'package:mubaha/ui/screen/main/edit_board/edit_board_screen.dart';
+import 'package:mubaha/ui/screen/main/image/image_screen.dart';
 import 'package:mubaha/ui/screen/main/main_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
 import 'package:mubaha/ui/screen/main/review/review_screen.dart';
@@ -33,7 +34,11 @@ import 'package:auto_route/annotations.dart';
     AutoRoute(
         page: DetailBoardScreen,
         name: "DetailBoardPage",
-        path: AppRoutes.detailBoard)
+        path: AppRoutes.detailBoard),
+    AutoRoute(
+        page: ShowImageScreen,
+        name: "ShowImagePage",
+        path: AppRoutes.showImageScreen)
   ],
 )
 class $AppRouter {}

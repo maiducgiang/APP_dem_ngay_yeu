@@ -17,6 +17,7 @@ class AppRoutes {
   static const String resetPass = "/reset_pass_page";
   static const String otp = "/otp_page";
   static const String card = "/card_page";
+  static const String showImageScreen = "/ShowImageScreen";
   static const String categoryListProductsScreen =
       "/category_list_products_screen";
   static const String fillProfile = "/fill_profile";
