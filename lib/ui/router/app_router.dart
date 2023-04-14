@@ -9,6 +9,7 @@ class AppRoutes {
   static const String cart = "/cart";
   static const String profile = "/profile";
   static const String editBoard = "/editBoard";
+  static const String detailBoard = "/detailBoardScreen";
   static const String welcomeScreen = "/welcom_screen";
   static const String signin = "/signin_screen";
   static const String signup = "/signup_screen";

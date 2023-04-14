@@ -17,7 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EditBoardState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<XFile> get imageFileList => throw _privateConstructorUsedError;
+  List<Uint8List> get imageFileList => throw _privateConstructorUsedError;
+  BoardModelLocal? get boardModelLocal => throw _privateConstructorUsedError;
+  DateTime get day => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +34,13 @@ abstract class $EditBoardStateCopyWith<$Res> {
           EditBoardState value, $Res Function(EditBoardState) then) =
       _$EditBoardStateCopyWithImpl<$Res, EditBoardState>;
   @useResult
-  $Res call({bool isLoading, List<XFile> imageFileList, String? error});
+  $Res call(
+      {bool isLoading,
+      List<Uint8List> imageFileList,
+      BoardModelLocal? boardModelLocal,
+      DateTime day,
+      String title,
+      String? error});
 }
 
 /// @nodoc
@@ -49,6 +58,9 @@ class _$EditBoardStateCopyWithImpl<$Res, $Val extends EditBoardState>
   $Res call({
     Object? isLoading = null,
     Object? imageFileList = null,
+    Object? boardModelLocal = freezed,
+    Object? day = null,
+    Object? title = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -59,7 +71,19 @@ class _$EditBoardStateCopyWithImpl<$Res, $Val extends EditBoardState>
       imageFileList: null == imageFileList
           ? _value.imageFileList
           : imageFileList // ignore: cast_nullable_to_non_nullable
-              as List<XFile>,
+              as List<Uint8List>,
+      boardModelLocal: freezed == boardModelLocal
+          ? _value.boardModelLocal
+          : boardModelLocal // ignore: cast_nullable_to_non_nullable
+              as BoardModelLocal?,
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -76,7 +100,13 @@ abstract class _$$_EditBoardStateCopyWith<$Res>
       __$$_EditBoardStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<XFile> imageFileList, String? error});
+  $Res call(
+      {bool isLoading,
+      List<Uint8List> imageFileList,
+      BoardModelLocal? boardModelLocal,
+      DateTime day,
+      String title,
+      String? error});
 }
 
 /// @nodoc
@@ -92,6 +122,9 @@ class __$$_EditBoardStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? imageFileList = null,
+    Object? boardModelLocal = freezed,
+    Object? day = null,
+    Object? title = null,
     Object? error = freezed,
   }) {
     return _then(_$_EditBoardState(
@@ -102,7 +135,19 @@ class __$$_EditBoardStateCopyWithImpl<$Res>
       imageFileList: null == imageFileList
           ? _value._imageFileList
           : imageFileList // ignore: cast_nullable_to_non_nullable
-              as List<XFile>,
+              as List<Uint8List>,
+      boardModelLocal: freezed == boardModelLocal
+          ? _value.boardModelLocal
+          : boardModelLocal // ignore: cast_nullable_to_non_nullable
+              as BoardModelLocal?,
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -116,26 +161,35 @@ class __$$_EditBoardStateCopyWithImpl<$Res>
 class _$_EditBoardState implements _EditBoardState {
   const _$_EditBoardState(
       {required this.isLoading,
-      required final List<XFile> imageFileList,
+      required final List<Uint8List> imageFileList,
+      this.boardModelLocal,
+      required this.day,
+      required this.title,
       this.error})
       : _imageFileList = imageFileList;
 
   @override
   final bool isLoading;
-  final List<XFile> _imageFileList;
+  final List<Uint8List> _imageFileList;
   @override
-  List<XFile> get imageFileList {
+  List<Uint8List> get imageFileList {
     if (_imageFileList is EqualUnmodifiableListView) return _imageFileList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_imageFileList);
   }
 
   @override
+  final BoardModelLocal? boardModelLocal;
+  @override
+  final DateTime day;
+  @override
+  final String title;
+  @override
   final String? error;
 
   @override
   String toString() {
-    return 'EditBoardState(isLoading: $isLoading, imageFileList: $imageFileList, error: $error)';
+    return 'EditBoardState(isLoading: $isLoading, imageFileList: $imageFileList, boardModelLocal: $boardModelLocal, day: $day, title: $title, error: $error)';
   }
 
   @override
@@ -147,12 +201,22 @@ class _$_EditBoardState implements _EditBoardState {
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
                 .equals(other._imageFileList, _imageFileList) &&
+            (identical(other.boardModelLocal, boardModelLocal) ||
+                other.boardModelLocal == boardModelLocal) &&
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_imageFileList), error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_imageFileList),
+      boardModelLocal,
+      day,
+      title,
+      error);
 
   @JsonKey(ignore: true)
   @override
@@ -164,13 +228,22 @@ class _$_EditBoardState implements _EditBoardState {
 abstract class _EditBoardState implements EditBoardState {
   const factory _EditBoardState(
       {required final bool isLoading,
-      required final List<XFile> imageFileList,
+      required final List<Uint8List> imageFileList,
+      final BoardModelLocal? boardModelLocal,
+      required final DateTime day,
+      required final String title,
       final String? error}) = _$_EditBoardState;
 
   @override
   bool get isLoading;
   @override
-  List<XFile> get imageFileList;
+  List<Uint8List> get imageFileList;
+  @override
+  BoardModelLocal? get boardModelLocal;
+  @override
+  DateTime get day;
+  @override
+  String get title;
   @override
   String? get error;
   @override

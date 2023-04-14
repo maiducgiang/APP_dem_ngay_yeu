@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mubaha/ui/router/app_router.dart';
+import 'package:mubaha/ui/screen/main/detail_board/detail_board.dart';
 import 'package:mubaha/ui/screen/main/edit_board/edit_board_screen.dart';
 import 'package:mubaha/ui/screen/main/main_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
@@ -26,7 +27,13 @@ import 'package:auto_route/annotations.dart';
         page: ProfileScreen, name: "ProfilePage", path: AppRoutes.profile),
     AutoRoute(page: ReviewScreen, name: 'ReviewPage', path: AppRoutes.review),
     AutoRoute(
-        page: EditBoardScreen, name: "EditBoardPage", path: AppRoutes.editBoard)
+        page: EditBoardScreen,
+        name: "EditBoardPage",
+        path: AppRoutes.editBoard),
+    AutoRoute(
+        page: DetailBoardScreen,
+        name: "DetailBoardPage",
+        path: AppRoutes.detailBoard)
   ],
 )
 class $AppRouter {}

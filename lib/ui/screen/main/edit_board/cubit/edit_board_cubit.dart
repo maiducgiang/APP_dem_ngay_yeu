@@ -14,7 +14,7 @@ class EditBoardCubit extends Cubit<EditBoardState> {
   EditBoardCubit() : super(EditBoardState.initial());
   final ImagePicker imagePicker = ImagePicker();
   final _cacheManager = CacheManager.instance;
-  List<XFile> imageFileList = [];
+  List<Uint8List> imageFileList = [];
   handlePickImage(ImageSource source) async {
     // isLoadingUpdateImage(true);
     final permission =
@@ -32,11 +32,26 @@ class EditBoardCubit extends Cubit<EditBoardState> {
         fileExtension != 'jpg' &&
         fileExtension != 'jpeg') {
       if (pickedFile != null) {
-        imageFileList.add(pickedFile);
+        Uint8List imageBytes = await pickedFile.readAsBytes();
+        imageFileList.add(imageBytes);
         emit(state
-            .copyWith(imageFileList: [...state.imageFileList, pickedFile]));
+            .copyWith(imageFileList: [...state.imageFileList, imageBytes]));
       }
     }
+  }
+
+  void init(BoardModelLocal? boardModelLocal) async {
+    if (boardModelLocal != null) {
+      emit(state.copyWith(
+          boardModelLocal: boardModelLocal,
+          title: boardModelLocal.title,
+          day: boardModelLocal.time,
+          imageFileList: boardModelLocal.listImage ?? []));
+    }
+  }
+
+  void setDay(DateTime day) {
+    emit(state.copyWith(day: day));
   }
 
   getFromCamera() async {
@@ -47,13 +62,14 @@ class EditBoardCubit extends Cubit<EditBoardState> {
     );
 
     if (pickedFile != null) {
-      imageFileList.add(pickedFile);
-      emit(state.copyWith(imageFileList: [...state.imageFileList, pickedFile]));
+      Uint8List imageBytes = await pickedFile.readAsBytes();
+      imageFileList.add(imageBytes);
+      emit(state.copyWith(imageFileList: [...state.imageFileList, imageBytes]));
     }
   }
 
   deleteImage(int index) {
-    List<XFile> a = [];
+    List<Uint8List> a = [];
     for (int i = 0; i < state.imageFileList.length; i++) {
       if (i != index) {
         a.add(state.imageFileList[i]);
@@ -64,21 +80,29 @@ class EditBoardCubit extends Cubit<EditBoardState> {
 
   void save(
       {required String title, String? content, required DateTime time}) async {
-    List<XFile> imageXFile = state.imageFileList;
-    List<Uint8List> listImage = [];
-    if (state.imageFileList.length >= 1) {
-      Uint8List imageBytes = await imageXFile[0].readAsBytes();
-      listImage.add(imageBytes);
+    // List<XFile> imageXFile = state.imageFileList;
+    // List<Uint8List> listImage = [];
+    // if (state.imageFileList.length >= 1) {
+    //   Uint8List imageBytes = await imageXFile[0].readAsBytes();
+    //   listImage.add(imageBytes);
+    // }
+    // if (state.imageFileList.length >= 2) {
+    //   Uint8List imageBytes = await imageXFile[1].readAsBytes();
+    //   listImage.add(imageBytes);
+    // }
+    // if (state.imageFileList.length >= 3) {
+    //   Uint8List imageBytes = await imageXFile[2].readAsBytes();
+    //   listImage.add(imageBytes);
+    // }
+    if (state.boardModelLocal != null) {
+      _cacheManager.addBoardToCache(BoardModelLocal(
+          id: state.boardModelLocal!.id,
+          title: title,
+          time: time,
+          listImage: state.imageFileList));
+    } else {
+      _cacheManager.addBoardToCache(BoardModelLocal(
+          title: title, time: time, listImage: state.imageFileList));
     }
-    if (state.imageFileList.length >= 2) {
-      Uint8List imageBytes = await imageXFile[1].readAsBytes();
-      listImage.add(imageBytes);
-    }
-    if (state.imageFileList.length >= 3) {
-      Uint8List imageBytes = await imageXFile[2].readAsBytes();
-      listImage.add(imageBytes);
-    }
-    _cacheManager.addBoardToCache(
-        BoardModelLocal(title: title, time: time, listImage: listImage));
   }
 }
