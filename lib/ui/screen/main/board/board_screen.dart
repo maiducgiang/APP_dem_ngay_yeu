@@ -41,7 +41,7 @@ class _BoardScreenState extends State<BoardScreen> {
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
                   context.router.push(EditBoardPage()).then((value) {
-                    context.read<BroadCubit>().init();
+                    context.read<BroadCubit>()..init();
                   });
                 },
                 backgroundColor: primaryColor,
