@@ -142,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
                         margin: EdgeInsets.symmetric(vertical: 12.h),
                         child: Text(
                           "Phiên bản 1.0",
-                          style: TextStyle(
+                          style: subTitleStyle.copyWith(
                               color: greyPrymaryColor, fontSize: 13.sp),
                         ),
                       )

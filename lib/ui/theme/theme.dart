@@ -77,6 +77,9 @@ TextStyle get headingStyle {
 TextStyle get headerTitleStyle {
   return TextStyle(
       fontSize: 17.sp,
+      height: 1.3.h,
+      wordSpacing: 0.5.w,
+      letterSpacing: 0.5.w,
       color: ThemePreferences().isDarkMode ? Colors.white : Colors.black,
       fontWeight: FontWeight.w500);
 }
@@ -84,6 +87,9 @@ TextStyle get headerTitleStyle {
 TextStyle get titleStyle {
   return TextStyle(
       fontSize: 14.sp,
+      height: 1.3.h,
+      wordSpacing: 0.5.w,
+      letterSpacing: 0.5.w,
       color: ThemePreferences().isDarkMode ? Colors.white : Colors.black,
       fontWeight: FontWeight.w500);
 }
@@ -91,6 +97,9 @@ TextStyle get titleStyle {
 TextStyle get subTitleStyle {
   return TextStyle(
       fontSize: 12.sp,
+      height: 1.3.h,
+      wordSpacing: 0.5.w,
+      letterSpacing: 0.5.w,
       color: ThemePreferences().isDarkMode ? Colors.white : Colors.grey[500],
       fontWeight: FontWeight.w400);
 }
@@ -99,7 +108,6 @@ TextStyle get subTitleStyle {
 //     fontSize: 12.sp,
 //     color: ThemePreferences().isDarkMode ? Colors.white : Colors.grey[500],
 //     fontWeight: FontWeight.w400);
-
 
 TextStyle get subTitlePrimaryColorStyle {
   return TextStyle(

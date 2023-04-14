@@ -61,7 +61,8 @@ class Header extends StatelessWidget {
                         visible: title != null,
                         child: Text(
                           title ?? "",
-                          style: headerTitleStyle,
+                          style: headerTitleStyle.copyWith(
+                              fontWeight: FontWeight.w600),
                           overflow: TextOverflow.ellipsis,
                         )),
                   ),

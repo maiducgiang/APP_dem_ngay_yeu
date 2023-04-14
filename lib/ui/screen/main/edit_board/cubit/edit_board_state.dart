@@ -1,5 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:mubaha/data/model/board_local/board_model.dart';
 
 part 'edit_board_state.freezed.dart';
 
@@ -7,11 +9,15 @@ part 'edit_board_state.freezed.dart';
 class EditBoardState with _$EditBoardState {
   const factory EditBoardState(
       {required bool isLoading,
-      required List<XFile> imageFileList,
+      required List<Uint8List> imageFileList,
+      BoardModelLocal? boardModelLocal,
+      required DateTime day,
+      required String title,
       String? error}) = _EditBoardState;
 
   factory EditBoardState.initial({
     String? id,
   }) =>
-      const EditBoardState(isLoading: false, imageFileList: []);
+      EditBoardState(
+          isLoading: false, day: DateTime.now(), title: "", imageFileList: []);
 }

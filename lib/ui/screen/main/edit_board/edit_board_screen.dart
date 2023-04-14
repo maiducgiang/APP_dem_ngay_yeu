@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:mubaha/data/model/board_local/board_model.dart';
 import 'package:mubaha/ui/screen/main/edit_board/cubit/edit_board_cubit.dart';
 import 'package:mubaha/ui/screen/main/edit_board/cubit/edit_board_state.dart';
 import 'package:mubaha/ui/screen/main/review/widget/media_button_widget.dart';
@@ -17,29 +19,37 @@ import 'package:mubaha/ui/theme/theme.dart';
 import 'package:badges/badges.dart' as badges;
 
 class EditBoardScreen extends StatefulWidget {
-  const EditBoardScreen({Key? key}) : super(key: key);
-
+  const EditBoardScreen({Key? key, this.boardModelLocal}) : super(key: key);
+  final BoardModelLocal? boardModelLocal;
   @override
   State<EditBoardScreen> createState() => _EditBoardScreenState();
 }
 
 class _EditBoardScreenState extends State<EditBoardScreen> {
-  final TextEditingController dayController =
+  late TextEditingController dayController =
       TextEditingController(text: FormatDayShip(DateTime.now()).format());
+  late bool init = false;
   final TextEditingController contentController = TextEditingController();
-  late DateTime day = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditBoardCubit(),
+      create: (context) => EditBoardCubit()..init(widget.boardModelLocal),
       child: BlocConsumer<EditBoardCubit, EditBoardState>(
         listener: (context, state) {
           // TODO: implement listener
         },
         builder: (context, state) {
+          if (state != null &&
+              widget.boardModelLocal != null &&
+              init == false) {
+            contentController.text = state.title;
+            dayController =
+                TextEditingController(text: FormatDayShip(state.day).format());
+            init = true;
+          }
           return Scaffold(
             backgroundColor: Colors.white,
-            appBar: _appBar(context),
+            appBar: _appBar(context, state),
             body: SafeArea(
                 child: SingleChildScrollView(
               child: Padding(
@@ -61,7 +71,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                       ),
                       isEnable: false,
                       onTapPrefixIcon: () async {
-                        _dayPicker(day);
+                        _dayPicker(state.day, state, context);
                       },
                     ),
                     SizedBox(
@@ -96,24 +106,14 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                   padding: EdgeInsets.only(right: 16.w),
                   // padding: const EdgeInsets.all(8.0),
                   child: badges.Badge(
-                    // padding: EdgeInsets.symmetric(
-                    //     horizontal: 2.w, vertical: 1.h),
-                    // shape: BadgeShape.square,
-                    // borderRadius: BorderRadius.circular(10.r),
-                    // badgeContent: Text("1",
-                    //     style: TextStyle(
-                    //         color: Colors.white,
-                    //         fontSize: 9.sp)),
                     position: badges.BadgePosition.topEnd(top: 0, end: 0),
                     showBadge: true,
                     ignorePointer: false,
                     onTap: () {
                       context.read<EditBoardCubit>().deleteImage(i);
                     },
-
                     badgeContent:
                         const Icon(Icons.close, color: Colors.white, size: 15),
-
                     badgeStyle: badges.BadgeStyle(
                       shape: badges.BadgeShape.circle,
                       badgeColor: primaryColor,
@@ -127,12 +127,10 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                     child: Container(
                       height: 64.h,
                       width: 64.h,
-
-                      // margin: EdgeInsets.only(right: 10.w),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
-                        child: Image.file(
-                          File(state.imageFileList[i].path),
+                        child: Image.memory(
+                          state.imageFileList[i],
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -163,59 +161,92 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: Text(
             "${state.imageFileList.length}/3",
-            style: TextStyle(color: greyPrymaryColor, fontSize: 12.sp),
+            style: subTitleStyle.copyWith(
+                color: greyPrymaryColor, fontSize: 12.sp),
           ),
         )
       ]),
     );
   }
 
-  _dayPicker(DateTime dateTime) {
-    showModalBottomSheet(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-        ),
-        context: context,
-        builder: (context) {
-          return CalendarDatePicker(
-            initialDate: dateTime,
-            firstDate: DateTime(1990),
-            lastDate: DateTime(2050),
-            onDateChanged: (DateTime newDate) {
-              setState(() {
-                day = newDate;
-                dayController.text = FormatDayShip(day).format();
-              });
-              Navigator.pop(context);
-            },
-          );
-        });
+  void _dayPicker(DateTime dateTime, EditBoardState state,
+      BuildContext contextCubit) async {
+    await DatePicker.showDateTimePicker(context,
+        showTitleActions: true,
+        minTime: DateTime(1920, 5, 5, 20, 50),
+        maxTime: DateTime(2050, 6, 7, 05, 09),
+        onChanged: (newDate) {},
+        theme: DatePickerTheme(
+          cancelStyle: titleStyle.copyWith(
+              height: 1.h,
+              wordSpacing: 0.2.w,
+              letterSpacing: 0.5.w,
+              fontSize: 15.sp,
+              color: Color(0xff1C2433)),
+          doneStyle: titleStyle.copyWith(
+              height: 1.h,
+              wordSpacing: 0.2.w,
+              letterSpacing: 0.5.w,
+              fontSize: 15.sp,
+              color: Color(0xff1C2433)),
+          itemStyle: titleStyle.copyWith(
+              height: 1.h,
+              wordSpacing: 0.2.w,
+              letterSpacing: 0.5.w,
+              fontSize: 15.sp,
+              color: Color(0xff1C2433)),
+        ), onConfirm: (newDate) {
+      setState(() {
+        contextCubit.read<EditBoardCubit>().setDay(newDate);
+        dayController.text = FormatDayShip(newDate).format();
+      });
+    }, locale: LocaleType.vi);
+    // showModalBottomSheet(
+    //     shape: const RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    //     ),
+    //     context: context,
+    //     builder: (context) {
+    //       return CalendarDatePicker(
+    //         initialDate: dateTime,
+    //         firstDate: DateTime(1990),
+    //         lastDate: DateTime(2050),
+    //         onDateChanged: (DateTime newDate) {
+    //           setState(() {
+    //             contextCubit.read<EditBoardCubit>().setDay(newDate);
+    //             dayController.text = FormatDayShip(newDate).format();
+    //           });
+    //           Navigator.pop(context);
+    //         },
+    //       );
+    //     });
   }
 
-  AppBar _appBar(BuildContext context) {
+  AppBar _appBar(BuildContext context, EditBoardState state) {
     return AppBar(
       automaticallyImplyLeading: false,
       centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0,
       actions: [
-        InkWell(
-          onTap: () {
-            context
-                .read<EditBoardCubit>()
-                .save(title: contentController.text, time: day);
-            context.router.pop();
-          },
-          child: Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.r), color: primaryColor),
-            padding: EdgeInsets.symmetric(
-              horizontal: 15.w,
-            ),
-            margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
+        Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r), color: primaryColor),
+          padding: EdgeInsets.symmetric(
+            horizontal: 15.w,
+          ),
+          margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
+          child: InkWell(
+            onTap: () {
+              context
+                  .read<EditBoardCubit>()
+                  .save(title: contentController.text, time: state.day);
+              context.router.pop(true);
+            },
             child: Text("Lưu",
-                style: TextStyle(color: Colors.white, fontSize: 13.sp)),
+                style: subTitleStyle.copyWith(
+                    color: Colors.white, fontSize: 13.sp)),
           ),
         )
       ],
@@ -227,7 +258,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
         ),
       ),
       title: Text(
-        "Thêm Kỷ niệm",
+        widget.boardModelLocal == null ? "Thêm Kỷ niệm" : "Sửa kỷ niệm",
         style: titleStyle.copyWith(
           fontSize: 17.sp,
         ),
