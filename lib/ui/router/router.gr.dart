@@ -94,7 +94,7 @@ class AppRouter extends _i7.RootStackRouter {
         ),
         _i7.RouteConfig(
           EditBoardPage.name,
-          path: '/edit-board-screen',
+          path: '/editBoard',
         ),
       ];
 }
@@ -187,7 +187,7 @@ class EditBoardPage extends _i7.PageRouteInfo<void> {
   const EditBoardPage()
       : super(
           EditBoardPage.name,
-          path: '/edit-board-screen',
+          path: '/editBoard',
         );
 
   static const String name = 'EditBoardPage';

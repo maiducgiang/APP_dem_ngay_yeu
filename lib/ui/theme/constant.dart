@@ -21,6 +21,7 @@ const darkGreyColor = Color(0xFF232323);
 const dartTitleColor = Color(0xFFBABABA);
 const dartContentColor = Color(0xFFEFEFEF);
 const greyPrymaryColor = Color(0xff8492A6);
+const greyPrymarySecondColor = Color(0xffEFF2F7);
 const titleColor = Color(0xFF1C2433);
 const contentColor = Color(0xFF777777);
 const borderColor = Color(0xFFDDDDDD);

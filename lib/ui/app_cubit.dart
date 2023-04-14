@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/data/model/user/user_session.dart';
 import 'package:mubaha/ui/app_state.dart';
 
@@ -11,5 +12,9 @@ class AppCubit extends Cubit<AppState> {
 
   void updateTotalCart(int? totalCart) {
     emit(state.copyWith(totalCart: totalCart));
+  }
+
+  void init() {
+    //CacheManager.instance.init();
   }
 }
