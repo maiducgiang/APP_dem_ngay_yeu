@@ -8,7 +8,7 @@ class CacheManager {
   static const int broadmodel = 1;
   static const int fileItemHiveType = 3;
   static CacheManager get instance => _instance ??= CacheManager._();
-
+  static const String _listBoard = 'listBoardLocal';
   CacheManager._();
 
   Box get _cacheBox => Hive.box(_cacheBoxName);
@@ -37,6 +37,47 @@ class CacheManager {
       print('Delete of out date box and reopen box');
       await Hive.openBox(_cacheBoxName);
     }
+  }
+
+  Future<void> addBoardToCache(BoardModelLocal model) async {
+    final cachedData = getAllBoard();
+    bool isAdded = false;
+    for (int index = 0; index < cachedData.length; index++) {
+      if (cachedData[index] != null && cachedData[index].id == model.id) {
+        cachedData[index] = model;
+        isAdded = true;
+        break;
+      }
+    }
+    if (isAdded == false && cachedData.length != 0) {
+      model = model.copyWith(
+          id: (int.parse(cachedData[cachedData.length - 1].id!) + 1)
+              .toString());
+    } else if (isAdded == false && cachedData.length == 0) {
+      model = model.copyWith(id: "0");
+    }
+    if (!isAdded) {
+      cachedData.add(model);
+    }
+    await _addAllBoard(cachedData);
+  }
+
+  Future<void> _addAllBoard(List<BoardModelLocal> models) async {
+    await _cacheBox.put(_listBoard, models);
+  }
+
+  List<BoardModelLocal> getAllBoard() {
+    final result = List.castFrom<dynamic, BoardModelLocal>(
+      (_cacheBox.get(_listBoard) ?? []) as List<dynamic>,
+    ).toList();
+    return result;
+  }
+
+  Future<void> deleteBoard(BoardModelLocal model) async {
+    final cachedData = getAllBoard();
+    cachedData.removeWhere((e) => e != null && e.id == model.id);
+
+    await _cacheBox.put(_listBoard, cachedData);
   }
 
   Future<void> clear() async {

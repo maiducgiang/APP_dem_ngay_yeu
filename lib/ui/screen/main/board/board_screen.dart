@@ -1,12 +1,16 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
+import 'package:mubaha/ui/screen/main/board/cubit/broad_cubit.dart';
+import 'package:mubaha/ui/screen/main/board/cubit/broad_state.dart';
 import 'package:mubaha/ui/screen/main/review/widget/media_button_widget.dart';
 import 'package:mubaha/ui/shared/widget/header/header.dart';
 import 'package:mubaha/ui/theme/constant.dart';
@@ -25,93 +29,110 @@ class _BoardScreenState extends State<BoardScreen> {
   List<XFile> imageFileList = [];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: secondaryColor75,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            context.router.push(EditBoardPage());
-          },
-          backgroundColor: primaryColor,
-          elevation: 0,
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 26.sp,
-          ),
-        ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 70.h,
-                        alignment: Alignment.center,
-                        child: Row(
+    return BlocProvider(
+      create: (context) => BroadCubit()..init(),
+      child: BlocConsumer<BroadCubit, BroadState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return Scaffold(
+              backgroundColor: secondaryColor75,
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  context.router.push(EditBoardPage()).then((value) {
+                    context.read<BroadCubit>().init();
+                  });
+                },
+                backgroundColor: primaryColor,
+                elevation: 0,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 26.sp,
+                ),
+              ),
+              body: SafeArea(
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 16.h),
-                              width: 32.sp,
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.symmetric(vertical: 12.h),
-                                child: Text(
-                                  "Kỷ niệm ",
-                                  style: headerTitleStyle,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(right: 16.h),
+                              height: 70.h,
                               alignment: Alignment.center,
-                              child: SvgPicture.asset(
-                                "assets/images/icons/icon_search.svg",
-                                color: greyPrymaryColor,
-                                width: 24.sp,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(left: 16.h),
+                                    width: 32.sp,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      margin:
+                                          EdgeInsets.symmetric(vertical: 12.h),
+                                      child: Text(
+                                        "Kỷ niệm ",
+                                        style: headerTitleStyle,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(right: 16.h),
+                                    alignment: Alignment.center,
+                                    child: SvgPicture.asset(
+                                      "assets/images/icons/icon_search.svg",
+                                      color: greyPrymaryColor,
+                                      width: 24.sp,
+                                    ),
+                                  )
+                                ],
                               ),
-                            )
+                            ),
+                            state.listBoardLocal.length != 0
+                                ? Container(
+                                    alignment: Alignment.center,
+                                    //margin: EdgeInsets.symmetric(vertical: 8.h),
+                                    child: Text(
+                                      "Bạn có ${state.listBoardLocal.length} kỷ niệm",
+                                      style: TextStyle(
+                                          color: greyPrymaryColor,
+                                          fontSize: 13.sp),
+                                    ),
+                                  )
+                                : Container(),
+                            ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: state.listBoardLocal.length,
+                                itemBuilder: (context, index) {
+                                  return ItemBoard(
+                                      title: state.listBoardLocal[index].title,
+                                      image:
+                                          state.listBoardLocal[index].listImage,
+                                      time: state.listBoardLocal[index].time);
+                                  // productWidget(widget.orderDocs!.products[index]);
+                                }),
                           ],
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.center,
-                        //margin: EdgeInsets.symmetric(vertical: 8.h),
-                        child: Text(
-                          "Bạn có 3 kỷ niệm",
-                          style: TextStyle(
-                              color: greyPrymaryColor, fontSize: 13.sp),
-                        ),
-                      ),
-                      ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return ItemBoard(
-                                title: "Trời đổ mưa sao em còn chưa đổ anh ",
-                                image: imageFileList,
-                                time: DateTime.now());
-                            // productWidget(widget.orderDocs!.products[index]);
-                          }),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-        ));
+              ));
+        },
+      ),
+    );
   }
 
   Widget ItemBoard(
       {required String title,
       DateTime? time,
       Function()? onPress,
-      List<XFile>? image}) {
+      List<Uint8List>? image}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: GestureDetector(
@@ -190,8 +211,8 @@ class _BoardScreenState extends State<BoardScreen> {
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
-                                        child: Image.file(
-                                          File(image[index].path),
+                                        child: Image.memory(
+                                          image[index],
                                           fit: BoxFit.cover,
                                         ),
                                       ),

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -198,16 +199,24 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
       backgroundColor: Colors.white,
       elevation: 0,
       actions: [
-        Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r), color: primaryColor),
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.w,
+        InkWell(
+          onTap: () {
+            context
+                .read<EditBoardCubit>()
+                .save(title: contentController.text, time: day);
+            context.router.pop();
+          },
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.r), color: primaryColor),
+            padding: EdgeInsets.symmetric(
+              horizontal: 15.w,
+            ),
+            margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
+            child: Text("Lưu",
+                style: TextStyle(color: Colors.white, fontSize: 13.sp)),
           ),
-          margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
-          child: Text("Lưu",
-              style: TextStyle(color: Colors.white, fontSize: 13.sp)),
         )
       ],
       leading: InkWell(

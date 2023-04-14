@@ -4,8 +4,6 @@ com/dexterous/flutterlocalnotifications/models/Time.java
  com.dexterous.flutterlocalnotifications.models.Time
 com/dexterous/flutterlocalnotifications/utils/LongUtils.java
  com.dexterous.flutterlocalnotifications.utils.LongUtils
-com/dexterous/flutterlocalnotifications/models/SoundSource.java
- com.dexterous.flutterlocalnotifications.models.SoundSource
 com/dexterous/flutterlocalnotifications/FlutterLocalNotificationsPlugin.java
  com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin
  com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin$1
@@ -14,27 +12,29 @@ com/dexterous/flutterlocalnotifications/FlutterLocalNotificationsPlugin.java
  com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin$ExactAlarmPermissionException
  com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin$PluginException
  com.dexterous.flutterlocalnotifications.PermissionRequestListener
-com/dexterous/flutterlocalnotifications/models/NotificationStyle.java
- com.dexterous.flutterlocalnotifications.models.NotificationStyle
+com/dexterous/flutterlocalnotifications/models/SoundSource.java
+ com.dexterous.flutterlocalnotifications.models.SoundSource
 com/dexterous/flutterlocalnotifications/models/BitmapSource.java
  com.dexterous.flutterlocalnotifications.models.BitmapSource
-com/dexterous/flutterlocalnotifications/ScheduledNotificationBootReceiver.java
- com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
+com/dexterous/flutterlocalnotifications/models/NotificationStyle.java
+ com.dexterous.flutterlocalnotifications.models.NotificationStyle
 com/dexterous/flutterlocalnotifications/ActionBroadcastReceiver.java
  com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver
  com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver$1
  com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver$ActionEventSink
+com/dexterous/flutterlocalnotifications/ScheduledNotificationBootReceiver.java
+ com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
 com/dexterous/flutterlocalnotifications/models/NotificationChannelGroupDetails.java
  com.dexterous.flutterlocalnotifications.models.NotificationChannelGroupDetails
 com/dexterous/flutterlocalnotifications/models/styles/BigPictureStyleInformation.java
  com.dexterous.flutterlocalnotifications.models.styles.BigPictureStyleInformation
 com/dexterous/flutterlocalnotifications/utils/StringUtils.java
  com.dexterous.flutterlocalnotifications.utils.StringUtils
+com/dexterous/flutterlocalnotifications/models/ScheduledNotificationRepeatFrequency.java
+ com.dexterous.flutterlocalnotifications.models.ScheduledNotificationRepeatFrequency
 com/dexterous/flutterlocalnotifications/ScheduledNotificationReceiver.java
  com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver
  com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver$1
-com/dexterous/flutterlocalnotifications/models/ScheduledNotificationRepeatFrequency.java
- com.dexterous.flutterlocalnotifications.models.ScheduledNotificationRepeatFrequency
 com/dexterous/flutterlocalnotifications/models/RepeatInterval.java
  com.dexterous.flutterlocalnotifications.models.RepeatInterval
 com/dexterous/flutterlocalnotifications/models/styles/StyleInformation.java
@@ -46,10 +46,10 @@ com/dexterous/flutterlocalnotifications/models/NotificationAction.java
  com.dexterous.flutterlocalnotifications.models.NotificationAction$NotificationActionInput
 com/dexterous/flutterlocalnotifications/utils/BooleanUtils.java
  com.dexterous.flutterlocalnotifications.utils.BooleanUtils
-com/dexterous/flutterlocalnotifications/ForegroundService.java
- com.dexterous.flutterlocalnotifications.ForegroundService
 com/dexterous/flutterlocalnotifications/models/MessageDetails.java
  com.dexterous.flutterlocalnotifications.models.MessageDetails
+com/dexterous/flutterlocalnotifications/ForegroundService.java
+ com.dexterous.flutterlocalnotifications.ForegroundService
 com/dexterous/flutterlocalnotifications/models/NotificationChannelAction.java
  com.dexterous.flutterlocalnotifications.models.NotificationChannelAction
 com/dexterous/flutterlocalnotifications/RuntimeTypeAdapterFactory.java

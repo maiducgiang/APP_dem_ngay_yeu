@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
               ),
               builder: (context, widget) => MultiBlocProvider(
                 providers: [
-                  BlocProvider(create: (context) => getIt.get<AppCubit>()),
+                  BlocProvider(
+                      create: (context) => getIt.get<AppCubit>()..init()),
                 ],
                 child: _botToastBuilder(context, widget),
               ),
