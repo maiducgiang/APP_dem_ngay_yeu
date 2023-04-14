@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "249371770934",
+    "project_id": "love-counter-9456d",
+    "storage_bucket": "love-counter-9456d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249371770934:android:dade010e158eba9dc25897",
+        "android_client_info": {
+          "package_name": "com.example.lovecounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249371770934-ojpme01eu7d2k0ugusfj3ctoprpofrrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfvuQMS0-fii2O029iztIDoOoCy6vWJrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249371770934-ojpme01eu7d2k0ugusfj3ctoprpofrrf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "249371770934-se03t34n69dko0iuqgbkfd7fporsmi09.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lovecounter.mobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

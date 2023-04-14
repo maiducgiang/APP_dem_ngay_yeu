@@ -82,6 +82,12 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   image_picker: ^0.8.7+2
+  firebase_core:
+  firebase_remote_config: ^4.0.0
+  firebase_analytics: ^10.2.0
+  gsheets: ^0.4.2
+  lottie: ^2.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

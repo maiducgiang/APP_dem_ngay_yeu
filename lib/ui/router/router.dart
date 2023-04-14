@@ -5,6 +5,7 @@ import 'package:mubaha/ui/screen/main/edit_board/edit_board_screen.dart';
 import 'package:mubaha/ui/screen/main/main_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
 import 'package:mubaha/ui/screen/main/review/review_screen.dart';
+import 'package:mubaha/ui/screen/sign_up/sign_up_screen.dart';
 import 'package:mubaha/ui/screen/splash/splash_screen.dart';
 import 'package:mubaha/ui/screen/welcome/welcome_screen.dart';
 import 'package:auto_route/annotations.dart';
@@ -26,7 +27,8 @@ import 'package:auto_route/annotations.dart';
         page: ProfileScreen, name: "ProfilePage", path: AppRoutes.profile),
     AutoRoute(page: ReviewScreen, name: 'ReviewPage', path: AppRoutes.review),
     AutoRoute(
-        page: EditBoardScreen, name: "EditBoardPage", path: AppRoutes.editBoard)
+        page: EditBoardScreen, name: "EditBoardPage", path: AppRoutes.editBoard),
+    AutoRoute(page: SignUpScreen, name: "SignUpScreen", path: AppRoutes.signup)
   ],
 )
 class $AppRouter {}

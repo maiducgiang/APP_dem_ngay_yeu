@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
             builder: (context, _) => MaterialApp.router(
               title: 'Mubaha',
               theme: state.themeData,
+              debugShowCheckedModeBanner: false,
               routeInformationParser: _appRouter.defaultRouteParser(),
               supportedLocales: context.supportedLocales,
               localizationsDelegates: context.localizationDelegates,
