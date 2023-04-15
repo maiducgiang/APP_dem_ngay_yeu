@@ -506,6 +506,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/fluttertoast-8.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "freezed",
       "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/freezed-2.3.2",
       "packageUri": "lib/",
@@ -1166,7 +1172,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2023-04-15T02:22:15.162450Z",
+  "generated": "2023-04-15T03:02:51.033008Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

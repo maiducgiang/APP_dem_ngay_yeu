@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileState {
   bool get isLoading => throw _privateConstructorUsedError;
+  UserLocal? get userLocal => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({bool isLoading, String? error});
+  $Res call({bool isLoading, UserLocal? userLocal, String? error});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? userLocal = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +56,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      userLocal: freezed == userLocal
+          ? _value.userLocal
+          : userLocal // ignore: cast_nullable_to_non_nullable
+              as UserLocal?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$_ProfileStateCopyWith<$Res>
       __$$_ProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, String? error});
+  $Res call({bool isLoading, UserLocal? userLocal, String? error});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? userLocal = freezed,
     Object? error = freezed,
   }) {
     return _then(_$_ProfileState(
@@ -92,6 +99,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      userLocal: freezed == userLocal
+          ? _value.userLocal
+          : userLocal // ignore: cast_nullable_to_non_nullable
+              as UserLocal?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -103,16 +114,18 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ProfileState implements _ProfileState {
-  const _$_ProfileState({required this.isLoading, this.error});
+  const _$_ProfileState({required this.isLoading, this.userLocal, this.error});
 
   @override
   final bool isLoading;
+  @override
+  final UserLocal? userLocal;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, error: $error)';
+    return 'ProfileState(isLoading: $isLoading, userLocal: $userLocal, error: $error)';
   }
 
   @override
@@ -122,11 +135,13 @@ class _$_ProfileState implements _ProfileState {
             other is _$_ProfileState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.userLocal, userLocal) ||
+                other.userLocal == userLocal) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error);
+  int get hashCode => Object.hash(runtimeType, isLoading, userLocal, error);
 
   @JsonKey(ignore: true)
   @override
@@ -137,10 +152,14 @@ class _$_ProfileState implements _ProfileState {
 
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
-      {required final bool isLoading, final String? error}) = _$_ProfileState;
+      {required final bool isLoading,
+      final UserLocal? userLocal,
+      final String? error}) = _$_ProfileState;
 
   @override
   bool get isLoading;
+  @override
+  UserLocal? get userLocal;
   @override
   String? get error;
   @override
