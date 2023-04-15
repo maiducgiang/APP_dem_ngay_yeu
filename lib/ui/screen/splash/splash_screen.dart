@@ -16,7 +16,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   final _remoteConfig = FirebaseRemoteConfig.instance;
 
   Future<void> init() async {
@@ -37,9 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void checkFirtLoad() async {
     await Future.delayed(const Duration(seconds: 1));
     context.router.pushAll([
-      _remoteConfig.getBool('show_sign_up')
-        ? const SignUp()
-        : const MainPage()
+      _remoteConfig.getBool('show_sign_up') ? const SignUp() : const MainPage()
     ]);
   }
 
@@ -51,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Center(
               child: SvgPicture.asset(
                 AppPath.logoSvg,
-                color: Colors.black,
+                //color: Colors.black,
                 width: 200.w,
               ),
             )));

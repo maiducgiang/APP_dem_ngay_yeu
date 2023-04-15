@@ -1,5 +1,5 @@
 class AppPath {
-  static const String logoSvg = "assets/images/logo-color.svg";
+  static const String logoSvg = "assets/images/icons/heart.svg";
   static const String logoPng = "assets/images/logoColor.png";
   static const String bottomHomeIcon = "assets/images/bottom/home.svg";
   static const String bottomCategoryIcon = "assets/images/bottom/category.svg";
@@ -51,5 +51,4 @@ class AppPath {
   static const String icEdit = 'assets/images/ic_edit.png';
   static const String lottieHeart = 'assets/images/lottie_heart.json';
   static const String cloud = 'assets/images/cloud.png';
-
 }
