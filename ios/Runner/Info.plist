@@ -19,6 +19,13 @@
 		<string>en</string>
 		<string>nb</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+		<string>https</string>
+		<string>mailto</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>mubaha</string>
 	<key>CFBundlePackageType</key>
