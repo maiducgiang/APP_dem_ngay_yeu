@@ -1,14 +1,17 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mubaha/data/model/board_local/board_model.dart';
+import 'package:mubaha/data/model/user_local/user_model_local.dart';
 
 class CacheManager {
   static CacheManager? _instance;
   static const String _cacheBoxName = 'HiveCache';
   static const int broadmodel = 1;
+  static const int userLocal = 2;
   static const int fileItemHiveType = 3;
   static CacheManager get instance => _instance ??= CacheManager._();
   static const String _listBoard = 'listBoardLocal';
+  static const String _userLocal = 'userLocal';
   CacheManager._();
 
   Box get _cacheBox => Hive.box(_cacheBoxName);
@@ -18,6 +21,7 @@ class CacheManager {
       print('Init hive cache manager');
       await Hive.initFlutter();
       Hive.registerAdapter(BoardModelLocalAdapter());
+      Hive.registerAdapter(UserLocalAdapter());
       await openBox();
       print('Open box successfully');
     } catch (ex) {
@@ -80,9 +84,18 @@ class CacheManager {
     await _cacheBox.put(_listBoard, cachedData);
   }
 
+  Future<void> addUserToCached(UserLocal userLocal) async {
+    await _cacheBox.put(_userLocal, userLocal);
+  }
+
+  Future<UserLocal> getUserCached() async {
+    UserLocal user = _cacheBox.get(_userLocal) as UserLocal;
+    return user;
+  }
+
   Future<void> clear() async {
     try {
-      await _cacheBox.deleteAll([]);
+      await _cacheBox.deleteAll([_listBoard, _userLocal]);
     } catch (e) {
       print(e);
     }

@@ -3,6 +3,8 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mubaha/data/cache_manager.dart';
+import 'package:mubaha/data/model/user_local/user_model_local.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/theme/app_path.dart';
 
@@ -28,11 +30,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   late final SignUpCubit _signUpCubit;
-
+  final _cacheManager = CacheManager.instance;
   @override
   void initState() {
     _signUpCubit = context.read<SignUpCubit>()..initGoogleSheet();
@@ -46,17 +47,11 @@ class _SignUpPageState extends State<SignUpPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5),
-                BlendMode.darken
-            ),
-            image: const AssetImage(
-              AppPath.background2
-           )
-          )
-        ),
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), BlendMode.darken),
+                image: const AssetImage(AppPath.background2))),
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
@@ -66,10 +61,9 @@ class _SignUpPageState extends State<SignUpPage> {
               Text(
                 'Ngày yêu',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 48.sp,
-                  fontWeight: FontWeight.w400
-                ),
+                    color: Colors.white,
+                    fontSize: 48.sp,
+                    fontWeight: FontWeight.w400),
               ),
               SizedBox(height: 15.h),
               Align(
@@ -77,10 +71,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Text(
                   'Tên tài khoản',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400
-                  ),
+                      color: Colors.white,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(height: 4.h),
@@ -89,6 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _nameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
+
                     hintText: 'Nhập tên tài khoản...',
                     hintStyle: TextStyle(fontSize: 11.sp),
                     border: OutlineInputBorder(
@@ -101,19 +95,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     filled: true,
                      contentPadding: const EdgeInsets.only(left: 15, right: 15),
                     fillColor: Colors.white,
+
                 ),
               ),
-
               SizedBox(height: 32.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Số điện thoại',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400
-                  ),
+                      color: Colors.white,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400),
                 ),
               ),
               SizedBox(height: 4.h),
@@ -122,6 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _phoneNumberController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
+
                     hintText: 'Nhập số điện thoại...',
                     hintStyle: TextStyle(fontSize: 11.sp),
                     border: OutlineInputBorder(
@@ -134,9 +128,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     filled: true,
                     contentPadding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                     fillColor: Colors.white,
+
                 ),
               ),
-
               BlocListener<SignUpCubit, SignUpState>(
                 listener: (context, state) {
                   if (state.isLoading) {
@@ -153,30 +147,29 @@ class _SignUpPageState extends State<SignUpPage> {
                   onTap: () async {
                     final feedback = {
                       SheetsColumn.name: _nameController.text.trim(),
-                      SheetsColumn.phone: '\'${_phoneNumberController.text.trim()}',
+                      SheetsColumn.phone:
+                          '\'${_phoneNumberController.text.trim()}',
                     };
+                    await _cacheManager.addUserToCached(UserLocal(
+                        name: _nameController.text.trim(),
+                        phone: _phoneNumberController.text.trim()));
                     await _signUpCubit.insert([feedback]);
                   },
                   child: Container(
                     margin: EdgeInsets.only(top: 32.h),
                     padding: EdgeInsets.symmetric(vertical: 15.h),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFF8686),
-                      borderRadius: BorderRadius.circular(16)
-                    ),
+                        color: const Color(0xFFFF8686),
+                        borderRadius: BorderRadius.circular(16)),
                     child: const Center(
                       child: Text(
                         'Đăng ký',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 17),
                       ),
                     ),
                   ),
                 ),
               ),
-
               SizedBox(height: 16.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -188,10 +181,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   Text(
                     ' Hoặc ',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17.sp
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 17.sp),
                   ),
                   Container(
                     height: 1.h,
@@ -200,7 +190,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ],
               ),
-
               GestureDetector(
                 onTap: () {
                   context.router.push(const MainPage());
@@ -209,16 +198,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   margin: EdgeInsets.only(top: 16.h, bottom: 30.h),
                   padding: EdgeInsets.symmetric(vertical: 15.h),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFC2CEDB),
-                    borderRadius: BorderRadius.circular(16)
-                  ),
+                      color: const Color(0xFFC2CEDB),
+                      borderRadius: BorderRadius.circular(16)),
                   child: const Center(
                     child: Text(
                       'Bỏ qua',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17
-                      ),
+                      style: TextStyle(color: Colors.black, fontSize: 17),
                     ),
                   ),
                 ),

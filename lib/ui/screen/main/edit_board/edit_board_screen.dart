@@ -13,6 +13,7 @@ import 'package:mubaha/ui/screen/main/edit_board/cubit/edit_board_cubit.dart';
 import 'package:mubaha/ui/screen/main/edit_board/cubit/edit_board_state.dart';
 import 'package:mubaha/ui/screen/main/review/widget/media_button_widget.dart';
 import 'package:mubaha/ui/shared/extension/format_date.dart';
+import 'package:mubaha/ui/shared/utils/functions.dart';
 import 'package:mubaha/ui/shared/widget/textfield/custome_textfield.dart';
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/theme.dart';
@@ -47,45 +48,50 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
                 TextEditingController(text: FormatDayShip(state.day).format());
             init = true;
           }
-          return Scaffold(
-            backgroundColor: Colors.white,
-            appBar: _appBar(context, state),
-            body: SafeArea(
-                child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.h),
-                child: Column(
-                  children: [
-                    widgetListImage(context, state),
-                    CustomeTextField(
-                      title: 'Ngày kỷ niệm',
-                      colorBorder: greyPrymaryColor,
-                      controller: dayController,
-                      prefixIcon: Container(
-                        padding: EdgeInsets.all(8.sp),
-                        child: SvgPicture.asset(
-                          "assets/images/icons/calendar.svg",
-                          color: greyPrymaryColor,
-                          width: 16,
+          return GestureDetector(
+            onTap: () {
+              unfocus(context);
+            },
+            child: Scaffold(
+              backgroundColor: Colors.white,
+              appBar: _appBar(context, state),
+              body: SafeArea(
+                  child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                  child: Column(
+                    children: [
+                      widgetListImage(context, state),
+                      CustomeTextField(
+                        title: 'Ngày kỷ niệm',
+                        colorBorder: greyPrymaryColor,
+                        controller: dayController,
+                        prefixIcon: Container(
+                          padding: EdgeInsets.all(8.sp),
+                          child: SvgPicture.asset(
+                            "assets/images/icons/calendar.svg",
+                            color: greyPrymaryColor,
+                            width: 16,
+                          ),
                         ),
+                        isEnable: false,
+                        onTapPrefixIcon: () async {
+                          _dayPicker(state.day, state, context);
+                        },
                       ),
-                      isEnable: false,
-                      onTapPrefixIcon: () async {
-                        _dayPicker(state.day, state, context);
-                      },
-                    ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    CustomeTextField(
-                      colorBorder: greyPrymaryColor,
-                      controller: contentController,
-                      maxLines: 10,
-                    )
-                  ],
+                      SizedBox(
+                        height: 12.h,
+                      ),
+                      CustomeTextField(
+                        colorBorder: greyPrymaryColor,
+                        controller: contentController,
+                        maxLines: 10,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            )),
+              )),
+            ),
           );
         },
       ),
@@ -273,7 +279,7 @@ class _EditBoardScreenState extends State<EditBoardScreen> {
       builder: (BuildContext context1) {
         return Container(
           margin: EdgeInsets.symmetric(vertical: 8.h),
-          height: 70.h,
+          height: 100.h,
           color: Colors.white,
           child: Row(
             children: [

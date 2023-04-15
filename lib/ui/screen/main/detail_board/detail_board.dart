@@ -110,14 +110,22 @@ class _DetailBoardScreenState extends State<DetailBoardScreen> {
                               itemCount:
                                   state.boardModelLocal!.listImage?.length,
                               itemBuilder: (context, index) {
-                                return Container(
-                                  width: 90.h,
-                                  margin: EdgeInsets.only(right: 10.w),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.memory(
-                                      state.boardModelLocal!.listImage![index],
-                                      fit: BoxFit.cover,
+                                return GestureDetector(
+                                  onTap: () {
+                                    context.router.push(ShowImagePage(
+                                        image:
+                                            state.boardModelLocal!.listImage!));
+                                  },
+                                  child: Container(
+                                    width: 90.h,
+                                    margin: EdgeInsets.only(right: 10.w),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.memory(
+                                        state
+                                            .boardModelLocal!.listImage![index],
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 );

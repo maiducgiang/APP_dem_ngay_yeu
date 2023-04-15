@@ -1,16 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mubaha/data/model/user_local/user_model_local.dart';
 
 part 'profile_state.freezed.dart';
 
 @freezed
 class ProfileState with _$ProfileState {
-  const factory ProfileState({required bool isLoading, String? error}) =
-      _ProfileState;
+  const factory ProfileState(
+      {required bool isLoading,
+      UserLocal? userLocal,
+      String? error}) = _ProfileState;
 
   factory ProfileState.initial({
     String? id,
   }) =>
-      ProfileState(
+      const ProfileState(
         isLoading: false,
       );
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mubaha/data/model/product_detail_screen/product_detail_response.dart';
 import 'package:provider/src/provider.dart';
 
 unfocus(BuildContext context) {
@@ -9,7 +8,6 @@ unfocus(BuildContext context) {
 
 addToCart(
     {required BuildContext context,
-    required ProductDetail productDetail,
     required int amount,
     required int variantIndex,
     required int attributeIndex}) {

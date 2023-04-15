@@ -63,36 +63,39 @@ class CustomeTextField extends StatelessWidget {
                         (Get.isDarkMode ? Colors.grey[100] : Colors.grey[700]),
                     controller: controller,
                     maxLines: maxLines,
+
                     style: titleStyle.copyWith(
                         height: 1.h,
                         wordSpacing: 0.2.w,
                         letterSpacing: 0.5.w,
                         fontSize: 15.sp,
-                        color: Color(0xff1C2433)),
+                        color: const Color(0xff1C2433)),
                     decoration: InputDecoration(
-                        hintText: hint,
-                        hintStyle: subTitleStyle,
-                        suffixIcon: prefixIcon != null
-                            ? InkWell(
-                                child: Padding(
-                                  padding: EdgeInsets.only(bottom: 3.0),
-                                  child: prefixIcon,
-                                ),
-                                onTap: () {
-                                  onTapPrefixIcon?.call();
-                                },
-                              )
-                            : null,
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: colorBorder ??
-                                    context.theme.backgroundColor,
-                                width: 0)),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: colorBorder ??
-                                    context.theme.backgroundColor,
-                                width: 0))),
+                      border: InputBorder.none,
+                      hintText: hint,
+                      hintStyle: subTitleStyle,
+                      suffixIcon: prefixIcon != null
+                          ? InkWell(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 3.0),
+                                child: prefixIcon,
+                              ),
+                              onTap: () {
+                                onTapPrefixIcon?.call();
+                              },
+                            )
+                          : null,
+                      // enabledBorder: UnderlineInputBorder(
+                      //     borderSide: BorderSide(
+                      //         color: colorBorder ??
+                      //             context.theme.backgroundColor,
+                      //         width: 0)),
+                      // focusedBorder: UnderlineInputBorder(
+                      //     borderSide: BorderSide(
+                      //         color: colorBorder ??
+                      //             context.theme.backgroundColor,
+                      //         width: 0))
+                    ),
                   ),
                 )),
                 widget == null
