@@ -10,7 +10,7 @@ class ProfileState with _$ProfileState {
   factory ProfileState.initial({
     String? id,
   }) =>
-      ProfileState(
+      const ProfileState(
         isLoading: false,
       );
 }
