@@ -159,15 +159,15 @@ class _BoardScreenState extends State<BoardScreen> {
         overflow: TextOverflow.ellipsis,
       ),
       actions: [
-        Container(
-          padding: EdgeInsets.only(right: 16.h),
-          alignment: Alignment.center,
-          child: SvgPicture.asset(
-            "assets/images/icons/icon_search.svg",
-            color: greyPrymaryColor,
-            width: 24.sp,
-          ),
-        )
+        // Container(
+        //   padding: EdgeInsets.only(right: 16.h),
+        //   alignment: Alignment.center,
+        //   child: SvgPicture.asset(
+        //     "assets/images/icons/icon_search.svg",
+        //     color: greyPrymaryColor,
+        //     width: 24.sp,
+        //   ),
+        // )
       ],
     );
   }
