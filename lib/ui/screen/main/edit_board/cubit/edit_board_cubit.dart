@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/data/model/board_local/board_model.dart';
+import 'package:mubaha/injection.dart';
 import 'package:mubaha/ui/screen/main/edit_board/cubit/edit_board_state.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path/path.dart' as p;
@@ -32,11 +34,12 @@ class EditBoardCubit extends Cubit<EditBoardState> {
         fileExtension != 'jpg' &&
         fileExtension != 'jpeg') {
       if (pickedFile != null) {
-        Uint8List imageBytes = await pickedFile.readAsBytes();
-        imageFileList.add(imageBytes);
-        emit(state
-            .copyWith(imageFileList: [...state.imageFileList, imageBytes]));
+        Fluttertoast.showToast(msg: "định dạng ảnh không được hỗ trợ");
       }
+    } else {
+      Uint8List imageBytes = await pickedFile.readAsBytes();
+      imageFileList.add(imageBytes);
+      emit(state.copyWith(imageFileList: [...state.imageFileList, imageBytes]));
     }
   }
 

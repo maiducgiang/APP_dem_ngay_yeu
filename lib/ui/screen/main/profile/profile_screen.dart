@@ -3,19 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hive/hive.dart';
 import 'package:mubaha/ui/screen/main/profile/cubit/profile_cubit.dart';
 import 'package:mubaha/ui/screen/main/profile/cubit/profile_state.dart';
 import 'package:mubaha/ui/screen/main/profile/widget/item_profile.dart';
 import 'package:mubaha/ui/screen/main/profile/widget/pick_color.dart';
-import 'package:mubaha/ui/shared/widget/button/primary_button.dart';
 
 import 'package:mubaha/ui/shared/widget/divider/divider_widget.dart';
 import 'package:mubaha/ui/shared/widget/header/header.dart';
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/theme.dart';
-
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -158,19 +154,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Column(
                                 children: [
                                   ItemProfile(
-                                    onPress: () {},
+                                    onPress: () {
+                                      context
+                                          .read<ProfileCubit>()
+                                          .writeEvaluate();
+                                    },
                                     title: 'Viết đánh giá',
                                   ),
                                   ItemProfile(
-                                    onPress: () {},
+                                    onPress: () {
+                                      context.read<ProfileCubit>().shareApp();
+                                    },
                                     title: 'Chia sẻ ứng dụng',
                                   ),
                                   ItemProfile(
-                                    onPress: () {},
+                                    onPress: () {
+                                      context
+                                          .read<ProfileCubit>()
+                                          .seeOtherApps();
+                                    },
                                     title: 'Xem ứng dụng khác',
                                   ),
                                   ItemProfile(
-                                    onPress: () {},
+                                    onPress: () {
+                                      context.read<ProfileCubit>().contactUs();
+                                    },
                                     title: 'Liên hệ với chúng tôi ',
                                   ),
                                 ],

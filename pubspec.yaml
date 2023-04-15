@@ -90,7 +90,8 @@ dependencies:
   gsheets: ^0.4.2
   lottie: ^2.3.2
   flutter_dotenv: ^5.0.2
-
+  url_launcher: ^6.1.5
+  share_plus: ^6.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
