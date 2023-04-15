@@ -71,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   fontWeight: FontWeight.w400
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 15.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -89,8 +89,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _nameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: 'Tên tài khoản',
-                    hintStyle: TextStyle(fontSize: 16.sp),
+                    hintText: 'Nhập tên tài khoản...',
+                    hintStyle: TextStyle(fontSize: 11.sp),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(
@@ -122,8 +122,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _phoneNumberController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    hintText: 'Số điện thoại',
-                    hintStyle: TextStyle(fontSize: 16.sp),
+                    hintText: 'Nhập số điện thoại...',
+                    hintStyle: TextStyle(fontSize: 11.sp),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(
@@ -132,7 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                     ),
                     filled: true,
-                    contentPadding: const EdgeInsets.only(left: 15, right: 15),
+                    contentPadding: const EdgeInsets.only(left: 15, right: 15, top: 10),
                     fillColor: Colors.white,
                 ),
               ),
@@ -158,8 +158,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     await _signUpCubit.insert([feedback]);
                   },
                   child: Container(
-                    height: 48.h,
                     margin: EdgeInsets.only(top: 32.h),
+                    padding: EdgeInsets.symmetric(vertical: 15.h),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFF8686),
                       borderRadius: BorderRadius.circular(16)
@@ -206,8 +206,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   context.router.push(const MainPage());
                 },
                 child: Container(
-                  height: 48.h,
                   margin: EdgeInsets.only(top: 16.h, bottom: 30.h),
+                  padding: EdgeInsets.symmetric(vertical: 15.h),
                   decoration: BoxDecoration(
                     color: const Color(0xFFC2CEDB),
                     borderRadius: BorderRadius.circular(16)

@@ -6,7 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mubaha/ui/screen/home_page/cubit/home_page_cubit.dart';
+import 'package:mubaha/ui/shared/widget/edit_popup.dart';
 import 'package:mubaha/ui/theme/app_path.dart';
+
+import 'widgets/hour_progress.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,6 +34,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -218,13 +222,18 @@ class _HomePageScreenState extends State<HomePageScreen> {
       padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 50.h, bottom: 27),
       child: Row(
         children: [
-          Container(
-            height: 40.h,
-            width: 40.w,
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8), shape: BoxShape.circle),
-            child: Center(child: Image.asset(AppPath.icShare)),
+          GestureDetector(
+            onTap: () {
+              _showPopup();
+            },
+            child: Container(
+              height: 40.h,
+              width: 40.w,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.8), shape: BoxShape.circle),
+              child: Center(child: Image.asset(AppPath.icShare)),
+            ),
           ),
           const Spacer(),
           Container(
@@ -302,84 +311,17 @@ class _HomePageScreenState extends State<HomePageScreen> {
       ),
     );
   }
-}
 
-class HourProgressBar extends StatelessWidget {
-  final double radius;
-  final double strokeWidth;
-  final Color color;
-  final Color backgroundColor;
-  final DateTime dateTime;
-
-  const HourProgressBar(
-      {Key? key,
-      required this.radius,
-      required this.strokeWidth,
-      required this.color,
-      required this.backgroundColor,
-      required this.dateTime})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size(radius * 2, radius * 2),
-      painter: HourProgressBarPainter(
-        strokeWidth: strokeWidth,
-        color: color,
-        backgroundColor: backgroundColor,
-        dateTime: dateTime,
-      ),
+  void _showPopup(){
+    showGeneralDialog(
+      context: context,
+      barrierColor: Colors.black12.withOpacity(0.6),
+      barrierDismissible: false,
+      barrierLabel: 'Dialog',
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (_, __, ___) {
+        return const EditPopup();
+      },
     );
   }
-}
-
-class HourProgressBarPainter extends CustomPainter {
-  final double strokeWidth;
-  final Color color;
-  final Color backgroundColor;
-  final DateTime dateTime;
-
-  HourProgressBarPainter({
-    required this.strokeWidth,
-    required this.color,
-    required this.backgroundColor,
-    required this.dateTime,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..color = backgroundColor;
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = min(size.width, size.height) / 2 - strokeWidth / 2;
-    canvas.drawCircle(center, radius, paint);
-
-    final progressPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..color = color;
-    final progressAngle = dateTime.hour / 24 * pi * 2;
-    final progressPath = Path()
-      ..addArc(
-        Rect.fromCircle(center: center, radius: radius),
-        -pi / 2,
-        progressAngle,
-      );
-    canvas.drawPath(progressPath, progressPaint);
-
-    final dotPaint = Paint()
-      ..style = PaintingStyle.fill
-      ..color = color;
-    final dotOffset = Offset(
-      center.dx + radius * cos(progressAngle - pi / 2),
-      center.dy + radius * sin(progressAngle - pi / 2),
-    );
-    canvas.drawCircle(dotOffset, strokeWidth + 3, dotPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
