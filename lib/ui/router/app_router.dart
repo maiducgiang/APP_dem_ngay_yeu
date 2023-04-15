@@ -39,4 +39,5 @@ class AppRoutes {
   static const String search = "/search";
   static const String shipingStatus = "/shiping_status";
   static const String review = "/review";
+  static const String signUp = "/sign_up";
 }

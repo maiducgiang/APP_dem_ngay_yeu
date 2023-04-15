@@ -38,4 +38,18 @@ class AppPath {
   static const String mubahaMaintenance =
       "assets/images/mubaha_logo/mubaha_maintenance.png";
   static const String orderSuccess = "assets/images/order_success.png";
+  static const String background1 = 'assets/images/background_1.png';
+  static const String background2 = 'assets/images/background_2.png';
+  static const String background3 = 'assets/images/background_3.png';
+  static const String background4 = 'assets/images/background_4.png';
+  static const String background5 = 'assets/images/background_5.png';
+  static const String background6 = 'assets/images/background_6.png';
+  static const String background7 = 'assets/images/background_7.png';
+  static const String background8 = 'assets/images/background_8.png';
+  static const String background9 = 'assets/images/background_9.png';
+  static const String icShare = 'assets/images/ic_share.png';
+  static const String icEdit = 'assets/images/ic_edit.png';
+  static const String lottieHeart = 'assets/images/lottie_heart.json';
+  static const String cloud = 'assets/images/cloud.png';
+
 }
