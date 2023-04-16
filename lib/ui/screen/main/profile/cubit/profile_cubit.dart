@@ -13,11 +13,25 @@ class ProfileCubit extends Cubit<ProfileState> {
   void init() async {
     // await _cacheManager
     //     .addUserToCached(UserLocal(name: "giang1234", phone: "0374168445"));
-    UserLocal userLocal = await _cacheManager.getUserCached();
-    emit(state.copyWith(userLocal: userLocal));
+    UserLocal? userLocal = await _cacheManager.getUserCached();
+    if (userLocal != null) {
+      emit(state.copyWith(userLocal: userLocal));
+    }
   }
 
   void writeEvaluate() {
+    try {
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'mailto:mdgiang2001@gmail.com',
+        query: encodeQueryParameters(<String, String>{
+          'subject': 'Viết đánh giá',
+        }),
+      );
+      launchUrl(emailLaunchUri);
+    } catch (e) {
+      e;
+    }
     if (Platform.isIOS) {
     } else if (Platform.isAndroid) {
       //Fluttertoast.showToast(msg: "Show android");
@@ -25,6 +39,18 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   void shareApp() {
+    try {
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'mailto:mdgiang2001@gmail.com',
+        query: encodeQueryParameters(<String, String>{
+          'subject': 'Chia sẻ ứng dụng',
+        }),
+      );
+      launchUrl(emailLaunchUri);
+    } catch (e) {
+      e;
+    }
     if (Platform.isIOS) {
     } else if (Platform.isAndroid) {
       //Fluttertoast.showToast(msg: "Show android");
@@ -32,6 +58,18 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   void seeOtherApps() async {
+    try {
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'mailto:mdgiang2001@gmail.com',
+        query: encodeQueryParameters(<String, String>{
+          'subject': 'Xem ứng dụng khác',
+        }),
+      );
+      launchUrl(emailLaunchUri);
+    } catch (e) {
+      e;
+    }
     if (Platform.isIOS) {
     } else if (Platform.isAndroid) {
       // try {
