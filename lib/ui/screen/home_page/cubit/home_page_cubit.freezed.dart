@@ -16,37 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomePageState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool? get isLoading => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
+  bool get editing => throw _privateConstructorUsedError;
+  HomeModel? get homeModel => throw _privateConstructorUsedError;
+  User? get me => throw _privateConstructorUsedError;
+  User? get myLover => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomePageStateCopyWith<HomePageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +33,14 @@ abstract class $HomePageStateCopyWith<$Res> {
   factory $HomePageStateCopyWith(
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res, HomePageState>;
+  @useResult
+  $Res call(
+      {bool? isLoading,
+      String? error,
+      bool editing,
+      HomeModel? homeModel,
+      User? me,
+      User? myLover});
 }
 
 /// @nodoc
@@ -66,99 +52,188 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = freezed,
+    Object? error = freezed,
+    Object? editing = null,
+    Object? homeModel = freezed,
+    Object? me = freezed,
+    Object? myLover = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      editing: null == editing
+          ? _value.editing
+          : editing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      homeModel: freezed == homeModel
+          ? _value.homeModel
+          : homeModel // ignore: cast_nullable_to_non_nullable
+              as HomeModel?,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as User?,
+      myLover: freezed == myLover
+          ? _value.myLover
+          : myLover // ignore: cast_nullable_to_non_nullable
+              as User?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_HomePageStateCopyWith<$Res>
+    implements $HomePageStateCopyWith<$Res> {
+  factory _$$_HomePageStateCopyWith(
+          _$_HomePageState value, $Res Function(_$_HomePageState) then) =
+      __$$_HomePageStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool? isLoading,
+      String? error,
+      bool editing,
+      HomeModel? homeModel,
+      User? me,
+      User? myLover});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomePageStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_HomePageStateCopyWithImpl<$Res>
+    extends _$HomePageStateCopyWithImpl<$Res, _$_HomePageState>
+    implements _$$_HomePageStateCopyWith<$Res> {
+  __$$_HomePageStateCopyWithImpl(
+      _$_HomePageState _value, $Res Function(_$_HomePageState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = freezed,
+    Object? error = freezed,
+    Object? editing = null,
+    Object? homeModel = freezed,
+    Object? me = freezed,
+    Object? myLover = freezed,
+  }) {
+    return _then(_$_HomePageState(
+      isLoading: freezed == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      editing: null == editing
+          ? _value.editing
+          : editing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      homeModel: freezed == homeModel
+          ? _value.homeModel
+          : homeModel // ignore: cast_nullable_to_non_nullable
+              as HomeModel?,
+      me: freezed == me
+          ? _value.me
+          : me // ignore: cast_nullable_to_non_nullable
+              as User?,
+      myLover: freezed == myLover
+          ? _value.myLover
+          : myLover // ignore: cast_nullable_to_non_nullable
+              as User?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_HomePageState implements _HomePageState {
+  const _$_HomePageState(
+      {this.isLoading,
+      this.error,
+      required this.editing,
+      this.homeModel,
+      this.me,
+      this.myLover});
+
+  @override
+  final bool? isLoading;
+  @override
+  final String? error;
+  @override
+  final bool editing;
+  @override
+  final HomeModel? homeModel;
+  @override
+  final User? me;
+  @override
+  final User? myLover;
 
   @override
   String toString() {
-    return 'HomePageState.initial()';
+    return 'HomePageState(isLoading: $isLoading, error: $error, editing: $editing, homeModel: $homeModel, me: $me, myLover: $myLover)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_HomePageState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.editing, editing) || other.editing == editing) &&
+            (identical(other.homeModel, homeModel) ||
+                other.homeModel == homeModel) &&
+            (identical(other.me, me) || other.me == me) &&
+            (identical(other.myLover, myLover) || other.myLover == myLover));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, error, editing, homeModel, me, myLover);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
+      __$$_HomePageStateCopyWithImpl<_$_HomePageState>(this, _$identity);
 }
 
-abstract class _Initial implements HomePageState {
-  const factory _Initial() = _$_Initial;
+abstract class _HomePageState implements HomePageState {
+  const factory _HomePageState(
+      {final bool? isLoading,
+      final String? error,
+      required final bool editing,
+      final HomeModel? homeModel,
+      final User? me,
+      final User? myLover}) = _$_HomePageState;
+
+  @override
+  bool? get isLoading;
+  @override
+  String? get error;
+  @override
+  bool get editing;
+  @override
+  HomeModel? get homeModel;
+  @override
+  User? get me;
+  @override
+  User? get myLover;
+  @override
+  @JsonKey(ignore: true)
+  _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
