@@ -22,7 +22,7 @@
                 </intent>
             </queries>
    <application
-        android:label="mubaha"
+        android:label="Ku Celebrates"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
        <activity

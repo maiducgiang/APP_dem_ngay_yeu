@@ -164,6 +164,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "cli_util",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/cli_util-0.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/clock-1.1.1",
       "packageUri": "lib/",
@@ -404,6 +410,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/flutter_launcher_icons-0.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -620,6 +632,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "image",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/image-4.0.15",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "image_cropper",
       "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/image_cropper-3.0.2",
       "packageUri": "lib/",
@@ -693,15 +711,15 @@
     },
     {
       "name": "json_annotation",
-      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/json_annotation-4.6.0",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/json_annotation-4.8.0",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.18"
     },
     {
       "name": "json_serializable",
-      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/json_serializable-6.3.2",
+      "rootUri": "file:///Users/mabookpro/.pub-cache/hosted/pub.dev/json_serializable-6.6.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "lints",
@@ -1262,7 +1280,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2023-04-16T16:47:43.180027Z",
+  "generated": "2023-04-16T16:48:12.962683Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
