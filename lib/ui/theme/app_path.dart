@@ -51,8 +51,6 @@ class AppPath {
   static const String icEdit = 'assets/images/ic_edit.png';
   static const String lottieHeart = 'assets/images/lottie_heart.json';
   static const String cloud = 'assets/images/cloud.png';
-<<<<<<< HEAD
-=======
 
   static const String icAries = 'assets/images/ic_aries.png';
   static const String icCancer = 'assets/images/ic_cancer.png';
@@ -69,6 +67,4 @@ class AppPath {
   static const String icVirgo = 'assets/images/ic_virgo.png';
   static const String icClose = 'assets/images/ic_close.png';
   static const String icEditContent = 'assets/images/ic_edit_content.png';
-
->>>>>>> main
 }

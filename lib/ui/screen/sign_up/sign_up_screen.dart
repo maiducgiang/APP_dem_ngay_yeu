@@ -58,12 +58,16 @@ class _SignUpPageState extends State<SignUpPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 100.h),
-              Text(
-                'Ngày yêu',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 48.sp,
-                    fontWeight: FontWeight.w400),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Đăng ký\nđể truy cập ứng dụng',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               SizedBox(height: 15.h),
               Align(
@@ -82,20 +86,16 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _nameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                    hintText: 'Nhập tên tài khoản...',
-                    hintStyle: TextStyle(fontSize: 11.sp),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(
-                          width: 0,
-                          style: BorderStyle.none
-                        ),
-                    ),
-                    filled: true,
-                     contentPadding: const EdgeInsets.only(left: 15, right: 15),
-                    fillColor: Colors.white,
-
+                  hintText: 'Nhập tên tài khoản...',
+                  hintStyle: TextStyle(fontSize: 11.sp),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide:
+                        const BorderSide(width: 0, style: BorderStyle.none),
+                  ),
+                  filled: true,
+                  contentPadding: const EdgeInsets.only(left: 15, right: 15),
+                  fillColor: Colors.white,
                 ),
               ),
               SizedBox(height: 32.h),
@@ -115,20 +115,17 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: _phoneNumberController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                    hintText: 'Nhập số điện thoại...',
-                    hintStyle: TextStyle(fontSize: 11.sp),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(
-                          width: 0,
-                          style: BorderStyle.none
-                        ),
-                    ),
-                    filled: true,
-                    contentPadding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                    fillColor: Colors.white,
-
+                  hintText: 'Nhập số điện thoại...',
+                  hintStyle: TextStyle(fontSize: 11.sp),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide:
+                        const BorderSide(width: 0, style: BorderStyle.none),
+                  ),
+                  filled: true,
+                  contentPadding:
+                      const EdgeInsets.only(left: 15, right: 15, top: 10),
+                  fillColor: Colors.white,
                 ),
               ),
               BlocListener<SignUpCubit, SignUpState>(

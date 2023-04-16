@@ -51,7 +51,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
         physics:
             const NeverScrollableScrollPhysics(parent: ClampingScrollPhysics()),
         child: Container(
-          height: MediaQuery.of(context).size.height - 100,
+          height: MediaQuery.of(context).size.height - 100.h,
           decoration: const BoxDecoration(
             // image: DecorationImage(
             //     fit: BoxFit.cover, image: AssetImage(AppPath.background3)
