@@ -52,4 +52,20 @@ class AppPath {
   static const String lottieHeart = 'assets/images/lottie_heart.json';
   static const String cloud = 'assets/images/cloud.png';
 
+  static const String icAries = 'assets/images/ic_aries.png';
+  static const String icCancer = 'assets/images/ic_cancer.png';
+  static const String icCapricorn = 'assets/images/ic_capricorn.png';
+  static const String icGemini = 'assets/images/ic_gemini.png';
+  static const String icLeo = 'assets/images/ic_leo.png';
+  static const String icLibra = 'assets/images/ic_libra.png';
+  static const String icPhone = 'assets/images/ic_phone.png';
+  static const String icPisces = 'assets/images/ic_pisces.png';
+  static const String icAquarius = 'assets/images/ic_aquarius.png';
+  static const String icSagittarius = 'assets/images/ic_sagittarius.png';
+  static const String icScorpio = 'assets/images/ic_scorpio.png';
+  static const String icTaurus = 'assets/images/ic_taurus.png';
+  static const String icVirgo = 'assets/images/ic_virgo.png';
+  static const String icClose = 'assets/images/ic_close.png';
+  static const String icEditContent = 'assets/images/ic_edit_content.png';
+
 }

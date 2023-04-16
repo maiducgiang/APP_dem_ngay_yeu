@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> init() async {
     await _remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(seconds: 1),
+      fetchTimeout: const Duration(seconds: 60),
       minimumFetchInterval: const Duration(seconds: 1),
     ));
     await _remoteConfig.fetchAndActivate();
