@@ -6,14 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/ui/screen/home_page/cubit/home_page_cubit.dart';
 import 'package:mubaha/ui/screen/home_page/entity/zodiac_model.dart';
 import 'package:mubaha/ui/shared/utils/functions.dart';
 
 import '../../../theme/app_path.dart';
+import '../../../theme/constant.dart';
+import '../../main/review/widget/media_button_widget.dart';
 
 class HomeFooter extends StatefulWidget {
   const HomeFooter({Key? key}) : super(key: key);
@@ -68,15 +72,7 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    final ImagePicker picker = ImagePicker();
-                                    final XFile? file = await picker.pickImage(
-                                        source: ImageSource.gallery);
-                                    if (file != null) {
-                                      final Uint8List avatar =
-                                          File(file.path).readAsBytesSync();
-
-                                      box.put('my_avatar', avatar);
-                                    }
+                                    _showPickerModalPopup(context, key: 'my_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -84,8 +80,7 @@ class _HomeFooterState extends State<HomeFooter> {
                                     width: 96.w,
                                     decoration: ((box.get('my_avatar')) ==
                                                 null ||
-                                            (box.get('my_avatar'))
-                                                .isEmpty)
+                                            (box.get('my_avatar')).isEmpty)
                                         ? BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: const Color(0xFFEFF2F7),
@@ -108,9 +103,8 @@ class _HomeFooterState extends State<HomeFooter> {
                                     child: Center(
                                         child: Visibility(
                                             visible: ((box.get('my_avatar')) ==
-                                                null ||
-                                            (box.get('my_avatar'))
-                                                .isEmpty),
+                                                    null ||
+                                                (box.get('my_avatar')).isEmpty),
                                             child: const Icon(Icons.add,
                                                 color: Color(0xFFC2CEDB))))),
                               ),
@@ -118,15 +112,7 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    final ImagePicker picker = ImagePicker();
-                                    final XFile? file = await picker.pickImage(
-                                        source: ImageSource.gallery);
-                                    if (file != null) {
-                                      final Uint8List avatar =
-                                          File(file.path).readAsBytesSync();
-
-                                      box.put('my_lover_avatar', avatar);
-                                    }
+                                    _showPickerModalPopup(context, key: 'my_lover_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -308,88 +294,105 @@ class _HomeFooterState extends State<HomeFooter> {
               state.editing
                   ? Flexible(
                       child: ValueListenableBuilder<Box<dynamic>>(
-                      valueListenable: CacheManager.instance.cacheBox.listenable(),
-                      builder: (context, box, widget) {
-                        return GestureDetector(
-                          onTap: () {
-                            _pickBirthday(context, pickMyBirthday: true);
-                          },
-                          child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 18, vertical: 8),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFC2CEDB),
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: FittedBox(
-                                child: Text(
-                                  ((box.get('my_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_zodiac') as Zodiac?)?.name?? '',
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400
-                                  ),
-                                  maxLines: 1,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                            Image.asset(AppPath.icEdit, height: 16, width: 16)
-                          ],
-                        )
-                      ),
-                        );
-                      },
+                        valueListenable:
+                            CacheManager.instance.cacheBox.listenable(),
+                        builder: (context, box, widget) {
+                          return GestureDetector(
+                            onTap: () {
+                              _pickBirthday(context, pickMyBirthday: true);
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 8),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFC2CEDB),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: FittedBox(
+                                        child: Text(
+                                          ((box.get('my_zodiac') as Zodiac?)
+                                                          ?.name ??
+                                                      '')
+                                                  .isEmpty
+                                              ? 'Chòm sao'
+                                              : (box.get('my_zodiac')
+                                                          as Zodiac?)
+                                                      ?.name ??
+                                                  '',
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Image.asset(AppPath.icEdit,
+                                        height: 16, width: 16)
+                                  ],
+                                )),
+                          );
+                        },
                       ),
                     )
                   : ValueListenableBuilder<Box<dynamic>>(
-                    valueListenable: CacheManager.instance.cacheBox.listenable(),
-                    builder: (context, box, widget) {
-                      return Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 8.h, horizontal: 12.w),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFFF8686),
-                              borderRadius: BorderRadius.circular(45)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Visibility(
-                                visible: ((box.get('my_zodiac') as Zodiac?)?.name??'').isNotEmpty,
-                                child: Image.asset(
-                                  (box.get('my_zodiac') as Zodiac?)?.icon ?? '',
-                                  height: 16,
-                                  width: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Flexible(
-                                child: Text(
-                                  ((box.get('my_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_zodiac') as Zodiac?)?.name?? '',
-                                  style: const TextStyle(
+                      valueListenable:
+                          CacheManager.instance.cacheBox.listenable(),
+                      builder: (context, box, widget) {
+                        return Flexible(
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.h, horizontal: 12.w),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFFF8686),
+                                  borderRadius: BorderRadius.circular(45)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Visibility(
+                                    visible: ((box.get('my_zodiac') as Zodiac?)
+                                                ?.name ??
+                                            '')
+                                        .isNotEmpty,
+                                    child: Image.asset(
+                                      (box.get('my_zodiac') as Zodiac?)?.icon ??
+                                          '',
+                                      height: 16,
+                                      width: 16,
                                       color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                      );
-                    },
-                  )
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Flexible(
+                                    child: Text(
+                                      ((box.get('my_zodiac') as Zodiac?)
+                                                      ?.name ??
+                                                  '')
+                                              .isEmpty
+                                          ? 'Chòm sao'
+                                          : (box.get('my_zodiac') as Zodiac?)
+                                                  ?.name ??
+                                              '',
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        );
+                      },
+                    )
             ],
           )
         ],
@@ -468,88 +471,109 @@ class _HomeFooterState extends State<HomeFooter> {
               state.editing
                   ? Flexible(
                       child: ValueListenableBuilder<Box<dynamic>>(
-                        valueListenable: CacheManager.instance.cacheBox.listenable(),
+                        valueListenable:
+                            CacheManager.instance.cacheBox.listenable(),
                         builder: (context, box, widget) {
                           return GestureDetector(
                             onTap: () {
                               _pickBirthday(context, pickMyBirthday: false);
                             },
                             child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 8),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFC2CEDB),
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Flexible(
-                                child: FittedBox(
-                                  child: Text(
-                                    ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                    'Chòm sao':(box.get('my_lover_zodiac') as Zodiac?)?.name?? '',
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 8),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFC2CEDB),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: FittedBox(
+                                        child: Text(
+                                          ((box.get('my_lover_zodiac')
+                                                              as Zodiac?)
+                                                          ?.name ??
+                                                      '')
+                                                  .isEmpty
+                                              ? 'Chòm sao'
+                                              : (box.get('my_lover_zodiac')
+                                                          as Zodiac?)
+                                                      ?.name ??
+                                                  '',
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Image.asset(AppPath.icEdit, height: 16, width: 16)
-                            ],
-                          )
-                        ),
+                                    const SizedBox(width: 5),
+                                    Image.asset(AppPath.icEdit,
+                                        height: 16, width: 16)
+                                  ],
+                                )),
                           );
                         },
                       ),
                     )
                   : ValueListenableBuilder<Box<dynamic>>(
-                    valueListenable: CacheManager.instance.cacheBox.listenable(),
-                    builder: (context, box, widget) {
-                      return Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 8.h, horizontal: 12.w),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFFF8686),
-                              borderRadius: BorderRadius.circular(45)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_lover_zodiac') as Zodiac?)?.name?? '',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                      valueListenable:
+                          CacheManager.instance.cacheBox.listenable(),
+                      builder: (context, box, widget) {
+                        return Flexible(
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.h, horizontal: 12.w),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFFF8686),
+                                  borderRadius: BorderRadius.circular(45)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      ((box.get('my_lover_zodiac') as Zodiac?)
+                                                      ?.name ??
+                                                  '')
+                                              .isEmpty
+                                          ? 'Chòm sao'
+                                          : (box.get('my_lover_zodiac')
+                                                      as Zodiac?)
+                                                  ?.name ??
+                                              '',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Visibility(
+                                    visible:
+                                        ((box.get('my_lover_zodiac') as Zodiac?)
+                                                    ?.name ??
+                                                '')
+                                            .isNotEmpty,
+                                    child: Image.asset(
+                                      (box.get('my_lover_zodiac') as Zodiac?)
+                                              ?.icon ??
+                                          '',
+                                      height: 16,
+                                      width: 16,
                                       color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Visibility(
-                                visible: ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isNotEmpty,
-                                child: Image.asset(
-                                  (box.get('my_lover_zodiac') as Zodiac?)?.icon ?? '',
-                                  height: 16,
-                                  width: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                      );
-                    },
-                  ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        );
+                      },
+                    ),
               SizedBox(width: 3.w),
               GestureDetector(
                 onTap: () {
@@ -675,9 +699,10 @@ class _HomeFooterState extends State<HomeFooter> {
                               ZodiacSign zodiacSign = getZodiacSign(value);
                               Zodiac? zodiac = getZodiac(zodiacSign);
                               CacheManager.instance.cacheBox.put(
-                                  pickMyBirthday? 'my_zodiac' : 'my_lover_zodiac',
-                                  zodiac
-                              );
+                                  pickMyBirthday
+                                      ? 'my_zodiac'
+                                      : 'my_lover_zodiac',
+                                  zodiac);
                             }),
                       ),
                     ),
@@ -685,5 +710,84 @@ class _HomeFooterState extends State<HomeFooter> {
                 )),
           );
         });
+  }
+
+  Future<void> _pickAvatar(
+      {required String key,
+      required Box box,
+      required ImageSource imageSource}) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? file = await picker.pickImage(source: imageSource);
+    if (file != null) {
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: file.path,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Chỉnh sửa ảnh',
+              toolbarColor: Colors.deepOrange,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Chỉnh sửa ảnh',
+          ),
+        ],
+      );
+      if (croppedFile != null) {
+        final Uint8List avatar = await croppedFile.readAsBytes();
+        box.put(key, avatar);
+      }
+    }
+  }
+
+  Future<void> _showPickerModalPopup(BuildContext context,
+      {required String key, required Box box}) {
+    return showBarModalBottomSheet(
+      context: context,
+      //expand: true,
+      builder: (BuildContext context1) {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 8.h),
+          height: 100.h,
+          color: Colors.white,
+          child: Row(
+            children: [
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+              MediaButtonWidget(
+                  icon: Icons.photo,
+                  title: 'Thêm hình ảnh',
+                  onTap: () {
+                    _pickAvatar(
+                        key: key, box: box, imageSource: ImageSource.gallery);
+                    Navigator.pop(context);
+                  }),
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+              MediaButtonWidget(
+                  icon: Icons.camera_alt_rounded,
+                  title: 'Chụp ảnh',
+                  onTap: () {
+                    _pickAvatar(
+                        key: key, box: box, imageSource: ImageSource.camera);
+                    Navigator.pop(context);
+                  }),
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

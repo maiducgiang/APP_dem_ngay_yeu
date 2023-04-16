@@ -24,20 +24,23 @@ class _SplashScreenState extends State<SplashScreen> {
       fetchTimeout: const Duration(seconds: 60),
       minimumFetchInterval: const Duration(seconds: 1),
     ));
-    await _remoteConfig.fetchAndActivate();
+    await _remoteConfig.ensureInitialized();
+    await _remoteConfig.activate();
+    await _remoteConfig.fetchAndActivate().then((value){
+      checkFirtLoad(showSignUp: _remoteConfig.getBool('show_sign_up'));
+    });
   }
 
   @override
   initState() {
     init();
-    checkFirtLoad();
     super.initState();
   }
 
-  void checkFirtLoad() async {
+  void checkFirtLoad({required bool showSignUp}) async {
     await Future.delayed(const Duration(seconds: 1));
     context.router.pushAll([
-      _remoteConfig.getBool('show_sign_up')
+      showSignUp
         ? const SignUp()
         : const MainPage()
     ]);
