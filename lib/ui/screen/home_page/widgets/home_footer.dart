@@ -65,7 +65,8 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    _showPickerModalPopup(context, key: 'my_avatar', box: box);
+                                    _showPickerModalPopup(context,
+                                        key: 'my_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -105,7 +106,8 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    _showPickerModalPopup(context, key: 'my_lover_avatar', box: box);
+                                    _showPickerModalPopup(context,
+                                        key: 'my_lover_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -150,7 +152,7 @@ class _HomeFooterState extends State<HomeFooter> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: 16.w, right: 16.w, top: 20.h, bottom: 13.h),
+                            left: 16.w, right: 16.w, top: 20.h, bottom: 20.h),
                         child: Row(
                           children: [
                             _me(state),
