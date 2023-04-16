@@ -142,15 +142,22 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 child: GestureDetector(
                   onTap: () async {
-                    final feedback = {
-                      SheetsColumn.name: _nameController.text.trim(),
-                      SheetsColumn.phone:
-                          '\'${_phoneNumberController.text.trim()}',
-                    };
-                    await _cacheManager.addUserToCached(UserLocal(
-                        name: _nameController.text.trim(),
-                        phone: _phoneNumberController.text.trim()));
-                    await _signUpCubit.insert([feedback]);
+                    final String name = _nameController.text.trim();
+                    final String phone = _phoneNumberController.text.trim();
+                    if (name.length >= 6 && phone.isNotEmpty) {
+                      final feedback = {
+                        SheetsColumn.name: name,
+                        SheetsColumn.phone: '\'$phone',
+                      };
+                      await _cacheManager.addUserToCached(UserLocal(
+                          name: _nameController.text.trim(),
+                          phone: _phoneNumberController.text.trim()));
+                      await _signUpCubit.insert([feedback]);
+                    } else if (name.length < 6) {
+                      BotToast.showText(text: 'Tên phải chứa từ 6 ký tự');
+                    } else if (phone.isEmpty) {
+                      BotToast.showText(text: 'Vui lòng nhập số điện thoại');
+                    }
                   },
                   child: Container(
                     margin: EdgeInsets.only(top: 32.h),

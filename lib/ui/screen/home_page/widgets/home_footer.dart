@@ -6,14 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/ui/screen/home_page/cubit/home_page_cubit.dart';
 import 'package:mubaha/ui/screen/home_page/entity/zodiac_model.dart';
 import 'package:mubaha/ui/shared/utils/functions.dart';
 
 import '../../../theme/app_path.dart';
+import '../../../theme/constant.dart';
+import '../../main/review/widget/media_button_widget.dart';
 
 class HomeFooter extends StatefulWidget {
   const HomeFooter({Key? key}) : super(key: key);
@@ -68,15 +72,7 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    final ImagePicker picker = ImagePicker();
-                                    final XFile? file = await picker.pickImage(
-                                        source: ImageSource.gallery);
-                                    if (file != null) {
-                                      final Uint8List avatar =
-                                          File(file.path).readAsBytesSync();
-
-                                      box.put('my_avatar', avatar);
-                                    }
+                                    _showPickerModalPopup(context, key: 'my_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -116,15 +112,7 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    final ImagePicker picker = ImagePicker();
-                                    final XFile? file = await picker.pickImage(
-                                        source: ImageSource.gallery);
-                                    if (file != null) {
-                                      final Uint8List avatar =
-                                          File(file.path).readAsBytesSync();
-
-                                      box.put('my_lover_avatar', avatar);
-                                    }
+                                    _showPickerModalPopup(context, key: 'my_lover_avatar', box: box);
                                   }
                                 },
                                 child: Container(
@@ -722,5 +710,84 @@ class _HomeFooterState extends State<HomeFooter> {
                 )),
           );
         });
+  }
+
+  Future<void> _pickAvatar(
+      {required String key,
+      required Box box,
+      required ImageSource imageSource}) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? file = await picker.pickImage(source: imageSource);
+    if (file != null) {
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: file.path,
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Chỉnh sửa ảnh',
+              toolbarColor: Colors.deepOrange,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Chỉnh sửa ảnh',
+          ),
+        ],
+      );
+      if (croppedFile != null) {
+        final Uint8List avatar = await croppedFile.readAsBytes();
+        box.put(key, avatar);
+      }
+    }
+  }
+
+  Future<void> _showPickerModalPopup(BuildContext context,
+      {required String key, required Box box}) {
+    return showBarModalBottomSheet(
+      context: context,
+      //expand: true,
+      builder: (BuildContext context1) {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 8.h),
+          height: 100.h,
+          color: Colors.white,
+          child: Row(
+            children: [
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+              MediaButtonWidget(
+                  icon: Icons.photo,
+                  title: 'Thêm hình ảnh',
+                  onTap: () {
+                    _pickAvatar(
+                        key: key, box: box, imageSource: ImageSource.gallery);
+                    Navigator.pop(context);
+                  }),
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+              MediaButtonWidget(
+                  icon: Icons.camera_alt_rounded,
+                  title: 'Chụp ảnh',
+                  onTap: () {
+                    _pickAvatar(
+                        key: key, box: box, imageSource: ImageSource.camera);
+                    Navigator.pop(context);
+                  }),
+              SizedBox(
+                width: kDefaultPaddingWidthScreen,
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
