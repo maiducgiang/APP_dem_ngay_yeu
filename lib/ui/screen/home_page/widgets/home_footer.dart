@@ -48,13 +48,6 @@ class _HomeFooterState extends State<HomeFooter> {
               width: MediaQuery.of(context).size.width,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 150, top: 50),
-            child: Center(
-              child: Lottie.asset(AppPath.lottieHeart,
-                  fit: BoxFit.cover, width: 100),
-            ),
-          ),
           BlocBuilder<HomePageCubit, HomePageState>(
             builder: (context, state) {
               return Align(
@@ -169,6 +162,13 @@ class _HomeFooterState extends State<HomeFooter> {
                     ],
                   ));
             },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 150, top: 50),
+            child: Center(
+              child: Lottie.asset(AppPath.lottieHeart,
+                  fit: BoxFit.cover, width: 100),
+            ),
           ),
         ],
       ),
