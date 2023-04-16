@@ -1,6 +1,8 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mubaha/data/cache_manager.dart';
+import 'package:mubaha/data/model/user_local/user_model_local.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/theme/app_path.dart';
 import 'package:auto_route/auto_route.dart';
@@ -16,9 +18,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   final _remoteConfig = FirebaseRemoteConfig.instance;
 
+  final _cacheManager = CacheManager.instance;
   Future<void> init() async {
     await _remoteConfig.setConfigSettings(RemoteConfigSettings(
       fetchTimeout: const Duration(seconds: 60),
@@ -26,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ));
     await _remoteConfig.ensureInitialized();
     await _remoteConfig.activate();
-    await _remoteConfig.fetchAndActivate().then((value){
+    await _remoteConfig.fetchAndActivate().then((value) {
       checkFirtLoad(showSignUp: _remoteConfig.getBool('show_sign_up'));
     });
   }
@@ -38,12 +40,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkFirtLoad({required bool showSignUp}) async {
+    UserLocal? userLocal = await _cacheManager.getUserCached();
+    if (userLocal != null) showSignUp = false;
     await Future.delayed(const Duration(seconds: 1));
-    context.router.pushAll([
-      showSignUp
-        ? const SignUp()
-        : const MainPage()
-    ]);
+    context.router.pushAll([showSignUp ? const SignUp() : const MainPage()]);
   }
 
   @override
