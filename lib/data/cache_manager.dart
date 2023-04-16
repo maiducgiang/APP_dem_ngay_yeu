@@ -2,6 +2,8 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mubaha/data/model/board_local/board_model.dart';
 import 'package:mubaha/data/model/user_local/user_model_local.dart';
+import 'package:mubaha/ui/screen/home_page/entity/home_model.dart';
+import 'package:mubaha/ui/screen/home_page/entity/zodiac_model.dart';
 
 class CacheManager {
   static CacheManager? _instance;
@@ -16,12 +18,17 @@ class CacheManager {
 
   Box get _cacheBox => Hive.box(_cacheBoxName);
 
+  Box get cacheBox => _cacheBox;
+
   Future<void> init() async {
     try {
       print('Init hive cache manager');
       await Hive.initFlutter();
       Hive.registerAdapter(BoardModelLocalAdapter());
       Hive.registerAdapter(UserLocalAdapter());
+      Hive.registerAdapter(HomeModelAdapter());
+      Hive.registerAdapter(UserAdapter());
+      Hive.registerAdapter(ZodiacAdapter());
       await openBox();
       print('Open box successfully');
     } catch (ex) {

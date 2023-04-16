@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mubaha/ui/services/ThemePreferences.dart';
 import 'package:mubaha/ui/theme/constant.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class AppThemes {
   static final appThemeData = {
     AppTheme.lightTheme: ThemeData(
       backgroundColor: Colors.white,
+      textTheme: GoogleFonts.beVietnamProTextTheme(),
       primaryColor: primaryColor,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       iconTheme: const IconThemeData(color: contentColorLightTheme),
-      fontFamily: "Poppins",
-      colorScheme: ColorScheme.light(
+      // fontFamily: "Poppins",
+      colorScheme: const ColorScheme.light(
         primary: primaryColor,
         secondary: secondaryColor,
         error: errorColor,
@@ -28,10 +31,11 @@ class AppThemes {
     AppTheme.darkTheme: ThemeData(
       backgroundColor: darkGreyClr,
       primaryColor: primaryColor,
+      textTheme: GoogleFonts.beVietnamProTextTheme(),
       brightness: Brightness.dark,
       scaffoldBackgroundColor: contentColorLightTheme,
       iconTheme: const IconThemeData(color: contentColorDarkTheme),
-      fontFamily: "Poppins",
+      // fontFamily: "Poppins",
       colorScheme: const ColorScheme.dark().copyWith(
         primary: primaryColor,
         secondary: secondaryColor,
