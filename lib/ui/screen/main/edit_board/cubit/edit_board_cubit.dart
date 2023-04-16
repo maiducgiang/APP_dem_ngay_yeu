@@ -83,20 +83,6 @@ class EditBoardCubit extends Cubit<EditBoardState> {
 
   void save(
       {required String title, String? content, required DateTime time}) async {
-    // List<XFile> imageXFile = state.imageFileList;
-    // List<Uint8List> listImage = [];
-    // if (state.imageFileList.length >= 1) {
-    //   Uint8List imageBytes = await imageXFile[0].readAsBytes();
-    //   listImage.add(imageBytes);
-    // }
-    // if (state.imageFileList.length >= 2) {
-    //   Uint8List imageBytes = await imageXFile[1].readAsBytes();
-    //   listImage.add(imageBytes);
-    // }
-    // if (state.imageFileList.length >= 3) {
-    //   Uint8List imageBytes = await imageXFile[2].readAsBytes();
-    //   listImage.add(imageBytes);
-    // }
     if (state.boardModelLocal != null) {
       _cacheManager.addBoardToCache(BoardModelLocal(
           id: state.boardModelLocal!.id,

@@ -84,8 +84,7 @@ class _HomeFooterState extends State<HomeFooter> {
                                     width: 96.w,
                                     decoration: ((box.get('my_avatar')) ==
                                                 null ||
-                                            (box.get('my_avatar'))
-                                                .isEmpty)
+                                            (box.get('my_avatar')).isEmpty)
                                         ? BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: const Color(0xFFEFF2F7),
@@ -108,9 +107,8 @@ class _HomeFooterState extends State<HomeFooter> {
                                     child: Center(
                                         child: Visibility(
                                             visible: ((box.get('my_avatar')) ==
-                                                null ||
-                                            (box.get('my_avatar'))
-                                                .isEmpty),
+                                                    null ||
+                                                (box.get('my_avatar')).isEmpty),
                                             child: const Icon(Icons.add,
                                                 color: Color(0xFFC2CEDB))))),
                               ),
@@ -308,88 +306,105 @@ class _HomeFooterState extends State<HomeFooter> {
               state.editing
                   ? Flexible(
                       child: ValueListenableBuilder<Box<dynamic>>(
-                      valueListenable: CacheManager.instance.cacheBox.listenable(),
-                      builder: (context, box, widget) {
-                        return GestureDetector(
-                          onTap: () {
-                            _pickBirthday(context, pickMyBirthday: true);
-                          },
-                          child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 18, vertical: 8),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFC2CEDB),
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: FittedBox(
-                                child: Text(
-                                  ((box.get('my_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_zodiac') as Zodiac?)?.name?? '',
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400
-                                  ),
-                                  maxLines: 1,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                            Image.asset(AppPath.icEdit, height: 16, width: 16)
-                          ],
-                        )
-                      ),
-                        );
-                      },
+                        valueListenable:
+                            CacheManager.instance.cacheBox.listenable(),
+                        builder: (context, box, widget) {
+                          return GestureDetector(
+                            onTap: () {
+                              _pickBirthday(context, pickMyBirthday: true);
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 8),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFC2CEDB),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: FittedBox(
+                                        child: Text(
+                                          ((box.get('my_zodiac') as Zodiac?)
+                                                          ?.name ??
+                                                      '')
+                                                  .isEmpty
+                                              ? 'Chòm sao'
+                                              : (box.get('my_zodiac')
+                                                          as Zodiac?)
+                                                      ?.name ??
+                                                  '',
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Image.asset(AppPath.icEdit,
+                                        height: 16, width: 16)
+                                  ],
+                                )),
+                          );
+                        },
                       ),
                     )
                   : ValueListenableBuilder<Box<dynamic>>(
-                    valueListenable: CacheManager.instance.cacheBox.listenable(),
-                    builder: (context, box, widget) {
-                      return Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 8.h, horizontal: 12.w),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFFF8686),
-                              borderRadius: BorderRadius.circular(45)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Visibility(
-                                visible: ((box.get('my_zodiac') as Zodiac?)?.name??'').isNotEmpty,
-                                child: Image.asset(
-                                  (box.get('my_zodiac') as Zodiac?)?.icon ?? '',
-                                  height: 16,
-                                  width: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Flexible(
-                                child: Text(
-                                  ((box.get('my_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_zodiac') as Zodiac?)?.name?? '',
-                                  style: const TextStyle(
+                      valueListenable:
+                          CacheManager.instance.cacheBox.listenable(),
+                      builder: (context, box, widget) {
+                        return Flexible(
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.h, horizontal: 12.w),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFFF8686),
+                                  borderRadius: BorderRadius.circular(45)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Visibility(
+                                    visible: ((box.get('my_zodiac') as Zodiac?)
+                                                ?.name ??
+                                            '')
+                                        .isNotEmpty,
+                                    child: Image.asset(
+                                      (box.get('my_zodiac') as Zodiac?)?.icon ??
+                                          '',
+                                      height: 16,
+                                      width: 16,
                                       color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                      );
-                    },
-                  )
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Flexible(
+                                    child: Text(
+                                      ((box.get('my_zodiac') as Zodiac?)
+                                                      ?.name ??
+                                                  '')
+                                              .isEmpty
+                                          ? 'Chòm sao'
+                                          : (box.get('my_zodiac') as Zodiac?)
+                                                  ?.name ??
+                                              '',
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        );
+                      },
+                    )
             ],
           )
         ],
@@ -468,88 +483,109 @@ class _HomeFooterState extends State<HomeFooter> {
               state.editing
                   ? Flexible(
                       child: ValueListenableBuilder<Box<dynamic>>(
-                        valueListenable: CacheManager.instance.cacheBox.listenable(),
+                        valueListenable:
+                            CacheManager.instance.cacheBox.listenable(),
                         builder: (context, box, widget) {
                           return GestureDetector(
                             onTap: () {
                               _pickBirthday(context, pickMyBirthday: false);
                             },
                             child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 8),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFC2CEDB),
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Flexible(
-                                child: FittedBox(
-                                  child: Text(
-                                    ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                    'Chòm sao':(box.get('my_lover_zodiac') as Zodiac?)?.name?? '',
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 8),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFC2CEDB),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: FittedBox(
+                                        child: Text(
+                                          ((box.get('my_lover_zodiac')
+                                                              as Zodiac?)
+                                                          ?.name ??
+                                                      '')
+                                                  .isEmpty
+                                              ? 'Chòm sao'
+                                              : (box.get('my_lover_zodiac')
+                                                          as Zodiac?)
+                                                      ?.name ??
+                                                  '',
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Image.asset(AppPath.icEdit, height: 16, width: 16)
-                            ],
-                          )
-                        ),
+                                    const SizedBox(width: 5),
+                                    Image.asset(AppPath.icEdit,
+                                        height: 16, width: 16)
+                                  ],
+                                )),
                           );
                         },
                       ),
                     )
                   : ValueListenableBuilder<Box<dynamic>>(
-                    valueListenable: CacheManager.instance.cacheBox.listenable(),
-                    builder: (context, box, widget) {
-                      return Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 8.h, horizontal: 12.w),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFFF8686),
-                              borderRadius: BorderRadius.circular(45)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isEmpty ?
-                                  'Chòm sao':(box.get('my_lover_zodiac') as Zodiac?)?.name?? '',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                      valueListenable:
+                          CacheManager.instance.cacheBox.listenable(),
+                      builder: (context, box, widget) {
+                        return Flexible(
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.h, horizontal: 12.w),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xFFFF8686),
+                                  borderRadius: BorderRadius.circular(45)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      ((box.get('my_lover_zodiac') as Zodiac?)
+                                                      ?.name ??
+                                                  '')
+                                              .isEmpty
+                                          ? 'Chòm sao'
+                                          : (box.get('my_lover_zodiac')
+                                                      as Zodiac?)
+                                                  ?.name ??
+                                              '',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Visibility(
+                                    visible:
+                                        ((box.get('my_lover_zodiac') as Zodiac?)
+                                                    ?.name ??
+                                                '')
+                                            .isNotEmpty,
+                                    child: Image.asset(
+                                      (box.get('my_lover_zodiac') as Zodiac?)
+                                              ?.icon ??
+                                          '',
+                                      height: 16,
+                                      width: 16,
                                       color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Visibility(
-                                visible: ((box.get('my_lover_zodiac') as Zodiac?)?.name??'').isNotEmpty,
-                                child: Image.asset(
-                                  (box.get('my_lover_zodiac') as Zodiac?)?.icon ?? '',
-                                  height: 16,
-                                  width: 16,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                      );
-                    },
-                  ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        );
+                      },
+                    ),
               SizedBox(width: 3.w),
               GestureDetector(
                 onTap: () {
@@ -675,9 +711,10 @@ class _HomeFooterState extends State<HomeFooter> {
                               ZodiacSign zodiacSign = getZodiacSign(value);
                               Zodiac? zodiac = getZodiac(zodiacSign);
                               CacheManager.instance.cacheBox.put(
-                                  pickMyBirthday? 'my_zodiac' : 'my_lover_zodiac',
-                                  zodiac
-                              );
+                                  pickMyBirthday
+                                      ? 'my_zodiac'
+                                      : 'my_lover_zodiac',
+                                  zodiac);
                             }),
                       ),
                     ),

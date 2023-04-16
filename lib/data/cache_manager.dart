@@ -95,8 +95,8 @@ class CacheManager {
     await _cacheBox.put(_userLocal, userLocal);
   }
 
-  Future<UserLocal> getUserCached() async {
-    UserLocal user = _cacheBox.get(_userLocal) as UserLocal;
+  Future<UserLocal?> getUserCached() async {
+    UserLocal? user = _cacheBox.get(_userLocal) as UserLocal?;
     return user;
   }
 
