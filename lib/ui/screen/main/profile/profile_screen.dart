@@ -189,7 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               alignment: Alignment.center,
                               margin: EdgeInsets.symmetric(vertical: 12.h),
                               child: Text(
-                                "Phiên bản 1.0",
+                                "Phiên bản 1.1.0",
                                 style: subTitleStyle.copyWith(
                                     color: greyPrymaryColor, fontSize: 13.sp),
                               ),
