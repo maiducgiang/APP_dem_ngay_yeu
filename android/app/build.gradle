@@ -53,8 +53,8 @@ android {
         applicationId "com.KuCelebrates.mobile"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 2
+        versionName "1.1"
     }
 
     buildTypes {
