@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -105,7 +104,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                         decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.8),
                             shape: BoxShape.circle),
-                        child: Center(child: Image.asset(AppPath.icEdit)),
+                        child: Center(child: Image.asset(AppPath.icEdit, color: const Color(0xFFFF8686))),
                       ),
                     ),
             ],
