@@ -93,7 +93,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                         },
                       ),
                       const CountCircle(),
-                      const AddDay(),
                       const HomeFooter(),
                     ],
                   ),

@@ -13,6 +13,7 @@ import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/ui/screen/home_page/cubit/home_page_cubit.dart';
 import 'package:mubaha/ui/screen/home_page/entity/zodiac_model.dart';
 import 'package:mubaha/ui/shared/utils/functions.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../../../theme/app_path.dart';
 import '../../../theme/constant.dart';
@@ -47,6 +48,13 @@ class _HomeFooterState extends State<HomeFooter> {
               width: MediaQuery.of(context).size.width,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 150, top: 50),
+            child: Center(
+              child: Lottie.asset(AppPath.lottieHeart,
+                  fit: BoxFit.cover, width: 100),
+            ),
+          ),
           BlocBuilder<HomePageCubit, HomePageState>(
             builder: (context, state) {
               return Align(
@@ -64,8 +72,7 @@ class _HomeFooterState extends State<HomeFooter> {
                               GestureDetector(
                                 onTap: () async {
                                   if (state.editing) {
-                                    _showPickerModalPopup(context,
-                                        key: 'my_avatar', box: box);
+                                    _showModelBottomSheet(isMe: true);
                                   }
                                 },
                                 child: Container(
@@ -98,16 +105,17 @@ class _HomeFooterState extends State<HomeFooter> {
                                             visible: ((box.get('my_avatar')) ==
                                                     null ||
                                                 (box.get('my_avatar')).isEmpty),
-                                            child: const Icon(Icons.add,
-                                                color: Color(0xFFC2CEDB))))),
+                                            child: state.editing
+                                                ? Image.asset(AppPath.icEdit,
+                                                    height: 24, width: 24, color: Colors.grey)
+                                                : const Icon(Icons.add,
+                                                    color:
+                                                        Color(0xFFC2CEDB))))),
                               ),
                               SizedBox(width: 17.w),
                               GestureDetector(
                                 onTap: () async {
-                                  if (state.editing) {
-                                    _showPickerModalPopup(context,
-                                        key: 'my_lover_avatar', box: box);
-                                  }
+                                  _showModelBottomSheet(isMe: false);
                                 },
                                 child: Container(
                                     height: 96.w,
@@ -142,7 +150,10 @@ class _HomeFooterState extends State<HomeFooter> {
                                                         null ||
                                                     (box.get('my_lover_avatar'))
                                                         .isEmpty,
-                                            child: const Icon(Icons.add,
+                                            child: state.editing
+                                                ? Image.asset(AppPath.icEdit,
+                                                    height: 24, width: 24, color: Colors.grey)
+                                                :const Icon(Icons.add,
                                                 color: Color(0xFFC2CEDB))))),
                               ),
                             ],
@@ -164,13 +175,6 @@ class _HomeFooterState extends State<HomeFooter> {
                   ));
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 150, top: 50),
-            child: Center(
-              child: Lottie.asset(AppPath.lottieHeart,
-                  fit: BoxFit.cover, width: 100),
-            ),
-          ),
         ],
       ),
     );
@@ -181,79 +185,18 @@ class _HomeFooterState extends State<HomeFooter> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          state.editing
-              ? GestureDetector(
-                  onTap: () {
-                    showPopup(
-                        context: context,
-                        title: 'Tên của bạn',
-                        onChanged: (value) {
-                          CacheManager.instance.cacheBox.put('my_name', value);
-                        },
-                        onTapCancel: () {
-                          CacheManager.instance.cacheBox.put('my_name', 'Tôi');
-                          Navigator.pop(context);
-                        },
-                        onTapConfirm: () {
-                          Navigator.pop(context);
-                        });
-                  },
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFFC2CEDB),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: ValueListenableBuilder<Box<dynamic>>(
-                              valueListenable:
-                                  CacheManager.instance.cacheBox.listenable(),
-                              builder: (context, box, widget) {
-                                return Text(
-                                  box.get('my_name') ?? 'Tôi',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w400),
-                                );
-                              }),
-                        ),
-                        SizedBox(width: 5.w),
-                        Image.asset(AppPath.icEdit, height: 16, width: 16)
-                      ],
-                    ),
-                  ),
-                )
-              : Text(
-                  CacheManager.instance.cacheBox.get('my_name') ?? 'Tôi',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w400, fontSize: 17.sp),
-                ),
+          Text(
+            CacheManager.instance.cacheBox.get('my_name') ?? 'Tôi',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17.sp),
+          ),
           SizedBox(height: 5.h),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {
-                  if (state.editing) {
-                    showPopup(
-                        context: context,
-                        chooseGender: true,
-                        onTapCancel: () {
-                          Navigator.pop(context);
-                        },
-                        onTapConfirm: () {
-                          Navigator.pop(context);
-                        });
-                  }
-                },
+                onTap: () {},
                 child: ValueListenableBuilder<Box<dynamic>>(
                   valueListenable: CacheManager.instance.cacheBox.listenable(),
                   builder: (context, box, widget) {
@@ -263,137 +206,65 @@ class _HomeFooterState extends State<HomeFooter> {
                             decoration: BoxDecoration(
                                 color: const Color(0xFF00A7E5),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.male, color: Colors.white),
-                                SizedBox(width: state.editing ? 5 : 0),
-                                Visibility(
-                                    visible: state.editing,
-                                    child: Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16))
-                              ],
-                            ))
+                            child: const Icon(Icons.male, color: Colors.white))
                         : Container(
                             padding: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                                 color: const Color(0xFFF44336),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.female, color: Colors.white),
-                                SizedBox(width: state.editing ? 5 : 0),
-                                Visibility(
-                                    visible: state.editing,
-                                    child: Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16))
-                              ],
-                            ));
+                            child:
+                                const Icon(Icons.female, color: Colors.white));
                   },
                 ),
               ),
               SizedBox(width: 3.w),
-              state.editing
-                  ? Flexible(
-                      child: ValueListenableBuilder<Box<dynamic>>(
-                        valueListenable:
-                            CacheManager.instance.cacheBox.listenable(),
-                        builder: (context, box, widget) {
-                          return GestureDetector(
-                            onTap: () {
-                              _pickBirthday(context, pickMyBirthday: true);
-                            },
-                            child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 18, vertical: 8),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFFC2CEDB),
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Flexible(
-                                      child: FittedBox(
-                                        child: Text(
-                                          ((box.get('my_zodiac') as Zodiac?)
-                                                          ?.name ??
-                                                      '')
-                                                  .isEmpty
-                                              ? 'Chòm sao'
-                                              : (box.get('my_zodiac')
-                                                          as Zodiac?)
-                                                      ?.name ??
-                                                  '',
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w400),
-                                          maxLines: 1,
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16)
-                                  ],
-                                )),
-                          );
-                        },
-                      ),
-                    )
-                  : ValueListenableBuilder<Box<dynamic>>(
-                      valueListenable:
-                          CacheManager.instance.cacheBox.listenable(),
-                      builder: (context, box, widget) {
-                        return Flexible(
-                          child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 8.h, horizontal: 12.w),
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFFF8686),
-                                  borderRadius: BorderRadius.circular(45)),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Visibility(
-                                    visible: ((box.get('my_zodiac') as Zodiac?)
-                                                ?.name ??
-                                            '')
-                                        .isNotEmpty,
-                                    child: Image.asset(
-                                      (box.get('my_zodiac') as Zodiac?)?.icon ??
-                                          '',
-                                      height: 16,
-                                      width: 16,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Flexible(
-                                    child: Text(
-                                      ((box.get('my_zodiac') as Zodiac?)
-                                                      ?.name ??
-                                                  '')
-                                              .isEmpty
-                                          ? 'Chòm sao'
-                                          : (box.get('my_zodiac') as Zodiac?)
-                                                  ?.name ??
-                                              '',
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w400),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              )),
-                        );
-                      },
-                    )
+              ValueListenableBuilder<Box<dynamic>>(
+                valueListenable: CacheManager.instance.cacheBox.listenable(),
+                builder: (context, box, widget) {
+                  return Flexible(
+                    child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 8.h, horizontal: 12.w),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFF8686),
+                            borderRadius: BorderRadius.circular(45)),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Visibility(
+                              visible:
+                                  ((box.get('my_zodiac') as Zodiac?)?.name ??
+                                          '')
+                                      .isNotEmpty,
+                              child: Image.asset(
+                                (box.get('my_zodiac') as Zodiac?)?.icon ?? '',
+                                height: 16,
+                                width: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(width: 5),
+                            Flexible(
+                              child: Text(
+                                ((box.get('my_zodiac') as Zodiac?)?.name ?? '')
+                                        .isEmpty
+                                    ? 'Chòm sao'
+                                    : (box.get('my_zodiac') as Zodiac?)?.name ??
+                                        '',
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        )),
+                  );
+                },
+              )
             ],
           )
         ],
@@ -406,175 +277,68 @@ class _HomeFooterState extends State<HomeFooter> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          state.editing
-              ? GestureDetector(
-                  onTap: () {
-                    showPopup(
-                        context: context,
-                        title: 'Tên của người ấy',
-                        onChanged: (value) {
-                          CacheManager.instance.cacheBox
-                              .put('my_lover_name', value);
-                        },
-                        onTapCancel: () {
-                          CacheManager.instance.cacheBox
-                              .put('my_lover_name', 'Người ấy');
-                          Navigator.pop(context);
-                        },
-                        onTapConfirm: () {
-                          Navigator.pop(context);
-                        });
-                  },
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFFC2CEDB),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: ValueListenableBuilder<Box<dynamic>>(
-                              valueListenable:
-                                  CacheManager.instance.cacheBox.listenable(),
-                              builder: (context, box, widget) {
-                                return Text(
-                                  box.get('my_lover_name') ?? 'Người ấy',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w400),
-                                );
-                              }),
-                        ),
-                        SizedBox(width: 5.w),
-                        Image.asset(AppPath.icEdit, height: 16, width: 16)
-                      ],
-                    ),
-                  ),
-                )
-              : Text(
-                  CacheManager.instance.cacheBox.get('my_lover_name') ??
-                      'Người ấy',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.end,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w400, fontSize: 17.sp),
-                ),
+          Text(
+            CacheManager.instance.cacheBox.get('my_lover_name') ?? 'Người ấy',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.end,
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17.sp),
+          ),
           SizedBox(height: 5.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              state.editing
-                  ? Flexible(
-                      child: ValueListenableBuilder<Box<dynamic>>(
-                        valueListenable:
-                            CacheManager.instance.cacheBox.listenable(),
-                        builder: (context, box, widget) {
-                          return GestureDetector(
-                            onTap: () {
-                              _pickBirthday(context, pickMyBirthday: false);
-                            },
-                            child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 18, vertical: 8),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFFC2CEDB),
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Flexible(
-                                      child: FittedBox(
-                                        child: Text(
-                                          ((box.get('my_lover_zodiac')
-                                                              as Zodiac?)
-                                                          ?.name ??
-                                                      '')
-                                                  .isEmpty
-                                              ? 'Chòm sao'
-                                              : (box.get('my_lover_zodiac')
-                                                          as Zodiac?)
-                                                      ?.name ??
-                                                  '',
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w400),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 5),
-                                    Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16)
-                                  ],
-                                )),
-                          );
-                        },
-                      ),
-                    )
-                  : ValueListenableBuilder<Box<dynamic>>(
-                      valueListenable:
-                          CacheManager.instance.cacheBox.listenable(),
-                      builder: (context, box, widget) {
-                        return Flexible(
-                          child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 8.h, horizontal: 12.w),
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFFF8686),
-                                  borderRadius: BorderRadius.circular(45)),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Flexible(
-                                    child: Text(
-                                      ((box.get('my_lover_zodiac') as Zodiac?)
-                                                      ?.name ??
-                                                  '')
-                                              .isEmpty
-                                          ? 'Chòm sao'
-                                          : (box.get('my_lover_zodiac')
-                                                      as Zodiac?)
-                                                  ?.name ??
-                                              '',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Visibility(
-                                    visible:
-                                        ((box.get('my_lover_zodiac') as Zodiac?)
-                                                    ?.name ??
-                                                '')
-                                            .isNotEmpty,
-                                    child: Image.asset(
-                                      (box.get('my_lover_zodiac') as Zodiac?)
-                                              ?.icon ??
-                                          '',
-                                      height: 16,
-                                      width: 16,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              )),
-                        );
-                      },
-                    ),
+              ValueListenableBuilder<Box<dynamic>>(
+                valueListenable: CacheManager.instance.cacheBox.listenable(),
+                builder: (context, box, widget) {
+                  return Flexible(
+                    child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 8.h, horizontal: 12.w),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFF8686),
+                            borderRadius: BorderRadius.circular(45)),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                ((box.get('my_lover_zodiac') as Zodiac?)
+                                                ?.name ??
+                                            '')
+                                        .isEmpty
+                                    ? 'Chòm sao'
+                                    : (box.get('my_lover_zodiac') as Zodiac?)
+                                            ?.name ??
+                                        '',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                            const SizedBox(width: 5),
+                            Visibility(
+                              visible: ((box.get('my_lover_zodiac') as Zodiac?)
+                                          ?.name ??
+                                      '')
+                                  .isNotEmpty,
+                              child: Image.asset(
+                                (box.get('my_lover_zodiac') as Zodiac?)?.icon ??
+                                    '',
+                                height: 16,
+                                width: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )),
+                  );
+                },
+              ),
               SizedBox(width: 3.w),
               GestureDetector(
                 onTap: () {
@@ -600,31 +364,14 @@ class _HomeFooterState extends State<HomeFooter> {
                             decoration: BoxDecoration(
                                 color: const Color(0xFF00A7E5),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.male, color: Colors.white),
-                                SizedBox(width: state.editing ? 5 : 0),
-                                Visibility(
-                                    visible: state.editing,
-                                    child: Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16))
-                              ],
-                            ))
+                            child: const Icon(Icons.male, color: Colors.white))
                         : Container(
                             padding: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                                 color: const Color(0xFFF44336),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.female, color: Colors.white),
-                                SizedBox(width: state.editing ? 5 : 0),
-                                Visibility(
-                                    visible: state.editing,
-                                    child: Image.asset(AppPath.icEdit,
-                                        height: 16, width: 16))
-                              ],
-                            ));
+                            child:
+                                const Icon(Icons.female, color: Colors.white));
                   },
                 ),
               ),
@@ -699,11 +446,18 @@ class _HomeFooterState extends State<HomeFooter> {
                             onDateTimeChanged: (value) {
                               ZodiacSign zodiacSign = getZodiacSign(value);
                               Zodiac? zodiac = getZodiac(zodiacSign);
+                              String birthday =
+                                  '${value.day}-${value.month}-${value.year}';
                               CacheManager.instance.cacheBox.put(
                                   pickMyBirthday
                                       ? 'my_zodiac'
                                       : 'my_lover_zodiac',
                                   zodiac);
+                              CacheManager.instance.cacheBox.put(
+                                  pickMyBirthday
+                                      ? 'my_birthday'
+                                      : 'my_lover_birthday',
+                                  birthday);
                             }),
                       ),
                     ),
@@ -790,5 +544,276 @@ class _HomeFooterState extends State<HomeFooter> {
         );
       },
     );
+  }
+
+  Future<void> _showModelBottomSheet({required bool isMe}) async {
+    String avatarKey = isMe ? 'my_avatar' : 'my_lover_avatar';
+    String nameKey = isMe ? 'my_name' : 'my_lover_name';
+    String genderKey = isMe ? 'my_gender' : 'my_lover_gender';
+    String birthdayKey = isMe ? 'my_birthday' : 'my_lover_birthday';
+    // String zodiacKey = isMe ? 'my_zodiac' : 'my_lover_zodiac';
+
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        builder: (context) {
+          return FractionallySizedBox(
+            heightFactor: 0.8,
+            child: Column(
+              children: [
+                const SizedBox(height: 14),
+                const Text(
+                  'Sửa thông tin',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 34),
+                ValueListenableBuilder<Box<dynamic>>(
+                  valueListenable: CacheManager.instance.cacheBox.listenable(),
+                  builder: (context, box, child) {
+                    return GestureDetector(
+                      onTap: () {
+                        _showPickerModalPopup(context,
+                            key: avatarKey, box: box);
+                      },
+                      child: Container(
+                          height: 96.w,
+                          width: 96.w,
+                          decoration: ((box.get(avatarKey)) == null ||
+                                  (box.get(avatarKey)).isEmpty)
+                              ? BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFEFF2F7),
+                                  border: Border.all(
+                                      color: const Color(0xFFFF8686),
+                                      width: 3.w),
+                                )
+                              : BoxDecoration(
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: MemoryImage(
+                                        box.get(avatarKey),
+                                      )),
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFEFF2F7),
+                                  border: Border.all(
+                                      color: const Color(0xFFFF8686),
+                                      width: 3.w),
+                                ),
+                          child: Center(
+                              child: Visibility(
+                                  visible: ((box.get(avatarKey)) == null ||
+                                      (box.get(avatarKey)).isEmpty),
+                                  child: Image.asset(AppPath.icEdit,
+                                      height: 24, width: 24, color: Colors.grey)))),
+                    );
+                  },
+                ),
+                const SizedBox(height: 34),
+                Expanded(
+                    child: ListView(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        showPopup(
+                            context: context,
+                            title: isMe ? 'Tên của bạn' : 'Tên người ấy',
+                            onChanged: (value) {
+                              CacheManager.instance.cacheBox
+                                  .put(nameKey, value);
+                            },
+                            onTapCancel: () {
+                              CacheManager.instance.cacheBox
+                                  .put(nameKey, isMe ? 'Tôi' : 'Người ấy');
+                              Navigator.pop(context);
+                            },
+                            onTapConfirm: () {
+                              Navigator.pop(context);
+                            });
+                      },
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Tên',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 15),
+                          ),
+                          const SizedBox(width: 30),
+                          Expanded(
+                            child: ValueListenableBuilder<Box<dynamic>>(
+                              valueListenable:
+                                  CacheManager.instance.cacheBox.listenable(),
+                              builder: (context, box, child) {
+                                return Text(
+                                  ((box.get(nameKey) as String?) ?? '').isEmpty
+                                      ? isMe
+                                          ? 'Tôi'
+                                          : 'Người ấy'
+                                      : (box.get(nameKey)) as String,
+                                  maxLines: 3,
+                                  textAlign: TextAlign.end,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Icon(Icons.arrow_forward_ios_sharp, size: 15)
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    InkWell(
+                      onTap: () {
+                        _pickBirthday(context, pickMyBirthday: isMe);
+                      },
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Ngày sinh',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 15),
+                          ),
+                          const SizedBox(width: 30),
+                          Expanded(
+                            child: ValueListenableBuilder<Box<dynamic>>(
+                              valueListenable:
+                                  CacheManager.instance.cacheBox.listenable(),
+                              builder: (context, box, child) {
+                                return Text(
+                                  ((box.get(birthdayKey) as String?) ?? '')
+                                          .isEmpty
+                                      ? 'Chọn'
+                                      : (box.get(birthdayKey)) as String,
+                                  textAlign: TextAlign.end,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Icon(Icons.arrow_forward_ios_sharp, size: 15)
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    InkWell(
+                      onTap: () {
+                        showPopup(
+                            context: context,
+                            chooseGender: true,
+                            chooseMyGender: isMe,
+                            title: 'Giới tính',
+                            onTapCancel: () {
+                              Navigator.pop(context);
+                            },
+                            onTapConfirm: () {
+                              Navigator.pop(context);
+                            });
+                      },
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Giới tính',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 15),
+                          ),
+                          const SizedBox(width: 30),
+                          Expanded(
+                            child: ValueListenableBuilder<Box<dynamic>>(
+                              valueListenable:
+                                  CacheManager.instance.cacheBox.listenable(),
+                              builder: (context, box, child) {
+                                return Text(
+                                  ((box.get('my_gender') as int?) ?? 0) == 0
+                                      ? 'Nam'
+                                      : 'Nữ',
+                                  maxLines: 3,
+                                  textAlign: TextAlign.end,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Icon(Icons.arrow_forward_ios_sharp, size: 15)
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 32, left: 40, right: 40),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            _homePageCubit.changeEditing(editing: false);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 13.h),
+                            decoration: BoxDecoration(
+                                color: const Color(0xFFFF8686),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Center(
+                              child: Text(
+                                'Huỷ',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 12.w),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            _homePageCubit.changeEditing(editing: false);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 13.h),
+                            decoration: BoxDecoration(
+                                color: const Color(0xFFFFF0F0),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Center(
+                              child: Text(
+                                'Lưu',
+                                style: TextStyle(
+                                    color: Color(0xFFFF8686),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        });
   }
 }
