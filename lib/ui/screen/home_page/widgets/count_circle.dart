@@ -145,7 +145,7 @@ class _CountCircleState extends State<CountCircle> {
                   ),
                   const SizedBox(width: 20),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20, right: 10),
                     child: Text(
                       ':',
                       style: TextStyle(
@@ -197,6 +197,7 @@ class _CountCircleState extends State<CountCircle> {
                       ],
                     ),
                   ),
+                  const SizedBox(width: 10),
                 ],
               ),
             ),

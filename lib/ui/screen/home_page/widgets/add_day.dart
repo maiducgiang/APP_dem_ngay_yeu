@@ -38,7 +38,7 @@ class _AddDayState extends State<AddDay> {
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                   margin: EdgeInsets.only(top: 19.h, left: 24.w, right: 24.w),
                   decoration: BoxDecoration(
-                      color: widget.enable ? Color(0xFFED5564): Colors.grey,
+                      color: widget.enable ? const Color(0xFFED5564): Colors.grey.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(16)),
                   child: Text(
                     (state.homeModel?.addMoreDayText?.isEmpty ?? true)

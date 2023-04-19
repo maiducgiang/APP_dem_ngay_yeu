@@ -115,7 +115,9 @@ class _HomeFooterState extends State<HomeFooter> {
                               SizedBox(width: 17.w),
                               GestureDetector(
                                 onTap: () async {
-                                  _showModelBottomSheet(isMe: false);
+                                  if(state.editing) {
+                                    _showModelBottomSheet(isMe: false);
+                                  }
                                 },
                                 child: Container(
                                     height: 96.w,
@@ -736,7 +738,7 @@ class _HomeFooterState extends State<HomeFooter> {
                                   CacheManager.instance.cacheBox.listenable(),
                               builder: (context, box, child) {
                                 return Text(
-                                  ((box.get('my_gender') as int?) ?? 0) == 0
+                                  ((box.get(genderKey) as int?) ?? 0) == 0
                                       ? 'Nam'
                                       : 'Nữ',
                                   maxLines: 3,
