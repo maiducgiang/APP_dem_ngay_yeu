@@ -40,4 +40,5 @@ class AppRoutes {
   static const String shipingStatus = "/shiping_status";
   static const String review = "/review";
   static const String signUp = "/sign_up";
+  static const String signUpScreen = "/sign_up_final_page";
 }

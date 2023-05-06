@@ -6,6 +6,7 @@ import 'package:mubaha/ui/screen/main/edit_board/edit_board_screen.dart';
 import 'package:mubaha/ui/screen/main/image/image_screen.dart';
 import 'package:mubaha/ui/screen/main/main_screen.dart';
 import 'package:mubaha/ui/screen/main/profile/profile_screen.dart';
+import 'package:mubaha/ui/screen/sign_up%20copy/sign_up_screen.dart';
 
 import 'package:mubaha/ui/screen/sign_up/sign_up_screen.dart';
 import 'package:mubaha/ui/screen/splash/splash_screen.dart';
@@ -40,6 +41,10 @@ import 'package:auto_route/annotations.dart';
         name: "ShowImagePage",
         path: AppRoutes.showImageScreen),
     AutoRoute(page: SignUpScreen, name: "SignUp", path: AppRoutes.signup),
+    AutoRoute(
+        page: SignUpFinalScreen,
+        name: "SignUpFinalPage",
+        path: AppRoutes.signUpScreen),
   ],
 )
 class $AppRouter {}

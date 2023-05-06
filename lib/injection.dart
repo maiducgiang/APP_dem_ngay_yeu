@@ -4,10 +4,12 @@ import 'package:mubaha/data/remote/dio_di.dart';
 
 import 'package:mubaha/ui/app_cubit.dart';
 
+import 'ui/screen/sign_up copy/firebase/firebase_manager.dart';
+
 final getIt = GetIt.instance;
 void configureDependencies() {
   getIt.registerLazySingleton<Dio>(() => _DioDi().dio);
-
+  getIt.registerLazySingleton<FirebaseManager>(() => FirebaseManager());
   // getIt.registerLazySingleton<AuthRepository>(() => AuthRepository(
   //       getIt.get<Dio>(),
   //       baseUrl: "https://reqres.in",

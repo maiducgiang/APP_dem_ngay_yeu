@@ -11,6 +11,7 @@ class ItemProfile extends StatelessWidget {
   final IconData? icon;
   final Function()? onPress;
   final Color? itemColor;
+  final Color? colortext;
   const ItemProfile(
       {Key? key,
       this.isBottomLine = true,
@@ -18,6 +19,7 @@ class ItemProfile extends StatelessWidget {
       this.subtitle,
       this.icon,
       this.itemColor,
+      this.colortext,
       this.onPress})
       : super(key: key);
 
@@ -34,6 +36,9 @@ class ItemProfile extends StatelessWidget {
                     : const BorderSide(color: Colors.transparent))),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: colortext != null
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.start,
           children: [
             Expanded(
               child: Container(
@@ -45,7 +50,7 @@ class ItemProfile extends StatelessWidget {
                     Text(
                       title,
                       style: titleStyle.copyWith(
-                          fontSize: 15.sp, color: titleColor),
+                          fontSize: 15.sp, color: colortext ?? titleColor),
                     ),
                   ],
                 ),
@@ -61,7 +66,8 @@ class ItemProfile extends StatelessWidget {
                         Text(
                           subtitle ?? "",
                           style: titleStyle.copyWith(
-                              fontSize: 15.sp, color: greyPrymaryColor),
+                              fontSize: 15.sp,
+                              color: colortext ?? greyPrymaryColor),
                         ),
                       ],
                     ),
@@ -76,14 +82,16 @@ class ItemProfile extends StatelessWidget {
                         shape: BoxShape.circle, color: Colors.amber),
                   )
                 : Container(),
-            Container(
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 16.sp,
-                color: greyPrymaryColor,
-              ),
-            )
+            colortext == null
+                ? Container(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 16.sp,
+                      color: greyPrymaryColor,
+                    ),
+                  )
+                : Container()
           ],
         ),
       ),

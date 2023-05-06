@@ -91,7 +91,7 @@ class CacheManager {
     await _cacheBox.put(_listBoard, cachedData);
   }
 
-  Future<void> addUserToCached(UserLocal userLocal) async {
+  Future<void> addUserToCached(UserLocal? userLocal) async {
     await _cacheBox.put(_userLocal, userLocal);
   }
 

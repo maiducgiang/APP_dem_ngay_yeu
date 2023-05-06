@@ -41,9 +41,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void checkFirtLoad({required bool showSignUp}) async {
     UserLocal? userLocal = await _cacheManager.getUserCached();
-    if (userLocal != null) showSignUp = false;
+
     await Future.delayed(const Duration(seconds: 1));
-    context.router.pushAll([showSignUp ? const SignUp() : const MainPage()]);
+    if (userLocal != null) {
+      context.router.push(const MainPage());
+    } else {
+      context.router.push(const SignUpFinalPage());
+    }
+
+    // context.router.pushAll([showSignUp ? SignUpPage() :  MainPage()]);
   }
 
   @override

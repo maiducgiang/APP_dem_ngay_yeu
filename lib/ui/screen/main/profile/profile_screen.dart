@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mubaha/data/cache_manager.dart';
+import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/screen/main/profile/cubit/profile_cubit.dart';
 import 'package:mubaha/ui/screen/main/profile/cubit/profile_state.dart';
 import 'package:mubaha/ui/screen/main/profile/widget/item_profile.dart';
@@ -21,6 +24,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final _cacheManager = CacheManager.instance;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -180,6 +184,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       context.read<ProfileCubit>().contactUs();
                                     },
                                     title: 'Liên hệ với chúng tôi ',
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const DividerWidget(),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 14.w),
+                              margin: EdgeInsets.symmetric(horizontal: 14.w),
+                              decoration: BoxDecoration(
+                                  color: Colors.red[200],
+                                  borderRadius: BorderRadius.circular(8.r)),
+                              child: Column(
+                                children: [
+                                  ItemProfile(
+                                    colortext: Colors.white,
+                                    onPress: () {
+                                      // context.read<ProfileCubit>().shareApp();
+                                      _cacheManager.addUserToCached(null);
+                                      context.router.push(SplashPage());
+                                    },
+                                    title: 'Đăng xuất',
                                   ),
                                 ],
                               ),
