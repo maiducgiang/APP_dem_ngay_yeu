@@ -2,11 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../data/cache_manager.dart';
-import '../../../data/model/user_local/user_model_local.dart';
-import '../../router/router.gr.dart';
 import 'cubit/sign_up_cubit.dart';
 
 class SignUpFinalScreen extends StatelessWidget {
@@ -34,7 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   late final SignUpCubit _signUpCubit;
-  final _cacheManager = CacheManager.instance;
+
   @override
   void initState() {
     _signUpCubit = context.read<SignUpCubit>()..initGoogleSheet();
@@ -63,18 +59,13 @@ class _SignUpPageState extends State<SignUpPage> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Color(0xff22252D),
-              // image: DecorationImage(
-              //     fit: BoxFit.cover,
-              //     colorFilter: ColorFilter.mode(
-              //         Colors.black.withOpacity(0.5), BlendMode.darken),
-              //     image: const AssetImage(AppPath.background2))
             ),
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 100.h),
+                  SizedBox(height: 100),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -82,29 +73,29 @@ class _SignUpPageState extends State<SignUpPage> {
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 28.sp,
+                          fontSize: 28,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 15),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Gmail',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12.sp,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 4),
                   TextField(
                     textAlign: TextAlign.start,
                     controller: _gmailController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: 'Nhập gmail ...',
-                      hintStyle: TextStyle(fontSize: 11.sp),
+                      hintStyle: TextStyle(fontSize: 11),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide:
@@ -117,25 +108,25 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   if (state.isSignIn == false) ...[
-                    SizedBox(height: 32.h),
+                    SizedBox(height: 32),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Số điện thoại',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12.sp,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400),
                       ),
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 4),
                     TextField(
                       textAlign: TextAlign.start,
                       controller: _phoneNumberController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         hintText: 'Nhập số điện thoại...',
-                        hintStyle: TextStyle(fontSize: 11.sp),
+                        hintStyle: TextStyle(fontSize: 11),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                           borderSide: const BorderSide(
@@ -148,25 +139,25 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                   ],
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 32),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Mật khẩu',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 12.sp,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 4),
                   TextField(
                     textAlign: TextAlign.start,
                     controller: _passController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: 'Nhập mật khẩu...',
-                      hintStyle: TextStyle(fontSize: 11.sp),
+                      hintStyle: TextStyle(fontSize: 11),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide:
@@ -188,13 +179,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             gmail.contains("@gmail.")) {
                           if (await context
                               .read<SignUpCubit>()
-                              .signIn(gmail, pass)) {
-                            await _cacheManager.addUserToCached(UserLocal(
-                              name: _nameController.text.trim(),
-                              phone: _phoneNumberController.text.trim(),
-                            ));
-                            context.router.replaceAll([const MainPage()]);
-                          }
+                              .signIn(gmail, pass)) {}
 
                           // final feedback = {
                           //   SheetsColumn.name: gmail,
@@ -222,11 +207,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               SheetsColumn.phone: '\'$phone',
                             };
                             await _signUpCubit.insert([feedback]);
-                            await _cacheManager.addUserToCached(UserLocal(
-                              name: _nameController.text.trim(),
-                              phone: _phoneNumberController.text.trim(),
-                            ));
-                            context.router.replaceAll([const MainPage()]);
                           }
                         } else if (!gmail.contains("@gmail.")) {
                           BotToast.showText(text: 'Vui lòng nhập lại gmail');
@@ -239,8 +219,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.only(top: 32.h),
-                      padding: EdgeInsets.symmetric(vertical: 15.h),
+                      margin: EdgeInsets.only(top: 32),
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                           color: const Color(0xFFFF8686),
                           borderRadius: BorderRadius.circular(16)),
@@ -253,7 +233,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 12.h,
+                    height: 12,
                   ),
                   state.isSignIn
                       ? GestureDetector(
@@ -270,11 +250,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                 TextSpan(
                                     text: "Bạn chưa có tài khoản ",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 12.sp)),
+                                        color: Colors.white, fontSize: 12)),
                                 TextSpan(
                                     text: "đăng ký ngay",
                                     style: TextStyle(
-                                        color: Colors.blue, fontSize: 12.sp)),
+                                        color: Colors.blue, fontSize: 12)),
                               ],
                             ),
                           ),
@@ -293,43 +273,41 @@ class _SignUpPageState extends State<SignUpPage> {
                                 TextSpan(
                                     text: "Bạn đã có tài khoản ",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 12.sp)),
+                                        color: Colors.white, fontSize: 12)),
                                 TextSpan(
                                     text: "đăng nhập ngay",
                                     style: TextStyle(
-                                        color: Colors.blue, fontSize: 12.sp)),
+                                        color: Colors.blue, fontSize: 12)),
                               ],
                             ),
                           ),
                         ),
                   //),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: 1.h,
-                        width: 38.w,
+                        height: 1,
+                        width: 38,
                         color: Colors.white,
                       ),
                       Text(
                         ' Hoặc ',
-                        style: TextStyle(color: Colors.white, fontSize: 17.sp),
+                        style: TextStyle(color: Colors.white, fontSize: 17),
                       ),
                       Container(
-                        height: 1.h,
-                        width: 38.w,
+                        height: 1,
+                        width: 38,
                         color: Colors.white,
                       ),
                     ],
                   ),
                   GestureDetector(
-                    onTap: () {
-                      context.router.push(const MainPage());
-                    },
+                    onTap: () {},
                     child: Container(
-                      margin: EdgeInsets.only(top: 16.h, bottom: 30.h),
-                      padding: EdgeInsets.symmetric(vertical: 15.h),
+                      margin: EdgeInsets.only(top: 16, bottom: 30),
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                           color: const Color(0xFFC2CEDB),
                           borderRadius: BorderRadius.circular(16)),
