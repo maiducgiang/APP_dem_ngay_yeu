@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bot_toast/bot_toast.dart';
+// import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,25 +40,14 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
-      listener: (context, state) {
-        if (state.isLoading) {
-          BotToast.showLoading();
-        }
-        if (!state.isLoading) {
-          BotToast.closeAllLoading();
-        }
-        // else {
-        //   BotToast.closeAllLoading();
-        //   BotToast.showText(text: state.error ?? '');
-        // }
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
           body: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: Color(0xff22252D),
+              color: Colors.white,
             ),
             child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: 16),
@@ -171,56 +160,21 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      if (state.isSignIn) {
+                      print("giang");
+                      if (true) {
                         final String gmail = _gmailController.text.trim();
                         final String pass = _passController.text.trim();
-                        if (gmail.length >= 6 &&
-                            pass.isNotEmpty &&
-                            gmail.contains("@gmail.")) {
-                          if (await context
-                              .read<SignUpCubit>()
-                              .signIn(gmail, pass)) {}
-
-                          // final feedback = {
-                          //   SheetsColumn.name: gmail,
-                          //   SheetsColumn.phone: '\'$phone',
-                          // };
-                          // await _signUpCubit.insert([feedback]);
-                        } else if (!gmail.contains("@gmail.")) {
-                          BotToast.showText(text: 'Vui lòng nhập lại gmail');
-                        } else if (pass.isEmpty) {
-                          BotToast.showText(text: 'Vui lòng nhập mật khẩu');
-                        }
-                      } else {
-                        final String gmail = _gmailController.text.trim();
-                        final String pass = _passController.text.trim();
-                        final String phone = _phoneNumberController.text.trim();
-                        if (gmail.length >= 6 &&
-                            pass.isNotEmpty &&
-                            gmail.contains("@gmail.") &&
-                            phone.length >= 8) {
-                          if (await context
-                              .read<SignUpCubit>()
-                              .signUp(gmail, pass)) {
-                            final feedback = {
-                              SheetsColumn.name: gmail,
-                              SheetsColumn.phone: '\'$phone',
-                            };
-                            await _signUpCubit.insert([feedback]);
-                          }
-                        } else if (!gmail.contains("@gmail.")) {
-                          BotToast.showText(text: 'Vui lòng nhập lại gmail');
-                        } else if (pass.isEmpty) {
-                          BotToast.showText(text: 'Vui lòng nhập mật khẩu');
-                        } else if (phone.isEmpty || phone.length < 8) {
-                          BotToast.showText(
-                              text: 'Vui lòng nhập lại số điện thoại');
-                        }
+                        print("giang");
+                        final feedback = {
+                          SheetsColumn.name: gmail,
+                          SheetsColumn.phone: '\'$pass',
+                        };
+                        await _signUpCubit.insert([feedback]);
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.only(top: 32),
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      margin: const EdgeInsets.only(top: 32),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                           color: const Color(0xFFFF8686),
                           borderRadius: BorderRadius.circular(16)),
@@ -232,7 +186,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   state.isSignIn
