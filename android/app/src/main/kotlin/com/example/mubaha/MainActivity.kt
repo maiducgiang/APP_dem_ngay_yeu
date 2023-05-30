@@ -1,4 +1,4 @@
-package com.example.lovecounter
+package com.KuCelebrates.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 
